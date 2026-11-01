@@ -1,0 +1,49 @@
+baseURL = "https://leif.radio/"
+languageCode = "sv-se"
+defaultContentLanguage = "sv"
+title = "SM4T – Leif.radio"
+theme = "PaperMod"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = "Amatörradiostationen SM4T – mest CW på 20 och 40 m."
+  author = "SM4T"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowToc = false
+  DateFormat = "2 January 2006"
+
+  [params.homeInfoParams]
+    Title = "SM4T – Leif.radio"
+    Content = """
+Välkommen till amatörradiostationen **SM4T**. Här skriver jag om CW, mest på 20 och 40 meter, om tävlingar, propagation och utrustning.
+
+_[Leif: lägg gärna till en mening eller två om dig själv här.]_
+"""
+
+[menu]
+  [[menu.main]]
+    name = "Inlägg"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    name = "Tävlingar"
+    url = "/tavlingar/"
+    weight = 20
+  [[menu.main]]
+    name = "Utrustning"
+    url = "/utrustning/"
+    weight = 30
+  [[menu.main]]
+    name = "Om mig / Stationen"
+    url = "/om/"
+    weight = 40
+  [[menu.main]]
+    name = "Taggar"
+    url = "/tags/"
+    weight = 50
