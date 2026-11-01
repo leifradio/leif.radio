@@ -23,7 +23,6 @@ enableRobotsTXT = true
     Content = """
 Välkommen till amatörradiostationen **SM4T**. Här skriver jag om CW, mest på 20 och 40 meter, om tävlingar, propagation och utrustning.
 
-_[Leif: lägg gärna till en mening eller två om dig själv här.]_
 """
 
 [menu]
