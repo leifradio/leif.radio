@@ -38,6 +38,10 @@ Welcome to amateur radio station **SM4T**. I write about CW, mostly on 20 and 40
     url = "/gear/"
     weight = 30
   [[menu.main]]
+    name = "Callsign"
+    url = "/callsign/"
+    weight = 35
+  [[menu.main]]
     name = "About / Station"
     url = "/about/"
     weight = 40
