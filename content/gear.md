@@ -9,10 +9,14 @@ showPagination = false
 showDateUpdated = false
 +++
 
-## Transceiver
+## Home station
 
-**FlexRadio FLEX-8400**, SDR transceiver.
+- **Transceiver:** FlexRadio FLEX-8400, SDR transceiver.
+- **Antenna:** DX Commander 9, multiband vertical.
 
-## Antenna
+## Portable
 
-**DX Commander 9**, multiband vertical.
+Used for portable operation.
+
+- **Transceiver:** Lab599 Discovery TX-500MP, compact portable HF/6 m transceiver with a built-in automatic antenna tuner.
+- **Antenna:** Chameleon CHA LEFS Feather, lightweight end-fed half-wave (EFHW) wire antenna for portable QRP use.
