@@ -1,0 +1,12 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "SM4T – Leif.radio"
+
+[params]
+  description = "Amateur radio station SM4T – mostly CW on 20 and 40 m."
+  dateFormat = "2 January 2006"
+
+[params.author]
+  name = "SM4T"
+  headline = "Welcome to amateur radio station SM4T. I write about CW, mostly on 20 and 40 meters, along with contests, propagation and gear."

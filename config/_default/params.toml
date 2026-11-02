@@ -1,0 +1,44 @@
+colorScheme = "ocean"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+showAppearanceSwitcher = true
+mainSections = ["posts", "contests"]
+
+[header]
+  layout = "basic"
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "profile"
+  showRecent = true
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "/posts/"
+  cardView = false
+
+[article]
+  showHero = true
+  heroStyle = "big"
+  showDate = true
+  showAuthor = true
+  showReadingTime = true
+  showWordCount = false
+  showTableOfContents = false
+  showTaxonomies = true
+  showPagination = true
+
+[list]
+  showHero = false
+  showSummary = true
+  cardView = false
+  groupByYear = false
+
+[taxonomy]
+  showTermCount = true
