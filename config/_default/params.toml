@@ -1,3 +1,5 @@
+logo = "img/logo.svg"
+disableTextInHeader = true
 colorScheme = "ocean"
 defaultAppearance = "light"
 autoSwitchAppearance = true

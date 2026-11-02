@@ -1,0 +1,5 @@
+/* Leif.radio logo in header */
+.logo { color: #393939; display: inline-flex; }
+.dark .logo { color: #f2f2f2; }
+.logo svg { height: 2.5rem; width: auto; }
+@media (max-width: 767px) { .logo svg { height: 2rem; } }
