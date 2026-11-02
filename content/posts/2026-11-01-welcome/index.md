@@ -5,7 +5,7 @@ draft = false
 tags = ["sm4t", "news"]
 +++
 
-Welcome to **leif.radio**, the home of amateur radio station SM4T!
+Welcome to **leif.radio**, my amateur radio website!
 
 This is where you'll find posts about CW on 20 and 40 meters, contest reports, propagation and notes on the station: a FLEX-8400 and a DX Commander vertical.
 

@@ -1,6 +1,6 @@
-# leif.radio – SM4T
+# leif.radio
 
-Website for amateur radio station SM4T, built with [Hugo](https://gohugo.io/) and the [Blowfish](https://github.com/nunocoracao/blowfish) theme. It is published automatically to GitHub Pages (https://leif.radio/) whenever something is pushed to `main`.
+Website for Leif.radio, amateur radio by Leif, built with [Hugo](https://gohugo.io/) and the [Blowfish](https://github.com/nunocoracao/blowfish) theme. It is published automatically to GitHub Pages (https://leif.radio/) whenever something is pushed to `main`.
 
 ## Adding a post
 
