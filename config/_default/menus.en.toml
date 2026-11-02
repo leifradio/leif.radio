@@ -1,0 +1,20 @@
+[[main]]
+  name = "Posts"
+  pageRef = "posts"
+  weight = 10
+[[main]]
+  name = "Contests"
+  pageRef = "contests"
+  weight = 20
+[[main]]
+  name = "Gear"
+  pageRef = "gear"
+  weight = 30
+[[main]]
+  name = "About / Station"
+  pageRef = "about"
+  weight = 40
+[[main]]
+  name = "Tags"
+  pageRef = "tags"
+  weight = 50
