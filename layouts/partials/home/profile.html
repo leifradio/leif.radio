@@ -30,13 +30,11 @@
           data-zoom-src="{{ $squareImage.RelPermalink }}">
       {{ end }}
     {{ end }}
-    <h1 class="text-4xl font-extrabold">
-      {{ .Site.Title }}
-    </h1>
+    <h1 class="sr-only">{{ .Site.Title }}</h1>
     {{ with .Site.Params.Author.headline }}
-      <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+      <p class="mt-4 text-xl text-neutral-500 dark:text-neutral-400">
         {{ . | markdownify }}
-      </h2>
+      </p>
     {{ end }}
     <div class="mt-1 text-2xl">
       {{ partialCached "author-links.html" . }}
