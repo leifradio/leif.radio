@@ -17,4 +17,4 @@ showDateUpdated = false
 Used for portable operation.
 
 - **Transceiver:** Lab599 TX-500MP with LiNK500MP mk3
-- **Antenna:** Chameleon CHA LEFS Feather, lightweight end-fed half-wave (EFHW) wire antenna for portable QRP use.
+- **Antenna:** Chameleon Feather, EFHW
