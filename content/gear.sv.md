@@ -17,5 +17,5 @@ showDateUpdated = false
 
 Används vid portabel körning.
 
-- **Transceiver:** Lab599 Discovery TX-500MP, kompakt portabel transceiver för HF/6 m med inbyggd automatisk antennavstämmare.
+- **Transceiver:** Lab599 TX-500MP med LiNK500MP mk3
 - **Antenn:** Chameleon CHA LEFS Feather, lätt ändmatad halvvågsantenn (EFHW) i tråd för portabel QRP-körning.
