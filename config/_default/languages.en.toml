@@ -1,9 +1,12 @@
 locale = "en"
 label = "English"
-weight = 1
+weight = 2
 title = "Leif.radio"
 
 [params]
+  displayName = "English"
+  isoCode = "en"
+  rtl = false
   copyright = "© { year } Leif.radio"
   description = "Amateur radio by Leif – mostly CW on 20 and 40 m."
   dateFormat = "2 January 2006"

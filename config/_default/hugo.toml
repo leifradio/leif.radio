@@ -1,6 +1,7 @@
 baseURL = "https://leif.radio/"
 theme = "blowfish"
-defaultContentLanguage = "en"
+defaultContentLanguage = "sv"
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 summaryLength = 30
 

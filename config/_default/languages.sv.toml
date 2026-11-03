@@ -1,0 +1,16 @@
+locale = "sv"
+label = "Svenska"
+weight = 1
+title = "Leif.radio"
+
+[params]
+  displayName = "Svenska"
+  isoCode = "sv"
+  rtl = false
+  copyright = "© { year } Leif.radio"
+  description = "Amatörradio av Leif – mest CW på 20 och 40 m."
+  dateFormat = "2 January 2006"
+
+[params.author]
+  name = "Leif"
+  headline = "Välkommen till Leif.radio. Jag skriver om amatörradio: CW, mest på 20 och 40 meter, och om contester, vågutbredning, utrustning och portabla aktiveringar."

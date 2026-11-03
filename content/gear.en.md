@@ -1,7 +1,5 @@
 +++
 title = "Gear"
-url = "/gear/"
-aliases = ["/utrustning/"]
 showDate = false
 showAuthor = false
 showReadingTime = false

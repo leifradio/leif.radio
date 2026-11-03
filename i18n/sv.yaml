@@ -1,0 +1,44 @@
+# Swedish strings missing from Blowfish's own sv.yaml (merged with the theme's file)
+article:
+  views:
+    one: "{{ .Count }} visning"
+    other: "{{ .Count }} visningar"
+  likes:
+    one: "{{ .Count }} gillning"
+    other: "{{ .Count }} gillningar"
+  zen_mode_title:
+    enable: "Aktivera zenläge"
+    disable: "Inaktivera zenläge"
+
+error:
+  404_home: "Till startsidan"
+
+nav:
+  close_menu: "Stäng menyn"
+  footer_menu: "Sidfotsmeny"
+  main_menu: "Huvudmeny"
+  mobile_menu: "Mobilmeny"
+  toggle_submenu: "Visa/dölj undermeny"
+
+sharing:
+  bluesky: "Dela på Bluesky"
+  mastodon: "Dela på Mastodon"
+  telegram: "Dela på Telegram"
+  whatsapp: "Dela på WhatsApp"
+
+admonition:
+  abstract: "Sammanfattning"
+  bug: "Bugg"
+  caution: "Varning"
+  danger: "Fara"
+  example: "Exempel"
+  failure: "Misslyckande"
+  important: "Viktigt"
+  info: "Info"
+  note: "Notera"
+  question: "Fråga"
+  quote: "Citat"
+  success: "Lyckat"
+  tip: "Tips"
+  todo: "Att göra"
+  warning: "Varning"

@@ -1,0 +1,20 @@
+[[main]]
+  name = "Inlägg"
+  pageRef = "posts"
+  weight = 10
+[[main]]
+  name = "Contester"
+  pageRef = "contests"
+  weight = 20
+[[main]]
+  name = "Utrustning"
+  pageRef = "gear"
+  weight = 30
+[[main]]
+  name = "Om / Stationen"
+  pageRef = "about"
+  weight = 40
+[[main]]
+  name = "Taggar"
+  pageRef = "tags"
+  weight = 50

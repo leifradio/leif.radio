@@ -1,7 +1,5 @@
 +++
 title = "About / Station"
-url = "/about/"
-aliases = ["/om/", "/callsign/", "/callsigns/", "/callsign/sa4zab/", "/callsign/sm4t/", "/callsigns/sa4zab/", "/callsigns/sm4t/"]
 showDate = false
 showAuthor = false
 showReadingTime = false
