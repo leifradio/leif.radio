@@ -11,7 +11,14 @@ Hugo does not translate anything by itself: every page exists as two files side 
 - `index.sv.md`: the Swedish version (write this one first)
 - `index.en.md`: the English translation
 
-Files with the same name (apart from `.sv`/`.en`) in the same folder are linked as translations of each other. Both versions share the photos in the folder (e.g. `feature.jpg`). Keep `date` and `tags` the same in both files; title, description and captions are translated. Menus are in `config/_default/menus.sv.toml` / `menus.en.toml`, and per-language site texts (description, welcome text) in `languages.sv.toml` / `languages.en.toml`. Extra Swedish theme strings live in `i18n/sv.yaml`.
+Files with the same name (apart from `.sv`/`.en`) in the same folder are linked as translations of each other. Both versions share the photos in the folder (e.g. `feature.jpg`). Keep `date` the same in both files; title, description and captions are translated.
+
+**Tags:** ordinary words are translated, technical tags stay identical in both languages:
+
+- Translated: e.g. `nyheter` (sv) / `news` (en), `portabelt` (sv) / `portable` (en). Use the Swedish word in `index.sv.md` and the English word in `index.en.md`.
+- Identical in both: callsigns (`sm4t`), bands (`20m`, `40m`), modes and networks (`cw`, `rbn`), gear names (`TX500MP`, `CHA Feather`) and place names (`dalarna`).
+
+Swedish tag pages live under `/tags/…` and English ones under `/en/tags/…`. The tags overview page titles are set in `content/tags/_index.sv.md` (Taggar) and `_index.en.md` (Tags). Menus are in `config/_default/menus.sv.toml` / `menus.en.toml`, and per-language site texts (description, welcome text) in `languages.sv.toml` / `languages.en.toml`. Extra Swedish theme strings live in `i18n/sv.yaml`.
 
 If a page only has an `.sv.md` file it is shown only on the Swedish site (and the switcher is hidden on it).
 

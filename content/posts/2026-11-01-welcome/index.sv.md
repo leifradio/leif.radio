@@ -2,7 +2,7 @@
 title = "Välkommen till leif.radio"
 date = 2026-11-01T20:00:00+01:00
 draft = false
-tags = ["sm4t", "news"]
+tags = ["sm4t", "nyheter"]
 +++
 
 Välkommen till **leif.radio**, min webbplats om amatörradio!

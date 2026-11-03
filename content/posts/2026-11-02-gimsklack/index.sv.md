@@ -2,7 +2,7 @@
 title = "Uppe på Gimsklack"
 date = 2026-11-02T07:30:00+01:00
 draft = false
-tags = ["portable", "20m", "rbn", "dalarna", "TX500MP", "CHA Feather"]
+tags = ["portabelt", "20m", "rbn", "dalarna", "TX500MP", "CHA Feather"]
 description = "Med radion uppe på Gimsklack: härlig utsikt, många europeiska signaler och RBN-spottar på 20 m."
 featureimagecaption = "Utsikt från Gimsklack, Dalarna"
 alt = "Utsikt från Gimsklack, Dalarna"
