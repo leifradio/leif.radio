@@ -1,0 +1,4 @@
+{{- /* Small inline flag for a language code. Usage: partial "header/components/flag.html" "sv" */ -}}
+{{- with resources.Get (printf "flags/%s.svg" .) -}}
+  <span class="lang-flag" aria-hidden="true">{{ .Content | safeHTML }}</span>
+{{- end -}}

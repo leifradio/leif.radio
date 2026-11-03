@@ -1,0 +1,25 @@
+{{- /* Override of Blowfish's language switcher: adds small SVG flags (assets/flags/<lang>.svg). */ -}}
+{{ if .IsTranslated }}
+  <div class="translation nested-menu">
+    <button class="cursor-pointer flex items-center" aria-label="{{ .Language.Params.displayName }}">
+      <span class="me-1 flex items-center">
+        {{ partial "header/components/flag.html" .Language.Lang }}
+      </span>
+      <span class="text-sm font-medium bf-icon-color-hover" title="{{ .Title }}">
+        {{- i18n "global.language" | markdownify -}}
+      </span>
+    </button>
+    <ul class="menuhide">
+      <li class="rounded-xl border border-neutral-200/80 bg-neutral/95 shadow-2xl shadow-neutral-900/20 dark:border-neutral-700/80 dark:bg-neutral-800/95 p-2 flex flex-col gap-1">
+        {{ range .AllTranslations }}
+          <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}" class="flex items-center gap-2 bf-icon-color-hover px-3 py-1">
+            {{ partial "header/components/flag.html" .Language.Lang }}
+            <span class="text-sm font-sm" title="{{ .Title }}">
+              {{ .Language.Params.displayName | emojify }}
+            </span>
+          </a>
+        {{ end }}
+      </li>
+    </ul>
+  </div>
+{{ end }}
