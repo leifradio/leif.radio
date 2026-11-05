@@ -22,3 +22,8 @@
   height: 100%;
   display: block;
 }
+
+/* QSO map page: let the map use the full content width */
+.article-content:has(#qso-map) {
+  max-width: none;
+}
