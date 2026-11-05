@@ -11,6 +11,10 @@
   pageRef = "gear"
   weight = 30
 [[main]]
+  name = "Karta"
+  pageRef = "map"
+  weight = 35
+[[main]]
   name = "Om / Stationen"
   pageRef = "about"
   weight = 40

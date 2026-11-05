@@ -58,6 +58,20 @@ A post without photos can also be a pair of single files, e.g. `content/posts/20
 
 Contest reports go in `content/contests/` the same way. The *About / Station* and *Gear* pages are `content/about.sv.md` / `about.en.md` and `content/gear.sv.md` / `gear.en.md`. Site settings live in `config/_default/`.
 
+
+## QSO map (QRZ logbook)
+
+The pages [/karta/](https://leif.radio/karta/) (Swedish) and [/en/map/](https://leif.radio/en/map/) show every QSO from the SM4T QRZ Logbook on an OpenStreetMap map. Markers are coloured by band; the data files are generated from the QRZ Logbook API.
+
+Refresh the data (needs the API key in the environment, never commit the key):
+
+```
+export QRZ_LOGBOOK_API_KEY='…'   # from QRZ → Logbook → Settings → API
+python3 scripts/fetch-qrz-map.py
+```
+
+That writes `static/data/qsos.json` and `static/data/qso-summary.json`. Commit those files (or let the daily routine do it) and push to `main`.
+
 ## Building locally (optional)
 
 ```

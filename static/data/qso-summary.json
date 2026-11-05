@@ -1,0 +1,27 @@
+{
+  "generated": "2026-11-05T11:49:43Z",
+  "callsign": "SM4T",
+  "bookName": "SM4T Logbook",
+  "totalInLog": 231,
+  "plotted": 231,
+  "skippedNoLocation": 0,
+  "withGrid": 210,
+  "confirmed": 86,
+  "dxcc": 53,
+  "home": {
+    "grid": "JP70RM",
+    "lat": 60.52083,
+    "lon": 15.45833,
+    "label": "SM4T"
+  },
+  "bands": {
+    "40m": 123,
+    "20m": 60,
+    "30m": 37,
+    "15m": 6,
+    "17m": 5
+  },
+  "modes": {
+    "CW": 231
+  }
+}
