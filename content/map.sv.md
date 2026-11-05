@@ -15,5 +15,3 @@ showTaxonomies = false
 Karta över mina QSO. Markörerna är färgade efter band; gul ring betyder bekräftat QSO (LoTW/QRZ). Den orange punkten är home QTH JP70RM.
 
 {{< qso-map >}}
-
-Kartan uppdateras automatiskt från loggboken.

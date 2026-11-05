@@ -21,12 +21,12 @@
   var i18n = {
     sv: {
       plotted: "QSO på kartan", confirmed: "bekräftade", dxcc: "DXCC",
-      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band",
+      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste QSO",
       band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land"
     },
     en: {
       plotted: "QSOs on map", confirmed: "confirmed", dxcc: "DXCC",
-      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band",
+      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest QSOs",
       band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country"
     }
   };
@@ -78,6 +78,24 @@
       "<span><strong>" + (summary.confirmed || 0) + "</strong> " + t.confirmed + "</span>" +
       "<span><strong>" + (summary.dxcc || 0) + "</strong> " + t.dxcc + "</span>" +
       (generated ? "<span>" + t.updated + ": " + generated + "</span>" : "");
+
+    var latestWrap = document.getElementById("qso-latest");
+    var latestTitle = document.getElementById("qso-latest-title");
+    var latestList = document.getElementById("qso-latest-list");
+    if (latestWrap && latestTitle && latestList) {
+      var latest = qsos.slice().sort(function (a, b) {
+        var da = (a.date || "") + (a.time || "");
+        var db = (b.date || "") + (b.time || "");
+        return db < da ? -1 : db > da ? 1 : 0;
+      }).slice(0, 5);
+      latestTitle.textContent = t.latest;
+      latestList.innerHTML = latest.map(function (q) {
+        return "<li><span class=\"qso-latest-call\">" + (q.call || "") +
+          "</span><span class=\"qso-latest-band\">" + (q.band || "-") +
+          "</span><span class=\"qso-latest-country\">" + (q.country || "-") + "</span></li>";
+      }).join("");
+      latestWrap.hidden = latest.length === 0;
+    }
 
     var bounds = [];
     qsos.forEach(function (q) {
