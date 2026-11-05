@@ -21,12 +21,12 @@
   var i18n = {
     sv: {
       plotted: "QSO på kartan", confirmed: "bekräftade", dxcc: "DXCC",
-      updated: "Uppdaterad", home: "Hemmastation", noData: "Kunde inte ladda QSO-data.",
+      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band",
       band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land"
     },
     en: {
       plotted: "QSOs on map", confirmed: "confirmed", dxcc: "DXCC",
-      updated: "Updated", home: "Home station", noData: "Could not load QSO data.",
+      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band",
       band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country"
     }
   };
@@ -124,14 +124,33 @@
     if (bounds.length) map.fitBounds(bounds, { padding: [28, 28], maxZoom: 6 });
     map.invalidateSize();
 
-    var legend = document.getElementById("qso-map-legend");
-    if (legend) {
-      var bands = Object.keys(summary.bands || {});
-      legend.innerHTML = bands.map(function (b) {
-        return '<span><i class="qso-map-swatch" style="background:' + colorFor(b) + '"></i>' + b + "</span>";
-      }).join("") +
-        '<span><i class="qso-map-swatch" style="background:#f59e0b"></i>' + t.home + "</span>";
-    }
+    var bandOrder = ["160m","80m","60m","40m","30m","20m","17m","15m","12m","10m","6m","4m","2m","70cm"];
+    var bands = Object.keys(summary.bands || {}).sort(function (a, b) {
+      var ia = bandOrder.indexOf(a), ib = bandOrder.indexOf(b);
+      if (ia < 0) ia = 999;
+      if (ib < 0) ib = 999;
+      if (ia !== ib) return ia - ib;
+      return a.localeCompare(b);
+    });
+    var Legend = Leaflet.Control.extend({
+      options: { position: "bottomleft" },
+      onAdd: function () {
+        var div = Leaflet.DomUtil.create("div", "qso-band-legend");
+        div.setAttribute("aria-label", t.legend);
+        var html = '<div class="qso-band-legend-title">' + t.legend + "</div>";
+        bands.forEach(function (b) {
+          html += '<div class="qso-band-legend-row"><span class="qso-band-legend-swatch" style="background:' +
+            colorFor(b) + '"></span><span>' + b + "</span></div>";
+        });
+        html += '<div class="qso-band-legend-row"><span class="qso-band-legend-swatch" style="background:#f59e0b"></span><span>' +
+          t.home + "</span></div>";
+        div.innerHTML = html;
+        Leaflet.DomEvent.disableClickPropagation(div);
+        Leaflet.DomEvent.disableScrollPropagation(div);
+        return div;
+      }
+    });
+    new Legend().addTo(map);
 
     new MutationObserver(function () {
       var wantDark = isDark();

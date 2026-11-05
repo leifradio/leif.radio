@@ -19,17 +19,6 @@
     z-index: 0;
   }
   .dark #qso-map { border-color: rgba(148, 163, 184, 0.25); }
-  .qso-map-legend {
-    display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem;
-    margin-top: 0.75rem; font-size: 0.8rem; color: #64748b;
-  }
-  .dark .qso-map-legend { color: #94a3b8; }
-  .qso-map-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .qso-map-swatch {
-    width: 10px; height: 10px; border-radius: 999px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
-  }
-  .dark .qso-map-swatch { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25); }
   .qso-popup { font-size: 0.9rem; line-height: 1.35; }
   .qso-popup strong { font-size: 1rem; }
   .leaflet-container { font: inherit; background: #e2e8f0; }
@@ -44,12 +33,56 @@
   .dark .leaflet-popup-tip {
     background: #1e293b; color: #e2e8f0;
   }
+  /* Band colour legend — Leaflet control on the map */
+  .qso-band-legend {
+    background: rgba(255, 255, 255, 0.94);
+    color: #0f172a;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    padding: 0.55rem 0.7rem;
+    line-height: 1.25;
+    font-size: 0.78rem;
+    max-width: min(46vw, 11.5rem);
+  }
+  .dark .qso-band-legend {
+    background: rgba(15, 23, 42, 0.92);
+    color: #e2e8f0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  }
+  .qso-band-legend-title {
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+  .qso-band-legend-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.18rem 0;
+  }
+  .qso-band-legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  }
+  .dark .qso-band-legend-swatch {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+  }
+  @media (max-width: 420px) {
+    .qso-band-legend {
+      font-size: 0.72rem;
+      padding: 0.45rem 0.55rem;
+      max-width: 42vw;
+    }
+    .qso-band-legend-swatch { width: 10px; height: 10px; }
+  }
 </style>
 
 <div class="qso-map-wrap not-prose">
   <div class="qso-map-meta" id="qso-map-meta" aria-live="polite"></div>
   <div id="qso-map" role="region" aria-label="QSO map"></div>
-  <div class="qso-map-legend" id="qso-map-legend"></div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
