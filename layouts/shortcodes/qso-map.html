@@ -92,7 +92,7 @@
   .dark .qso-latest-list { border-color: rgba(148, 163, 184, 0.25); }
   .qso-latest-list li {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 1.4fr);
+    grid-template-columns: minmax(0, 1.05fr) auto minmax(0, 1.3fr) auto;
     gap: 0.35rem 0.75rem;
     align-items: baseline;
     padding: 0.55rem 0.8rem;
@@ -111,10 +111,16 @@
   .dark .qso-latest-band { color: #94a3b8; }
   .qso-latest-country { color: #334155; overflow-wrap: anywhere; }
   .dark .qso-latest-country { color: #cbd5e1; }
+  .qso-latest-date {
+    font-variant-numeric: tabular-nums;
+    color: #64748b;
+    white-space: nowrap;
+  }
+  .dark .qso-latest-date { color: #94a3b8; }
   @media (max-width: 420px) {
     .qso-latest-list li {
       grid-template-columns: minmax(0, 1fr) auto;
-      grid-template-areas: "call band" "country country";
+      grid-template-areas: "call band" "country date";
       gap: 0.15rem 0.6rem;
       padding: 0.55rem 0.7rem;
       font-size: 0.88rem;
@@ -122,6 +128,7 @@
     .qso-latest-call { grid-area: call; }
     .qso-latest-band { grid-area: band; justify-self: end; }
     .qso-latest-country { grid-area: country; }
+    .qso-latest-date { grid-area: date; justify-self: end; }
   }
   @media (max-width: 420px) {
     .qso-band-legend {

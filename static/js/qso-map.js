@@ -92,7 +92,8 @@
       latestList.innerHTML = latest.map(function (q) {
         return "<li><span class=\"qso-latest-call\">" + (q.call || "") +
           "</span><span class=\"qso-latest-band\">" + (q.band || "-") +
-          "</span><span class=\"qso-latest-country\">" + (q.country || "-") + "</span></li>";
+          "</span><span class=\"qso-latest-country\">" + (q.country || "-") +
+          "</span><span class=\"qso-latest-date\">" + (fmtDate(q.date) || "-") + "</span></li>";
       }).join("");
       latestWrap.hidden = latest.length === 0;
     }
