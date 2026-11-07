@@ -50,18 +50,11 @@
   // Build the map NOW while window.L is still Leaflet.
   window.L = Leaflet;
   var map = Leaflet.map(el, { scrollWheelZoom: true, worldCopyJump: true }).setView([54, 10], 4);
-  var lightTiles = Leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  // Use the same key-free OpenStreetMap background in both site themes.
+  Leaflet.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  });
-  var darkTiles = Leaflet.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
-  });
-  function isDark() {
-    return document.documentElement.classList.contains("dark");
-  }
-  (isDark() ? darkTiles : lightTiles).addTo(map);
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  }).addTo(map);
   var group = Leaflet.layerGroup().addTo(map);
 
   Promise.all([
@@ -172,11 +165,6 @@
     });
     new Legend().addTo(map);
 
-    new MutationObserver(function () {
-      var wantDark = isDark();
-      if (wantDark && map.hasLayer(lightTiles)) { map.removeLayer(lightTiles); darkTiles.addTo(map); }
-      if (!wantDark && map.hasLayer(darkTiles)) { map.removeLayer(darkTiles); lightTiles.addTo(map); }
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
   }).catch(function (err) {
     var t = t10n();
     meta.textContent = t.noData;
