@@ -7,18 +7,12 @@ showPagination = false
 showDateUpdated = false
 +++
 
-## About me
+Hello and welcome to my amateur radio website! My name is Leif and my callsigns are SA4ZAB and SM4T, with SM4T being my additional callsign. My passion is Morse code (CW) and operating portable outdoors.
 
-My name is Leif and I operate under the callsign **SM4T**.
+My home station is in Borlänge, Dalarna, Sweden. There I use a FlexRadio FLEX-8400 with a DX Commander Signature 9, a freestanding vertical antenna.
 
-## Callsigns
+When operating portable, I switch between different radios and antennas. My current favourites are the Lab599 TX500MP and a simple wire antenna, such as the Chameleon CHA LEFS4010 or CHA Feather.
 
-- **SA4ZAB**: my original callsign
-- **SM4T**: my additional callsign
+I am also interested in emergency communications – communication when the usual channels are unavailable. Radio can work even when mobile networks and the internet are down. Keeping these skills alive is both enjoyable and valuable for the day they are needed. For this, I mainly use Winlink and VarAC, with the callsign SM4T.
 
-## Station
-
-- **Mode:** mostly CW
-- **Bands:** mainly 20 m and 40 m
-- **Transceiver:** FlexRadio FLEX-8400
-- **Antenna:** DX Commander 9 (vertical)
+SA4ZAB is my original callsign. I mainly operate on 20 and 40 metres.

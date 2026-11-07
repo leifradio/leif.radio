@@ -8,18 +8,12 @@ showPagination = false
 showDateUpdated = false
 +++
 
-## Om mig
+Hej och välkommen till min sida om amatörradio! Jag heter Leif och har anropssignalerna SA4ZAB och SM4T, där SM4T är min extra anropssignal. Min passion är telegrafi (CW) och att köra radio portabelt ute i naturen.
 
-Jag heter Leif och kör under anropssignalen **SM4T**.
+Min hemmastation finns i Borlänge i Dalarna, Sverige. Där använder jag en FlexRadio FLEX-8400 med en DX Commander Signature 9, en fristående vertikalantenn.
 
-## Anropssignaler
+När jag kör portabelt växlar jag mellan olika radioapparater och antenner. Favoriterna just nu är Lab599 TX500MP och en enkel trådantenn, till exempel Chameleon CHA LEFS4010 eller CHA Feather.
 
-- **SA4ZAB**: min ursprungliga anropssignal
-- **SM4T**: min extra anropssignal
+Jag är också intresserad av krissamband – kommunikation när de vanliga kommunikationsvägarna inte är tillgängliga. Radio kan fungera även när mobilnät och internet ligger nere. Att hålla kunskaperna vid liv är både roligt och värdefullt inför den dag de behövs. För detta använder jag framför allt Winlink och VarAC, med anropssignalen SM4T.
 
-## Stationen
-
-- **Trafiksätt:** mest CW
-- **Band:** främst 20 m och 40 m
-- **Transceiver:** FlexRadio FLEX-8400
-- **Antenn:** DX Commander 9 (vertikal)
+SA4ZAB är min ursprungliga anropssignal. Jag kör främst på 20 och 40 meter.
