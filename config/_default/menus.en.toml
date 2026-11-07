@@ -3,10 +3,6 @@
   pageRef = "posts"
   weight = 10
 [[main]]
-  name = "Contests"
-  pageRef = "contests"
-  weight = 20
-[[main]]
   name = "Gear"
   pageRef = "gear"
   weight = 30
