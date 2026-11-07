@@ -5,6 +5,6 @@ draft = false
 tags = ["sm4t", "news"]
 +++
 
-Welcome to Leif.radio, my website about amateur radio, Morse code and emergency communications
+Welcome to Leif.radio, my website about amateur radio, Morse code and emergency communications.
 
 73 de SM4T

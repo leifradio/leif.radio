@@ -5,6 +5,6 @@ draft = false
 tags = ["sm4t", "nyheter"]
 +++
 
-Välkommen till Leif.radio, min sida om amatörradio, telegrafi och krissamband
+Välkommen till Leif.radio, min sida om amatörradio, telegrafi och krissamband.
 
 73 de SM4T
