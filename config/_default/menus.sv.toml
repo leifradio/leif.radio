@@ -18,3 +18,13 @@
   name = "Taggar"
   pageRef = "tags"
   weight = 50
+
+[[main]]
+  name = "Telegrafi"
+  pageRef = "cw"
+  weight = 15
+
+[[main]]
+  name = "Krissamband"
+  pageRef = "emcomm"
+  weight = 20

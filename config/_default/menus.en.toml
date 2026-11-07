@@ -18,3 +18,13 @@
   name = "Tags"
   pageRef = "tags"
   weight = 50
+
+[[main]]
+  name = "CW"
+  pageRef = "cw"
+  weight = 15
+
+[[main]]
+  name = "EmComm"
+  pageRef = "emcomm"
+  weight = 20
