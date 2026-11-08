@@ -17,6 +17,8 @@ There you learn the basics and get really good help getting started. I started a
 
 YouTube has plenty about CW, and a great first stop is Kurt Zoglmann, Morse code ninja. He has loads of videos to listen to, from learning single characters to high-speed CW: [Kurt Zoglmann on YouTube](https://www.youtube.com/@KurtZoglmann).
 
+Finally, a website I have spent a lot of time on: [LCWO](https://lcwo.net/). It makes it easy to learn characters and words and to practise in several different ways.
+
 Good luck!
 
 ## SKED

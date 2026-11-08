@@ -17,6 +17,8 @@ Där lär du dig grunderna och får väldigt bra hjälp att komma igång. Själv
 
 På YouTube hittar man mycket om telegrafi och ett bra första stopp är Kurt Zoglmann, Morse code ninja. Han har mängder av video att lyssna på, från det att man lär sig enstaka tecken till höghastighetstelegrafi: [Kurt Zoglmann på YouTube](https://www.youtube.com/@KurtZoglmann).
 
+Till sist en webbsida jag har lagt mycket tid på: [LCWO](https://lcwo.net/). Där är det smidigt att lära sig tecken och ord och att träna på flera olika sätt.
+
 Lycka till!
 
 ## SKED
