@@ -9,6 +9,16 @@ showPagination = false
 
 CW is the mode I like by far the most. I started learning CW shortly after getting my amateur radio licence in 2020 and have kept working at it ever since to become good at it. It is not easy for an old man like me, but I am making progress :)
 
+## Getting started with CW
+
+If you want to learn CW, take the courses at [CW Academy](https://cwops.org/cw-academy/cw-academy-options/) or join the [Long Island CW Club](https://longislandcwclub.org/).
+
+There you learn the basics and get really good help getting started. I started at LICW myself and then took the CWops courses. Besides learning everything you need to know about CW, you meet like-minded people to practise with.
+
+YouTube has plenty about CW, and a great first stop is Kurt Zoglmann, Morse code ninja. He has loads of videos to listen to, from learning single characters to high-speed CW: [Kurt Zoglmann on YouTube](https://www.youtube.com/@KurtZoglmann).
+
+Good luck!
+
 ## SKED
 
 Please get in touch if you would like to have a QSO. The bands that work best for me are 40 metres and higher in frequency, but I can also arrange to operate on 80 metres with a temporary antenna.
