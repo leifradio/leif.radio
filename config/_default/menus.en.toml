@@ -28,3 +28,8 @@
   name = "EmComm"
   pageRef = "emcomm"
   weight = 20
+
+[[main]]
+  name = "Calendar"
+  pageRef = "calendar"
+  weight = 37

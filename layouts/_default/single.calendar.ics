@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Leif.radio//{{ .Title }}//{{ upper .Language.Lang }}
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Leif.radio – {{ .Title }}
+X-WR-TIMEZONE:Europe/Stockholm
+{{- $sv := eq .Language.Lang "sv" }}
+{{- range sort (default slice site.Data.events.events) "start" }}
+{{- $s := time.AsTime .start }}{{ $e := time.AsTime (default .start .end) }}
+BEGIN:VEVENT
+UID:{{ .id }}@leif.radio
+DTSTAMP:{{ now.UTC.Format "20060102T150405Z" }}
+DTSTART:{{ $s.UTC.Format "20060102T150405Z" }}
+DTEND:{{ $e.UTC.Format "20060102T150405Z" }}
+SUMMARY:{{ cond $sv .title_sv .title_en }}
+{{- with cond $sv .note_sv .note_en }}
+DESCRIPTION:{{ . }}{{ end }}
+{{- with .url }}
+URL:{{ . }}{{ end }}
+END:VEVENT
+{{- end }}
+END:VCALENDAR

@@ -14,3 +14,12 @@ summaryLength = 30
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[mediaTypes."text/calendar"]
+  suffixes = ["ics"]
+
+[outputFormats.Calendar]
+  mediaType = "text/calendar"
+  baseName = "kalender"
+  isPlainText = true
+  notAlternative = true

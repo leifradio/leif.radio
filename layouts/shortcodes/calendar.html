@@ -1,0 +1,37 @@
+{{- $sv := eq .Page.Language.Lang "sv" -}}
+{{- $now := now -}}
+{{- $events := sort (default slice site.Data.events.events) "start" -}}
+{{- $up := slice -}}{{- $past := slice -}}
+{{- range $events -}}
+  {{- if ge (time.AsTime (default .start .end)) $now -}}{{- $up = $up | append . -}}{{- else -}}{{- $past = $past | append . -}}{{- end -}}
+{{- end -}}
+{{- $months := cond $sv (slice "januari" "februari" "mars" "april" "maj" "juni" "juli" "augusti" "september" "oktober" "november" "december") (slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December") -}}
+<style>
+.cal-list{list-style:none;padding:0;margin:0 0 2rem}
+.cal-item{display:flex;gap:1rem;padding:.75rem 0;border-bottom:1px solid rgba(148,163,184,.3)}
+.cal-date{min-width:4.5rem;text-align:center;border-radius:.5rem;padding:.35rem;background:rgba(37,99,235,.1);line-height:1.2}
+.cal-date .d{font-size:1.5rem;font-weight:700}
+.cal-date .m{font-size:.8rem;text-transform:uppercase}
+.cal-body .t{font-weight:600}
+.cal-body .w{font-size:.9rem;color:#64748b}
+.dark .cal-body .w{color:#94a3b8}
+</style>
+{{- define "partials/cal-items" -}}
+<ul class="cal-list">
+{{- range .items -}}
+{{- $s := time.AsTime .start -}}{{- $e := time.AsTime (default .start .end) -}}
+<li class="cal-item">
+ <div class="cal-date"><div class="d">{{ $s.Day }}</div><div class="m">{{ substr (index $.months (sub (int $s.Month) 1)) 0 3 }}</div></div>
+ <div class="cal-body">
+  <div class="t">{{ if .url }}<a href="{{ .url }}">{{ cond $.sv .title_sv .title_en }}</a>{{ else }}{{ cond $.sv .title_sv .title_en }}{{ end }}</div>
+  <div class="w">{{ $s.Day }} {{ index $.months (sub (int $s.Month) 1) }} {{ $s.Format "15:04" }}{{ if .end }} – {{ if ne ($e.Format "2006-01-02") ($s.Format "2006-01-02") }}{{ $e.Day }} {{ index $.months (sub (int $e.Month) 1) }} {{ end }}{{ $e.Format "15:04" }}{{ end }} {{ cond $.sv "svensk tid" "Swedish time" }} ({{ $s.UTC.Format "15:04" }}{{ if .end }}–{{ $e.UTC.Format "15:04" }}{{ end }} UTC)</div>
+  {{ with cond $.sv .note_sv .note_en }}<div>{{ . }}</div>{{ end }}
+ </div>
+</li>
+{{- end -}}
+</ul>
+{{- end -}}
+<h2>{{ cond $sv "Kommande" "Upcoming" }}</h2>
+{{ if $up }}{{ partial "cal-items" (dict "items" $up "sv" $sv "months" $months) }}{{ else }}<p>{{ cond $sv "Inga kommande händelser just nu." "No upcoming events right now." }}</p>{{ end }}
+{{ with $past }}<h2>{{ cond $sv "Tidigare" "Past" }}</h2>{{ partial "cal-items" (dict "items" (sort . "start" "desc") "sv" $sv "months" $months) }}{{ end }}
+{{ with .Page.OutputFormats.Get "Calendar" }}<p>📅 <a href="{{ .RelPermalink }}">{{ cond $sv "Prenumerera på kalendern (.ics)" "Subscribe to the calendar (.ics)" }}</a></p>{{ end }}
