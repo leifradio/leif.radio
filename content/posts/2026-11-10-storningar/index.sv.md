@@ -2,7 +2,7 @@
 title = "Störningar på telefoni och nätverk"
 date = 2026-11-10T12:55:00+01:00
 draft = false
-tags = ["winlink", "VarAC", "20m", "krissamband"]
+tags = ["winlink", "VarAC", "20m", "krissamband", "TX500MP", "LiNK500MP"]
 description = "Allmänna störningar på telefoni och nätverk, så jag passade på att köra Winlink Wednesday redan i dag. Bra konditioner för både Winlink och VarAC."
 featureimagecaption = "Incheckningen till Winlink Wednesday i Winlink Express"
 alt = "Winlink Express med incheckningen till KN4LQN"

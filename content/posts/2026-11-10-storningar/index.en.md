@@ -2,7 +2,7 @@
 title = "Phone and network outages"
 date = 2026-11-10T12:55:00+01:00
 draft = false
-tags = ["winlink", "VarAC", "20m", "emcomm"]
+tags = ["winlink", "VarAC", "20m", "emcomm", "TX500MP", "LiNK500MP"]
 description = "General outages on phone and network services, so I took the chance to do Winlink Wednesday already today. Good conditions for both Winlink and VarAC."
 featureimagecaption = "The Winlink Wednesday check-in in Winlink Express"
 alt = "Winlink Express showing the check-in to KN4LQN"
