@@ -13,5 +13,6 @@ I dag var det allmänna störningar på telefoni och nätverk, så jag passade p
 Provade även VarAC och där var det också bra förutsättningar.
 
 {{< figure src="varac.png" alt="VarAC på 14,105 MHz med karta över hörda stationer" caption="VarAC på 20 m med beacons från Europa och VP9NM på Bermuda" >}}
+Jag använde som vanligt min TX-500MP med LiNK500MP trådlöst från en laptop med Winlink Express, VARA HF och VarAC.
 
 73 de SM4T

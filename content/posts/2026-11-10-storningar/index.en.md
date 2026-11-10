@@ -13,5 +13,6 @@ Today there were general outages on phone and network services, so I took the ch
 I also tried VarAC, and conditions were good there too.
 
 {{< figure src="varac.png" alt="VarAC on 14.105 MHz with a map of heard stations" caption="VarAC on 20 m with beacons from Europe and VP9NM in Bermuda" >}}
+As usual I used my TX-500MP with the LiNK500MP, connected wirelessly to a laptop running Winlink Express, VARA HF and VarAC.
 
 73 de SM4T
