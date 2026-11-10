@@ -27,3 +27,7 @@
 .article-content:has(#qso-map) {
   max-width: none;
 }
+
+/* More breathing room between the menu bar and page content */
+#main-content { padding-top: 2rem; }
+@media (max-width: 767px) { #main-content { padding-top: 1.25rem; } }
