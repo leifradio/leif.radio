@@ -12,6 +12,6 @@ showHero = false
 showTaxonomies = false
 +++
 
-Karta över mina QSO med mitt callsign SM4T. Markörerna är färgade efter band; gul ring betyder bekräftat QSO (LoTW/QRZ). Den orange punkten är home QTH JP70RM.
+Karta över mina QSO med call SM4T. Markörerna är färgade efter band; gul ring betyder bekräftat QSO (LoTW/QRZ). Den orange punkten är home QTH JP70RM.
 
 {{< qso-map >}}

@@ -10,6 +10,6 @@ showHero = false
 showTaxonomies = false
 +++
 
-Map of my QSOs with my callsign SM4T. Markers are coloured by band; a gold ring means a confirmed QSO (LoTW/QRZ). The orange marker is home QTH JP70RM.
+Map of my QSOs as SM4T. Markers are coloured by band; a gold ring means a confirmed QSO (LoTW/QRZ). The orange marker is home QTH JP70RM.
 
 {{< qso-map >}}
