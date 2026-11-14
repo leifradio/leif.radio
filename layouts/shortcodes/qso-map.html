@@ -71,6 +71,26 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
   }
 
+
+  .qso-stats { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .qso-stats-box { border: 1px solid rgba(148,163,184,0.35); border-radius: 0.75rem; padding: 0.8rem 0.95rem; }
+  .dark .qso-stats-box { border-color: rgba(148,163,184,0.25); }
+  .qso-stats-box h3 { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.55rem; color: #0f172a; }
+  .dark .qso-stats-box h3 { color: #e2e8f0; }
+  .qso-stats-nums { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.6rem 1rem; }
+  .qso-stats-num.wide { grid-column: 1 / -1; }
+  .qso-stats-num strong { display: block; font-size: 1.35rem; line-height: 1.1; color: #0f172a; font-variant-numeric: tabular-nums; }
+  .dark .qso-stats-num strong { color: #f1f5f9; }
+  .qso-stats-num span { font-size: 0.8rem; color: #64748b; }
+  .dark .qso-stats-num span { color: #94a3b8; }
+  .qso-bar { display: grid; grid-template-columns: minmax(3.2rem, auto) 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.85rem; margin: 0.28rem 0; }
+  .qso-bar-name { overflow-wrap: anywhere; color: #334155; }
+  .dark .qso-bar-name { color: #cbd5e1; }
+  .qso-bar-track { height: 0.55rem; background: rgba(148,163,184,0.2); border-radius: 999px; overflow: hidden; }
+  .qso-bar-fill { height: 100%; border-radius: 999px; }
+  .qso-bar-count { font-variant-numeric: tabular-nums; color: #64748b; }
+  .dark .qso-bar-count { color: #94a3b8; }
+
   .qso-latest {
     margin-top: 1.25rem;
   }
@@ -146,6 +166,7 @@
 <div class="qso-map-wrap not-prose">
   <div class="qso-map-meta" id="qso-map-meta" aria-live="polite"></div>
   <div id="qso-map" role="region" aria-label="QSO map"></div>
+  <div class="qso-stats" id="qso-stats" hidden></div>
   <div class="qso-latest" id="qso-latest" hidden>
     <h2 class="qso-latest-title" id="qso-latest-title"></h2>
     <ul class="qso-latest-list" id="qso-latest-list"></ul>

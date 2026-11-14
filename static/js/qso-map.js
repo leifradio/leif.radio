@@ -21,12 +21,12 @@
   var i18n = {
     sv: {
       plotted: "QSO på kartan", confirmed: "bekräftade", dxcc: "DXCC",
-      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste QSO",
+      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste 20 QSO", stats: "Statistik", total: "QSO totalt", bandsN: "band", firstQso: "första QSO", perBand: "QSO per band", topCountries: "Flest QSO per DXCC",
       band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land"
     },
     en: {
       plotted: "QSOs on map", confirmed: "confirmed", dxcc: "DXCC",
-      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest QSOs",
+      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest 20 QSOs", stats: "Statistics", total: "QSOs in total", bandsN: "bands", firstQso: "first QSO", perBand: "QSOs per band", topCountries: "Most QSOs by DXCC entity",
       band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country"
     }
   };
@@ -72,6 +72,44 @@
       "<span><strong>" + (summary.dxcc || 0) + "</strong> " + t.dxcc + "</span>" +
       (generated ? "<span>" + t.updated + ": " + generated + "</span>" : "");
 
+
+    var statsEl = document.getElementById("qso-stats");
+    if (statsEl && qsos.length) {
+      var esc = function (x) { return String(x).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); };
+      var countryCounts = {};
+      var first = "";
+      qsos.forEach(function (q) {
+        if (q.country) countryCounts[q.country] = (countryCounts[q.country] || 0) + 1;
+        if (q.date && (!first || q.date < first)) first = q.date;
+      });
+      var bandOrderS = ["160m","80m","60m","40m","30m","20m","17m","15m","12m","10m","6m","4m","2m","70cm"];
+      var bandList = Object.keys(summary.bands || {}).sort(function (a, b) {
+        var ia = bandOrderS.indexOf(a), ib = bandOrderS.indexOf(b);
+        return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib);
+      });
+      var maxBand = Math.max.apply(null, bandList.map(function (b) { return summary.bands[b]; }).concat([1]));
+      var topC = Object.keys(countryCounts).sort(function (a, b) { return countryCounts[b] - countryCounts[a] || a.localeCompare(b); }).slice(0, 10);
+      var maxC = topC.length ? countryCounts[topC[0]] : 1;
+      var bar = function (name, n, max, color) {
+        return '<div class="qso-bar"><span class="qso-bar-name">' + esc(name) + '</span><span class="qso-bar-track"><span class="qso-bar-fill" style="display:block;width:' +
+          Math.max(3, Math.round(100 * n / max)) + '%;background:' + color + '"></span></span><span class="qso-bar-count">' + n + "</span></div>";
+      };
+      var num = function (n, label) { return '<div class="qso-stats-num"><strong>' + n + "</strong><span>" + label + "</span></div>"; };
+      statsEl.innerHTML =
+        '<div class="qso-stats-box"><h3>' + t.stats + '</h3><div class="qso-stats-nums">' +
+          num(summary.totalInLog || qsos.length, t.total) +
+          num(summary.confirmed || 0, t.confirmed) +
+          num(summary.dxcc || Object.keys(countryCounts).length, t.dxcc) +
+          num(bandList.length, t.bandsN) +
+          (first ? num(fmtDate(first), t.firstQso).replace("qso-stats-num\"", "qso-stats-num wide\"") : "") +
+        "</div></div>" +
+        '<div class="qso-stats-box"><h3>' + t.perBand + "</h3>" +
+          bandList.map(function (b) { return bar(b, summary.bands[b], maxBand, colorFor(b)); }).join("") + "</div>" +
+        '<div class="qso-stats-box"><h3>' + t.topCountries + "</h3>" +
+          topC.map(function (c) { return bar(c, countryCounts[c], maxC, "#0ea5e9"); }).join("") + "</div>";
+      statsEl.hidden = false;
+    }
+
     var latestWrap = document.getElementById("qso-latest");
     var latestTitle = document.getElementById("qso-latest-title");
     var latestList = document.getElementById("qso-latest-list");
@@ -80,14 +118,15 @@
         var da = (a.date || "") + (a.time || "");
         var db = (b.date || "") + (b.time || "");
         return db < da ? -1 : db > da ? 1 : 0;
-      }).slice(0, 5);
+      }).slice(0, 20);
       latestTitle.textContent = t.latest;
       latestList.innerHTML = latest.map(function (q) {
         return "<li><span class=\"qso-latest-call\">" + (q.call || "") +
           "</span><span class=\"qso-latest-band\">" + (q.band || "-") +
           "</span><span class=\"qso-latest-mode\">" + (q.mode || "-") +
           "</span><span class=\"qso-latest-country\">" + (q.country || "-") +
-          "</span><span class=\"qso-latest-date\">" + (fmtDate(q.date) || "-") + "</span></li>";
+          "</span><span class=\"qso-latest-date\">" + (fmtDate(q.date) || "-") +
+          (q.time ? " " + q.time.slice(0, 2) + ":" + q.time.slice(2, 4) + " UTC" : "") + "</span></li>";
       }).join("");
       latestWrap.hidden = latest.length === 0;
     }
