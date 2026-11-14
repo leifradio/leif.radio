@@ -21,15 +21,22 @@
   var i18n = {
     sv: {
       plotted: "QSO på kartan", confirmed: "bekräftade", dxcc: "DXCC",
-      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste 20 QSO", stats: "Statistik", total: "QSO totalt", bandsN: "band", firstQso: "första QSO", perBand: "QSO per band", topCountries: "Flest QSO per DXCC",
+      updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste 20 QSO", stats: "Statistik", total: "QSO totalt", bandsN: "band", firstQso: "Första QSO med callsign SM4T", perBand: "QSO per band", topCountries: "Flest QSO per DXCC",
       band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land"
     },
     en: {
       plotted: "QSOs on map", confirmed: "confirmed", dxcc: "DXCC",
-      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest 20 QSOs", stats: "Statistics", total: "QSOs in total", bandsN: "bands", firstQso: "first QSO", perBand: "QSOs per band", topCountries: "Most QSOs by DXCC entity",
+      updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest 20 QSOs", stats: "Statistics", total: "QSOs in total", bandsN: "bands", firstQso: "First QSO as SM4T", perBand: "QSOs per band", topCountries: "Most QSOs by DXCC entity",
       band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country"
     }
   };
+
+  var COUNTRY_SV = {"Asiatic Russia": "Asiatiska Ryssland", "Australia": "Australien", "Austria": "Österrike", "Balearic Islands": "Balearerna", "Belarus": "Belarus", "Belgium": "Belgien", "Bosnia and Herzegovina": "Bosnien och Hercegovina", "Bulgaria": "Bulgarien", "Canary Islands": "Kanarieöarna", "China": "Kina", "Croatia": "Kroatien", "Czech Republic": "Tjeckien", "Denmark": "Danmark", "England": "England", "Estonia": "Estland", "Finland": "Finland", "France": "Frankrike", "Galapagos Islands": "Galápagosöarna", "Georgia": "Georgien", "Germany": "Tyskland", "Greece": "Grekland", "Hungary": "Ungern", "Indonesia": "Indonesien", "Ireland": "Irland", "Israel": "Israel", "Italy": "Italien", "Japan": "Japan", "Latvia": "Lettland", "Lithuania": "Litauen", "Mali": "Mali", "Moldova": "Moldavien", "Monaco": "Monaco", "Montenegro": "Montenegro", "Morocco": "Marocko", "Netherlands": "Nederländerna", "North Macedonia (Republic of)": "Nordmakedonien", "Poland": "Polen", "Portugal": "Portugal", "Republic of Kosovo": "Kosovo", "Rodriguez Island": "Rodrigues", "Romania": "Rumänien", "Russia": "Ryssland", "European Russia": "Europeiska Ryssland", "Scotland": "Skottland", "Serbia": "Serbien", "Slovak Republic": "Slovakien", "Slovenia": "Slovenien", "Spain": "Spanien", "Svalbard": "Svalbard", "Sweden": "Sverige", "Switzerland": "Schweiz", "Turkey": "Turkiet", "Ukraine": "Ukraina", "United States": "USA", "Wales": "Wales", "Norway": "Norge", "Iceland": "Island", "Faroe Islands": "Färöarna", "Aland Islands": "Åland", "Greenland": "Grönland", "Canada": "Kanada", "Brazil": "Brasilien", "Argentina": "Argentina", "Chile": "Chile", "Mexico": "Mexiko", "South Africa": "Sydafrika", "New Zealand": "Nya Zeeland", "Luxembourg": "Luxemburg", "Liechtenstein": "Liechtenstein", "Andorra": "Andorra", "San Marino": "San Marino", "Vatican City": "Vatikanstaten", "Malta": "Malta", "Cyprus": "Cypern", "Albania": "Albanien", "Northern Ireland": "Nordirland", "Isle of Man": "Isle of Man", "Jersey": "Jersey", "Guernsey": "Guernsey", "Gibraltar": "Gibraltar", "Sardinia": "Sardinien", "Sicily": "Sicilien", "Corsica": "Korsika", "Crete": "Kreta", "Madeira Islands": "Madeira", "Azores": "Azorerna", "Kaliningrad": "Kaliningrad", "Kazakhstan": "Kazakstan", "Armenia": "Armenien", "Azerbaijan": "Azerbajdzjan", "India": "Indien", "Thailand": "Thailand", "Philippines": "Filippinerna", "South Korea": "Sydkorea", "Republic of Korea": "Sydkorea", "Taiwan": "Taiwan", "Egypt": "Egypten", "Tunisia": "Tunisien", "Algeria": "Algeriet", "Lebanon": "Libanon", "Jordan": "Jordanien", "Saudi Arabia": "Saudiarabien", "United Arab Emirates": "Förenade Arabemiraten", "Cuba": "Kuba", "Puerto Rico": "Puerto Rico", "Hawaii": "Hawaii", "Alaska": "Alaska", "Uruguay": "Uruguay", "Venezuela": "Venezuela", "Colombia": "Colombia", "Peru": "Peru", "Ecuador": "Ecuador"};
+  function countryName(c) {
+    if (!c) return c;
+    var lang = (document.documentElement.lang || "sv").slice(0, 2);
+    return lang === "sv" ? (COUNTRY_SV[c] || c) : c;
+  }
 
   function t10n() {
     var lang = (document.documentElement.lang || "sv").slice(0, 2);
@@ -79,7 +86,7 @@
       var countryCounts = {};
       var first = "";
       qsos.forEach(function (q) {
-        if (q.country) countryCounts[q.country] = (countryCounts[q.country] || 0) + 1;
+        if (q.country) { var cn = countryName(q.country); countryCounts[cn] = (countryCounts[cn] || 0) + 1; }
         if (q.date && (!first || q.date < first)) first = q.date;
       });
       var bandOrderS = ["160m","80m","60m","40m","30m","20m","17m","15m","12m","10m","6m","4m","2m","70cm"];
@@ -124,7 +131,7 @@
         return "<li><span class=\"qso-latest-call\">" + (q.call || "") +
           "</span><span class=\"qso-latest-band\">" + (q.band || "-") +
           "</span><span class=\"qso-latest-mode\">" + (q.mode || "-") +
-          "</span><span class=\"qso-latest-country\">" + (q.country || "-") +
+          "</span><span class=\"qso-latest-country\">" + (countryName(q.country) || "-") +
           "</span><span class=\"qso-latest-date\">" + (fmtDate(q.date) || "-") +
           (q.time ? " " + q.time.slice(0, 2) + ":" + q.time.slice(2, 4) + " UTC" : "") + "</span></li>";
       }).join("");
@@ -150,7 +157,7 @@
           (q.time ? " " + q.time.slice(0, 2) + ":" + q.time.slice(2, 4) + " UTC" : "") + "</div>");
       }
       if (q.grid) lines.push("<div>" + t.grid + ": " + q.grid + "</div>");
-      if (q.country) lines.push("<div>" + t.country + ": " + q.country + "</div>");
+      if (q.country) lines.push("<div>" + t.country + ": " + countryName(q.country) + "</div>");
       lines.push("</div>");
       marker.bindPopup(lines.join(""));
       group.addLayer(marker);
