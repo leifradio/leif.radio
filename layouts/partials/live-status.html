@@ -66,10 +66,9 @@
         {{- end -}}
       {{- end -}}
 
-      {{- if $hasPsk -}}
+      {{- /* Show PSKReporter only when there is at least one report. */ -}}
+      {{- if and $hasPsk (gt (int $s.psk.reportCount) 0) -}}
         <p>{{ i18n "live_status.psk_reports" (int $s.psk.reportCount) }}</p>
-      {{- else -}}
-        <p>{{ i18n "live_status.psk_unavailable" }}</p>
       {{- end -}}
     </div>
 
