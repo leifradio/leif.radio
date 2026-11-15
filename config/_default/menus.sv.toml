@@ -3,17 +3,24 @@
   pageRef = "posts"
   weight = 10
 [[main]]
-  name = "Utrustning"
-  pageRef = "gear"
-  weight = 30
-[[main]]
   name = "Karta"
   pageRef = "map"
   weight = 35
 [[main]]
   name = "Om / Stationen"
   pageRef = "about"
+  identifier = "about"
   weight = 40
+[[main]]
+  name = "Om mig"
+  pageRef = "about"
+  parent = "about"
+  weight = 1
+[[main]]
+  name = "Utrustning"
+  pageRef = "gear"
+  parent = "about"
+  weight = 2
 [[main]]
   name = "Taggar"
   pageRef = "tags"
@@ -33,3 +40,34 @@
   name = "Kalender"
   pageRef = "calendar"
   weight = 37
+
+[[main]]
+  name = "Aktiviteter"
+  pageRef = "activities"
+  identifier = "activities"
+  weight = 25
+[[main]]
+  name = "Översikt"
+  pageRef = "activities"
+  parent = "activities"
+  weight = 1
+[[main]]
+  name = "SOTA"
+  pageRef = "activities/sota"
+  parent = "activities"
+  weight = 10
+[[main]]
+  name = "POTA"
+  pageRef = "activities/pota"
+  parent = "activities"
+  weight = 20
+[[main]]
+  name = "RaDAR"
+  pageRef = "activities/radar"
+  parent = "activities"
+  weight = 30
+[[main]]
+  name = "QRP"
+  pageRef = "activities/qrp"
+  parent = "activities"
+  weight = 40

@@ -1,6 +1,7 @@
 +++
+url = "/about/utrustning/"
+aliases = ["/gear/", "/utrustning/", "/om/utrustning/"]
 title = "Utrustning"
-aliases = ["/utrustning/"]
 showDate = false
 showAuthor = false
 showReadingTime = false

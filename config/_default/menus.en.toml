@@ -3,17 +3,24 @@
   pageRef = "posts"
   weight = 10
 [[main]]
-  name = "Gear"
-  pageRef = "gear"
-  weight = 30
-[[main]]
   name = "Map"
   pageRef = "map"
   weight = 35
 [[main]]
   name = "About / Station"
   pageRef = "about"
+  identifier = "about"
   weight = 40
+[[main]]
+  name = "About me"
+  pageRef = "about"
+  parent = "about"
+  weight = 1
+[[main]]
+  name = "Gear"
+  pageRef = "gear"
+  parent = "about"
+  weight = 2
 [[main]]
   name = "Tags"
   pageRef = "tags"
@@ -33,3 +40,34 @@
   name = "Calendar"
   pageRef = "calendar"
   weight = 37
+
+[[main]]
+  name = "Activities"
+  pageRef = "activities"
+  identifier = "activities"
+  weight = 25
+[[main]]
+  name = "Overview"
+  pageRef = "activities"
+  parent = "activities"
+  weight = 1
+[[main]]
+  name = "SOTA"
+  pageRef = "activities/sota"
+  parent = "activities"
+  weight = 10
+[[main]]
+  name = "POTA"
+  pageRef = "activities/pota"
+  parent = "activities"
+  weight = 20
+[[main]]
+  name = "RaDAR"
+  pageRef = "activities/radar"
+  parent = "activities"
+  weight = 30
+[[main]]
+  name = "QRP"
+  pageRef = "activities/qrp"
+  parent = "activities"
+  weight = 40

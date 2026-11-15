@@ -1,4 +1,6 @@
 +++
+url = "/en/about/gear/"
+aliases = ["/gear/"]
 title = "Gear"
 showDate = false
 showAuthor = false
