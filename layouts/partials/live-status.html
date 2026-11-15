@@ -1,0 +1,105 @@
+{{- /* Live-status box for the front page. Data comes from data/live-status.json
+       (generated during the Pages build, not committed). */ -}}
+{{- $raw := "" -}}
+{{- if os.FileExists "data/live-status.json" -}}
+  {{- $raw = os.ReadFile "data/live-status.json" -}}
+{{- end -}}
+{{- $s := dict -}}
+{{- if $raw -}}
+  {{- $s = transform.Unmarshal $raw -}}
+{{- end -}}
+{{- $lang := .Site.Language.Lang | default "sv" -}}
+{{- $hasRbn := and $s (index $s "rbn") (index $s.rbn "ok") -}}
+{{- $hasPsk := and $s (index $s "psk") (index $s.psk "ok") -}}
+{{- $hasSolar := and $s (index $s "solar") (index $s.solar "ok") -}}
+{{- $hasAnything := and $s (or (index $s "ok") $hasRbn $hasPsk $hasSolar) -}}
+
+{{- $mapPoints := 0 -}}
+{{- if $hasRbn -}}
+  {{- range $s.rbn.skimmers -}}
+    {{- if and (ne .lat nil) (ne .lon nil) -}}{{- $mapPoints = add $mapPoints 1 -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $hasPsk -}}
+  {{- range (index $s.psk "receivers") | default slice -}}
+    {{- if and (ne .lat nil) (ne .lon nil) -}}{{- $mapPoints = add $mapPoints 1 -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<aside class="live-status not-prose" aria-label="{{ i18n "live_status.title" }}">
+  <header class="live-status-header">
+    <h2 class="live-status-title">{{ i18n "live_status.title" }}</h2>
+    {{- $qrv := and $s (index $s "qrv") -}}
+    <span id="live-status-qrv" class="live-status-qrv{{ if not $qrv }} is-hidden{{ end }}"{{ if not $qrv }} hidden{{ end }}>
+      <span class="live-status-qrv-dot" aria-hidden="true"></span>{{ i18n "live_status.qrv" }}
+    </span>
+  </header>
+
+  {{- if not $hasAnything -}}
+    <p class="live-status-empty">{{ i18n "live_status.no_data" }}</p>
+  {{- else -}}
+    <div class="live-status-body">
+      {{- if not $hasRbn -}}
+        <p>{{ i18n "live_status.rbn_unavailable" }}</p>
+      {{- else if not $s.rbn.spotCount -}}
+        <p>{{ i18n "live_status.no_spots" }}</p>
+      {{- else -}}
+        {{- $last := $s.rbn.lastHeard -}}
+        {{- if $last -}}
+          {{- $when := partial "live-status-time.html" (dict "value" $last.time "updated" $s.updated) -}}
+          {{- $band := replace $last.band "m" " m" -}}
+          {{- $mode := $last.mode -}}
+          {{- if isset $last "snr" -}}
+            <p class="live-status-last">{{ printf (i18n "live_status.last_heard") $when $band $mode $last.spotter (printf "%d" (int $last.snr)) }}</p>
+          {{- else -}}
+            <p class="live-status-last">{{ printf (i18n "live_status.last_heard_no_snr") $when $band $mode $last.spotter }}</p>
+          {{- end -}}
+        {{- end -}}
+        {{- $bandBits := slice -}}
+        {{- range $s.rbn.byBand -}}
+          {{- $bandBits = $bandBits | append (printf "%s %d" (replace .band "m" " m") (int .count)) -}}
+        {{- end -}}
+        <p>{{ printf (i18n "live_status.rbn_spots") (int $s.rbn.spotCount) (delimit $bandBits ", ") }}</p>
+        {{- with $s.rbn.farthest -}}
+          {{- $km := lang.FormatNumber 0 (int .km) -}}
+          <p>{{ printf (i18n "live_status.farthest") .spotter $km }}</p>
+        {{- end -}}
+      {{- end -}}
+
+      {{- if $hasPsk -}}
+        <p>{{ i18n "live_status.psk_reports" (int $s.psk.reportCount) }}</p>
+      {{- else -}}
+        <p>{{ i18n "live_status.psk_unavailable" }}</p>
+      {{- end -}}
+    </div>
+
+    {{- if gt $mapPoints 0 -}}
+      <div id="live-status-map" class="live-status-map" role="img" aria-label="{{ i18n "live_status.map_label" }}"></div>
+    {{- end -}}
+
+    {{- if $hasSolar -}}
+      {{- $sfi := cond (isset $s.solar "sfi") (printf "%d" (int $s.solar.sfi)) "–" -}}
+      {{- $k := cond (isset $s.solar "kIndex") (printf "%d" (int $s.solar.kIndex)) "–" -}}
+      <p class="live-status-solar">{{ printf (i18n "live_status.conditions") $sfi $k }}</p>
+    {{- end -}}
+  {{- end -}}
+
+  <p class="live-status-meta">
+    {{- if and $s (index $s "updated") -}}
+      {{- printf (i18n "live_status.updated") (partial "live-status-time.html" (dict "value" $s.updated "updated" $s.updated)) -}}
+      <span aria-hidden="true"> · </span>
+    {{- end -}}
+    {{- i18n "live_status.sources" -}}
+  </p>
+</aside>
+
+{{- if and $s (gt $mapPoints 0) -}}
+  <script id="live-status-data" type="application/json">{{ $s | jsonify | safeJS }}</script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="/js/live-status.js"></script>
+{{- else if $s -}}
+  {{- /* Still expose data so the QRV badge can expire without a map. */ -}}
+  <script id="live-status-data" type="application/json">{{ $s | jsonify | safeJS }}</script>
+  <script src="/js/live-status.js"></script>
+{{- end -}}

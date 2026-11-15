@@ -3,3 +3,5 @@ resources/_gen/
 .hugo_build.lock
 __pycache__/
 *.pyc
+data/live-status.json
+static/data/live-status.json

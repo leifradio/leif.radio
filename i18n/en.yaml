@@ -1,0 +1,23 @@
+# English strings for site-specific UI (Blowfish already ships the rest)
+live_status:
+  title: "SM4T – last 24 hours"
+  qrv: "QRV now"
+  no_data: "No data"
+  last_heard: "Last heard %s on %s %s (RBN, %s, %s dB)"
+  last_heard_no_snr: "Last heard %s on %s %s (RBN, %s)"
+  no_spots: "No RBN spots in the last 24 hours."
+  rbn_unavailable: "RBN: no data"
+  rbn_spots: "%d RBN spots: %s"
+  farthest: "Most distant: %s, %s km"
+  psk_unavailable: "PSKReporter: no data"
+  psk_reports:
+    one: "PSKReporter: {{ .Count }} report"
+    other: "PSKReporter: {{ .Count }} reports"
+  conditions: "Conditions: solar flux %s, K-index %s"
+  updated: "Updated %s"
+  sources: "Source: Reverse Beacon Network, PSKReporter and N0NBH"
+  map_label: "Skimmers and receivers that heard SM4T in the last 24 hours"
+  home: "QTH"
+  popup_spots:
+    one: "{{ .Count }} spot"
+    other: "{{ .Count }} spots"

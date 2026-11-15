@@ -42,3 +42,26 @@ admonition:
   tip: "Tips"
   todo: "Att göra"
   warning: "Varning"
+
+live_status:
+  title: "SM4T – senaste dygnet"
+  qrv: "QRV nu"
+  no_data: "Ingen data"
+  last_heard: "Hörd senast %s på %s %s (RBN, %s, %s dB)"
+  last_heard_no_snr: "Hörd senast %s på %s %s (RBN, %s)"
+  no_spots: "Inga RBN-spots det senaste dygnet."
+  rbn_unavailable: "RBN: ingen data"
+  rbn_spots: "%d RBN-spots: %s"
+  farthest: "Längst bort: %s, %s km"
+  psk_unavailable: "PSKReporter: ingen data"
+  psk_reports:
+    one: "PSKReporter: {{ .Count }} rapport"
+    other: "PSKReporter: {{ .Count }} rapporter"
+  conditions: "Konditioner: solflöde %s, K-index %s"
+  updated: "Uppdaterad %s"
+  sources: "Källa: Reverse Beacon Network, PSKReporter och N0NBH"
+  map_label: "Skimmers och mottagare som hört SM4T det senaste dygnet"
+  home: "QTH"
+  popup_spots:
+    one: "{{ .Count }} spot"
+    other: "{{ .Count }} spots"

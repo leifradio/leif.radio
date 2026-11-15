@@ -1,0 +1,9 @@
+{{- $t := time.AsTime .value -}}
+{{- $u := time.AsTime .updated -}}
+{{- if and $t $u (eq ($t.UTC.Format "2006-01-02") ($u.UTC.Format "2006-01-02")) -}}
+  {{- $t.UTC.Format "15:04 UTC" -}}
+{{- else if $t -}}
+  {{- $t.UTC.Format "2006-01-02 15:04 UTC" -}}
+{{- else -}}
+  {{- .value -}}
+{{- end -}}

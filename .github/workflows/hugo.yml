@@ -6,6 +6,12 @@ on:
   push:
     branches: ["main"]
 
+  # Rebuild about every 15 minutes so the front-page live-status box stays fresh.
+  # GitHub may delay cron slightly; the fetch writes a JSON file during the build
+  # and does not commit it to git.
+  schedule:
+    - cron: "*/15 * * * *"
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -47,6 +53,13 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Fetch live status
+        run: |
+          python3 scripts/fetch-live-status.py
+          if [ ! -s data/live-status.json ]; then
+            mkdir -p data static/data
+            python3 -c 'import json,pathlib; p=pathlib.Path("data/live-status.json"); p.write_text(json.dumps({"ok":False,"updated":"","qrv":False,"rbn":{"ok":False},"psk":{"ok":False},"solar":{"ok":False}})+"\n"); pathlib.Path("static/data/live-status.json").write_text(p.read_text())'
+          fi
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
