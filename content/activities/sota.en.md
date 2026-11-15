@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 SOTA (Summits on the Air) is about operating from approved summits.
-
-*More text coming soon.*

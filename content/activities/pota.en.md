@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 POTA (Parks on the Air) is about operating from parks and protected natural areas.
-
-*More text coming soon.*

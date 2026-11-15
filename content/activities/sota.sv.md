@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 SOTA (Summits on the Air) går ut på att köra radio från godkända bergstoppar.
-
-*Text kommer snart.*

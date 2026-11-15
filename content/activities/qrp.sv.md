@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 QRP betyder att köra med låg effekt, vanligtvis 5 watt eller mindre på CW.
-
-*Text kommer snart.*

@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 RaDAR (Rapid Deployment Amateur Radio) is about setting up a station quickly, making a few QSOs and then moving on.
-
-*More text coming soon.*

@@ -11,5 +11,3 @@ showDateUpdated = false
 +++
 
 POTA (Parks on the Air) går ut på att köra radio från parker och skyddade naturområden.
-
-*Text kommer snart.*
