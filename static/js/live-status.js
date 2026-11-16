@@ -111,6 +111,26 @@
     var call = String(dx || "").trim().toUpperCase();
     return call === CALL || call.indexOf(CALL + "/") === 0;
   }
+  function isCwMode(mode) {
+    return String(mode || "").trim().toUpperCase() === "CW";
+  }
+  function pskDigitalReceivers(psk) {
+    if (!psk || !psk.ok) return [];
+    return (psk.receivers || []).filter(function (s) {
+      return !isCwMode(s.lastMode || s.mode);
+    });
+  }
+  function pskDigitalCount(psk) {
+    if (!psk || !psk.ok) return 0;
+    if (Array.isArray(psk.reports)) {
+      return psk.reports.filter(function (r) { return !isCwMode(r.mode); }).length;
+    }
+    // Receivers already exclude CW when lastMode is set; otherwise trust reportCount.
+    var rec = pskDigitalReceivers(psk);
+    if (rec.length) return rec.reduce(function (n, s) { return n + (s.count || 0); }, 0);
+    if ((psk.receivers || []).some(function (s) { return isCwMode(s.lastMode || s.mode); })) return 0;
+    return Number(psk.reportCount || 0);
+  }
   function normSpotter(call) {
     return String(call || "").trim().toUpperCase().replace(/-\d+$/, "");
   }
@@ -417,7 +437,7 @@
     }
 
     if (pskEl) {
-      var pskCount = hasPsk ? Number(data.psk.reportCount || 0) : 0;
+      var pskCount = hasPsk ? pskDigitalCount(data.psk) : 0;
       if (pskCount > 0) {
         var word = pskCount === 1 ? t("report") : t("reports");
         pskEl.textContent = fmt(t("pskReports"), String(pskCount), word);
@@ -454,7 +474,7 @@
     rbn.forEach(function (s) {
       if (typeof s.lat === "number" && typeof s.lon === "number") points.push({ kind: "rbn", s: s });
     });
-    var psk = (data.psk && data.psk.ok && data.psk.receivers) || [];
+    var psk = (data.psk && data.psk.ok) ? pskDigitalReceivers(data.psk) : [];
     psk.forEach(function (s) {
       if (typeof s.lat === "number" && typeof s.lon === "number") points.push({ kind: "psk", s: s });
     });

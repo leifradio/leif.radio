@@ -8,7 +8,7 @@ Hugo build can still run.
 Sources (all public, no API key):
   - Reverse Beacon Network spots.php (recent spots + skimmer coordinates)
   - RBN daily history zips for completed UTC days in the 24 h window
-  - PSKReporter retrieve query for the last 24 h
+  - PSKReporter retrieve query for the last 24 h (non-CW / digital only)
   - N0NBH solar XML at hamqsl.com
 
 Callsign rule: dx/sender must be exactly SM4T or SM4T/… .
@@ -428,13 +428,17 @@ def fetch_psk(cutoff_epoch: int) -> dict[str, Any]:
         coords = locator_to_latlon(locator)
         freq_hz = parse_float(el.get("frequency"))
         freq_khz = (freq_hz / 1000.0) if freq_hz and freq_hz > 1000 else freq_hz
+        mode = (el.get("mode") or "").strip().upper()
+        # CW on PSKReporter is almost always a duplicate of an RBN spot.
+        if mode == "CW":
+            continue
         reports.append({
             "receiver": recv,
             "locator": locator,
             "lat": coords[0] if coords else None,
             "lon": coords[1] if coords else None,
             "band": band_from_freq(freq_khz),
-            "mode": (el.get("mode") or "").strip().upper(),
+            "mode": mode,
             "snr": parse_int(el.get("sNR") or el.get("snr")),
             "epoch": flow,
         })
@@ -450,12 +454,14 @@ def fetch_psk(cutoff_epoch: int) -> dict[str, Any]:
             "lon": rep.get("lon"),
             "count": 0,
             "lastBand": "",
+            "lastMode": "",
             "lastSnr": None,
             "lastEpoch": 0,
         })
         slot["count"] += 1
         if (rep.get("epoch") or 0) >= (slot.get("lastEpoch") or 0):
             slot["lastBand"] = rep.get("band") or ""
+            slot["lastMode"] = rep.get("mode") or ""
             slot["lastSnr"] = rep.get("snr")
             slot["lastEpoch"] = rep.get("epoch") or 0
             if rep.get("lat") is not None:
