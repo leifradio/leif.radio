@@ -162,7 +162,7 @@
     .qso-band-legend-swatch { width: 10px; height: 10px; }
   }
 
-  .qso-monthly { margin-top: 1.25rem; position: relative; color: #0f172a; }
+  .qso-monthly { margin-top: 1rem; position: relative; width: 100%; color: #0f172a; }
   .dark .qso-monthly { color: #e2e8f0; }
   .qso-monthly-box {
     border: 1px solid rgba(148, 163, 184, 0.35);
@@ -170,6 +170,8 @@
     padding: 0.8rem 0.95rem 0.55rem;
   }
   .dark .qso-monthly-box { border-color: rgba(148, 163, 184, 0.25); }
+  .qso-monthly-box h3 { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.55rem; color: #0f172a; }
+  .dark .qso-monthly-box h3 { color: #e2e8f0; }
   .qso-monthly-legend {
     display: flex;
     flex-wrap: wrap;
@@ -253,19 +255,19 @@
   <div class="qso-map-meta" id="qso-map-meta" aria-live="polite"></div>
   <div id="qso-map" role="region" aria-label="QSO map"></div>
   <div class="qso-stats" id="qso-stats" hidden></div>
-  <div class="qso-latest" id="qso-latest" hidden>
-    <h2 class="qso-latest-title" id="qso-latest-title"></h2>
-    <ul class="qso-latest-list" id="qso-latest-list"></ul>
-  </div>
   <div class="qso-monthly" id="qso-monthly" hidden>
-    <h2 class="qso-latest-title" id="qso-monthly-title"></h2>
     <div class="qso-monthly-box">
+      <h3 id="qso-monthly-title"></h3>
       <div class="qso-monthly-legend" id="qso-monthly-legend"></div>
       <div class="qso-monthly-scroll">
         <div class="qso-monthly-chart" id="qso-monthly-chart"></div>
       </div>
     </div>
     <div class="qso-monthly-tooltip" id="qso-monthly-tooltip" role="tooltip"></div>
+  </div>
+  <div class="qso-latest" id="qso-latest" hidden>
+    <h2 class="qso-latest-title" id="qso-latest-title"></h2>
+    <ul class="qso-latest-list" id="qso-latest-list"></ul>
   </div>
 </div>
 
