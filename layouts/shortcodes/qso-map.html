@@ -161,6 +161,92 @@
     }
     .qso-band-legend-swatch { width: 10px; height: 10px; }
   }
+
+  .qso-monthly { margin-top: 1.25rem; position: relative; color: #0f172a; }
+  .dark .qso-monthly { color: #e2e8f0; }
+  .qso-monthly-box {
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 0.75rem;
+    padding: 0.8rem 0.95rem 0.55rem;
+  }
+  .dark .qso-monthly-box { border-color: rgba(148, 163, 184, 0.25); }
+  .qso-monthly-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.85rem;
+    margin: 0 0 0.65rem;
+    font-size: 0.82rem;
+    color: #334155;
+  }
+  .dark .qso-monthly-legend { color: #cbd5e1; }
+  .qso-monthly-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .qso-monthly-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  }
+  .dark .qso-monthly-swatch { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35); }
+  .qso-monthly-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+  }
+  .qso-monthly-chart { min-width: 0; }
+  .qso-monthly-chart svg { display: block; max-width: none; font-family: inherit; }
+  .qso-monthly-grid {
+    stroke: rgba(148, 163, 184, 0.35);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+  .dark .qso-monthly-grid { stroke: rgba(148, 163, 184, 0.25); }
+  .qso-monthly-axis {
+    stroke: rgba(148, 163, 184, 0.55);
+    stroke-width: 1;
+  }
+  .dark .qso-monthly-axis { stroke: rgba(148, 163, 184, 0.4); }
+  .qso-monthly-total {
+    fill: currentColor;
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .qso-monthly-muted {
+    fill: #64748b;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark .qso-monthly-muted { fill: #94a3b8; }
+  .qso-monthly-seg { outline: none; }
+  .qso-monthly-seg:hover,
+  .qso-monthly-seg:focus-visible { filter: brightness(1.12); }
+  .qso-monthly-tooltip {
+    position: absolute;
+    z-index: 20;
+    display: none;
+    background: rgba(15, 23, 42, 0.96);
+    color: #f8fafc;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    padding: 0.4rem 0.55rem;
+    border-radius: 0.4rem;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, calc(-100% - 8px));
+  }
+  .dark .qso-monthly-tooltip {
+    background: rgba(241, 245, 249, 0.96);
+    color: #0f172a;
+  }
+
 </style>
 
 <div class="qso-map-wrap not-prose">
@@ -170,6 +256,16 @@
   <div class="qso-latest" id="qso-latest" hidden>
     <h2 class="qso-latest-title" id="qso-latest-title"></h2>
     <ul class="qso-latest-list" id="qso-latest-list"></ul>
+  </div>
+  <div class="qso-monthly" id="qso-monthly" hidden>
+    <h2 class="qso-latest-title" id="qso-monthly-title"></h2>
+    <div class="qso-monthly-box">
+      <div class="qso-monthly-legend" id="qso-monthly-legend"></div>
+      <div class="qso-monthly-scroll">
+        <div class="qso-monthly-chart" id="qso-monthly-chart"></div>
+      </div>
+    </div>
+    <div class="qso-monthly-tooltip" id="qso-monthly-tooltip" role="tooltip"></div>
   </div>
 </div>
 

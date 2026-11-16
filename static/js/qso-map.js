@@ -22,12 +22,12 @@
     sv: {
       plotted: "QSO på kartan", confirmed: "bekräftade", dxcc: "DXCC",
       updated: "Uppdaterad", home: "Home QTH", noData: "Kunde inte ladda QSO-data.", legend: "Band", latest: "Senaste 20 QSO", stats: "Statistik", total: "QSO totalt", bandsN: "band", firstQso: "Första QSO med callsign SM4T", perBand: "QSO per band", topCountries: "Flest QSO per DXCC",
-      band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land"
+      band: "Band", mode: "Mode", date: "Datum", grid: "Ruta", country: "Land", perMonth: "QSO per månad", monthTotal: "totalt"
     },
     en: {
       plotted: "QSOs on map", confirmed: "confirmed", dxcc: "DXCC",
       updated: "Updated", home: "Home QTH", noData: "Could not load QSO data.", legend: "Band", latest: "Latest 20 QSOs", stats: "Statistics", total: "QSOs in total", bandsN: "bands", firstQso: "First QSO as SM4T", perBand: "QSOs per band", topCountries: "Most QSOs by DXCC entity",
-      band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country"
+      band: "Band", mode: "Mode", date: "Date", grid: "Grid", country: "Country", perMonth: "QSOs per month", monthTotal: "total"
     }
   };
 
@@ -138,6 +138,9 @@
       latestWrap.hidden = latest.length === 0;
     }
 
+
+    renderMonthlyChart(qsos);
+
     var bounds = [];
     qsos.forEach(function (q) {
       if (typeof q.lat !== "number" || typeof q.lon !== "number") return;
@@ -216,4 +219,277 @@
     meta.textContent = t.noData;
     if (window.console && console.error) console.error("qso-map", err);
   });
+
+  var MONTHS_SV = ["jan","feb","mar","apr","maj","jun","jul","aug","sep","okt","nov","dec"];
+  var MONTHS_EN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var BAND_ORDER = ["160m","80m","60m","40m","30m","20m","17m","15m","12m","10m","6m","4m","2m","70cm"];
+  var monthlyState = null;
+
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function yyyymmFromDateStr(d) { return (d || "").slice(0, 6); }
+  function yyyymmFromDate(d) {
+    return String(d.getUTCFullYear()) + pad2(d.getUTCMonth() + 1);
+  }
+  function nextMonth(yyyymm) {
+    var y = parseInt(yyyymm.slice(0, 4), 10);
+    var m = parseInt(yyyymm.slice(4, 6), 10) + 1;
+    if (m > 12) { m = 1; y += 1; }
+    return String(y) + pad2(m);
+  }
+  function monthList(from, to) {
+    var out = [];
+    var cur = from;
+    while (cur && cur <= to) {
+      out.push(cur);
+      cur = nextMonth(cur);
+      if (out.length > 600) break;
+    }
+    return out;
+  }
+  function monthLabel(yyyymm, lang, part) {
+    var m = parseInt(yyyymm.slice(4, 6), 10);
+    var names = lang === "sv" ? MONTHS_SV : MONTHS_EN;
+    var name = names[m - 1] || yyyymm.slice(4, 6);
+    if (part === "name") return name;
+    if (part === "year") return yyyymm.slice(0, 4);
+    return name + " " + yyyymm.slice(0, 4);
+  }
+  function niceMax(n) {
+    if (n <= 0) return 10;
+    var pad = Math.ceil(n * 1.15);
+    var mag = Math.pow(10, Math.floor(Math.log(pad) / Math.LN10));
+    var nrm = pad / mag;
+    var nice = nrm <= 1 ? 1 : nrm <= 2 ? 2 : nrm <= 2.5 ? 2.5 : nrm <= 5 ? 5 : 10;
+    return nice * mag;
+  }
+  function svgEl(name, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", name);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (k) {
+        if (attrs[k] !== undefined && attrs[k] !== null) el.setAttribute(k, attrs[k]);
+      });
+    }
+    return el;
+  }
+
+  function renderMonthlyChart(qsos) {
+    var wrap = document.getElementById("qso-monthly");
+    var title = document.getElementById("qso-monthly-title");
+    var legendEl = document.getElementById("qso-monthly-legend");
+    var chartEl = document.getElementById("qso-monthly-chart");
+    var tip = document.getElementById("qso-monthly-tooltip");
+    if (!wrap || !title || !legendEl || !chartEl) return;
+
+    var first = "";
+    var last = "";
+    qsos.forEach(function (q) {
+      var d = yyyymmFromDateStr(q.date);
+      if (d.length !== 6) return;
+      if (!first || d < first) first = d;
+      if (!last || d > last) last = d;
+    });
+    if (!first) {
+      wrap.hidden = true;
+      monthlyState = null;
+      return;
+    }
+    var nowMonth = yyyymmFromDate(new Date());
+    var end = last > nowMonth ? last : nowMonth;
+    var months = monthList(first, end);
+    var counts = {};
+    var used = {};
+    months.forEach(function (m) { counts[m] = {}; });
+    qsos.forEach(function (q) {
+      var m = yyyymmFromDateStr(q.date);
+      if (!counts[m]) return;
+      var b = q.band || "?";
+      counts[m][b] = (counts[m][b] || 0) + 1;
+      used[b] = true;
+    });
+    var bands = BAND_ORDER.filter(function (b) { return used[b]; });
+    Object.keys(used).forEach(function (b) {
+      if (bands.indexOf(b) < 0) bands.push(b);
+    });
+    var totals = {};
+    var maxTotal = 0;
+    months.forEach(function (m) {
+      var n = 0;
+      bands.forEach(function (b) { n += counts[m][b] || 0; });
+      totals[m] = n;
+      if (n > maxTotal) maxTotal = n;
+    });
+
+    monthlyState = {
+      wrap: wrap, title: title, legendEl: legendEl, chartEl: chartEl, tip: tip,
+      months: months, bands: bands, counts: counts, totals: totals, maxTotal: maxTotal
+    };
+    wrap.hidden = false;
+    drawMonthlyChart();
+    if (!renderMonthlyChart.bound) {
+      renderMonthlyChart.bound = true;
+      var host = chartEl.parentElement || chartEl;
+      if (typeof ResizeObserver === "function") {
+        new ResizeObserver(function () { drawMonthlyChart(); }).observe(host);
+      } else {
+        window.addEventListener("resize", function () { drawMonthlyChart(); });
+      }
+    }
+  }
+
+  function drawMonthlyChart() {
+    var s = monthlyState;
+    if (!s || s.wrap.hidden) return;
+    var t = t10n();
+    var lang = (document.documentElement.lang || "sv").slice(0, 2);
+    var esc = function (x) { return String(x).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); };
+    s.title.textContent = t.perMonth;
+    s.legendEl.innerHTML = s.bands.map(function (b) {
+      return '<span class="qso-monthly-legend-item"><span class="qso-monthly-swatch" style="background:' +
+        colorFor(b) + '"></span><span>' + esc(b) + "</span></span>";
+    }).join("");
+
+    var yMax = niceMax(s.maxTotal);
+    var plotH = 200;
+    var padT = 22;
+    var padR = 8;
+    var padB = 38;
+    var padL = 34;
+    var host = s.chartEl.parentElement || s.chartEl;
+    var avail = host.clientWidth || 600;
+    var inner = Math.max(200, avail - padL - padR);
+    var minSlot = 28;
+    var slot = Math.max(minSlot, inner / Math.max(1, s.months.length));
+    var width = padL + padR + slot * s.months.length;
+    var barW = Math.max(20, Math.min(64, slot * 0.62));
+    var height = padT + plotH + padB;
+    var yScale = function (n) { return plotH * (n / yMax); };
+
+    var svg = svgEl("svg", {
+      viewBox: "0 0 " + width + " " + height,
+      width: String(width),
+      height: String(height),
+      role: "img",
+      "aria-labelledby": "qso-monthly-title"
+    });
+
+    var ticks = 4;
+    var g;
+    for (g = 0; g <= ticks; g++) {
+      var val = yMax * (ticks - g) / ticks;
+      var y = padT + (plotH * g / ticks);
+      var grid = svgEl("line", {
+        class: g === ticks ? "qso-monthly-axis" : "qso-monthly-grid",
+        x1: String(padL), y1: String(y),
+        x2: String(width - padR), y2: String(y)
+      });
+      svg.appendChild(grid);
+      var lab = svgEl("text", {
+        class: "qso-monthly-muted",
+        x: String(padL - 6), y: String(y + 3.5),
+        "text-anchor": "end"
+      });
+      lab.textContent = String(Math.round(val));
+      svg.appendChild(lab);
+    }
+
+    function hideTip() {
+      if (s.tip) s.tip.style.display = "none";
+    }
+    function showTip(ev, html) {
+      if (!s.tip) return;
+      s.tip.innerHTML = html;
+      s.tip.style.display = "block";
+      moveTip(ev);
+    }
+    function moveTip(ev) {
+      if (!s.tip) return;
+      var r = s.wrap.getBoundingClientRect();
+      var x = ev.clientX - r.left;
+      var y = ev.clientY - r.top;
+      var maxX = r.width - 8;
+      if (x < 8) x = 8;
+      if (x > maxX) x = maxX;
+      s.tip.style.left = x + "px";
+      s.tip.style.top = y + "px";
+    }
+
+    s.months.forEach(function (m, i) {
+      var cx = padL + i * slot + slot / 2;
+      var x = cx - barW / 2;
+      var total = s.totals[m];
+      var yCursor = padT + plotH;
+      var barGroup = svgEl("g", { "data-month": m });
+
+      if (total === 0) {
+        var stub = svgEl("rect", {
+          x: String(x), y: String(padT + plotH - 2),
+          width: String(barW), height: "2",
+          rx: "1",
+          fill: "rgba(148,163,184,0.45)",
+          "aria-label": monthLabel(m, lang) + ": 0"
+        });
+        barGroup.appendChild(stub);
+      } else {
+        s.bands.forEach(function (b) {
+          var n = s.counts[m][b] || 0;
+          if (!n) return;
+          var h = yScale(n);
+          yCursor -= h;
+          var rect = svgEl("rect", {
+            class: "qso-monthly-seg",
+            x: String(x),
+            y: String(yCursor),
+            width: String(barW),
+            height: String(Math.max(h, 0.5)),
+            fill: colorFor(b),
+            tabindex: "0",
+            "aria-label": monthLabel(m, lang) + ", " + b + ": " + n + ", " + total + " " + t.monthTotal
+          });
+          var tipHtml = "<strong>" + esc(monthLabel(m, lang)) + "</strong><br>" +
+            esc(b) + ": " + n + "<br>" + total + " " + esc(t.monthTotal);
+          rect.addEventListener("mouseenter", function (ev) { showTip(ev, tipHtml); });
+          rect.addEventListener("mousemove", moveTip);
+          rect.addEventListener("mouseleave", hideTip);
+          rect.addEventListener("focus", function (ev) {
+            var br = ev.target.getBoundingClientRect();
+            showTip({ clientX: br.left + br.width / 2, clientY: br.top }, tipHtml);
+          });
+          rect.addEventListener("blur", hideTip);
+          barGroup.appendChild(rect);
+        });
+      }
+
+      var totalText = svgEl("text", {
+        class: "qso-monthly-total",
+        x: String(cx),
+        y: String(Math.max(12, yCursor - 5)),
+        "text-anchor": "middle"
+      });
+      totalText.textContent = String(total);
+      barGroup.appendChild(totalText);
+
+      var nameText = svgEl("text", {
+        class: "qso-monthly-muted",
+        x: String(cx),
+        y: String(padT + plotH + 14),
+        "text-anchor": "middle"
+      });
+      nameText.textContent = monthLabel(m, lang, "name");
+      barGroup.appendChild(nameText);
+      var yearText = svgEl("text", {
+        class: "qso-monthly-muted",
+        x: String(cx),
+        y: String(padT + plotH + 27),
+        "text-anchor": "middle"
+      });
+      yearText.textContent = monthLabel(m, lang, "year");
+      barGroup.appendChild(yearText);
+
+      svg.appendChild(barGroup);
+    });
+
+    s.chartEl.innerHTML = "";
+    s.chartEl.appendChild(svg);
+  }
+
 })();
