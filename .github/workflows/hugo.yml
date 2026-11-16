@@ -6,9 +6,10 @@ on:
   push:
     branches: ["main"]
 
-  # Rebuild about every 15 minutes so the front-page live-status box stays fresh.
-  # GitHub may delay cron slightly; the fetch writes a JSON file during the build
-  # and does not commit it to git.
+  # Server-side fallback for the live-status box (no-JS, first paint, solar/PSK).
+  # GitHub often delays these crons to 60–90 minutes, so the page also refreshes
+  # spots in the browser about every 15 minutes from a CORS-enabled public API.
+  # The fetch writes a JSON file during the build and does not commit it to git.
   schedule:
     - cron: "*/15 * * * *"
 

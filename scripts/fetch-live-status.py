@@ -19,6 +19,7 @@ import argparse
 import csv
 import io
 import json
+import re
 import math
 import sys
 import time
@@ -40,6 +41,10 @@ RBN_SPOTS_URL = "https://www.reversebeacon.net/spots.php"
 RBN_HISTORY_URL = "https://data.reversebeacon.net/rbn_history/{date}.zip"
 PSK_URL = "https://retrieve.pskreporter.info/query"
 SOLAR_URL = "https://www.hamqsl.com/solarxml.php"
+# Public RBN redistributor with CORS; also used as a build-time supplement.
+# The /spots/SM4T endpoint is a prefix match (it also returns SM4TIW etc.),
+# so every row is still filtered with is_our_call().
+VAIL_URL = "https://vailrerbn.com/api/v1/spots/SM4T?hours=24"
 # JP70RM / Borlänge, used if RBN call_info for SM4T is missing
 HOME_FALLBACK = {"lat": 60.5208, "lon": 15.4583, "grid": "JP70RM"}
 
@@ -84,6 +89,11 @@ def utcnow() -> datetime:
 def is_our_call(dx: str | None) -> bool:
     call = (dx or "").strip().upper()
     return call == CALL or call.startswith(CALL + "/")
+
+
+def norm_spotter(call: str | None) -> str:
+    """RBN skimmers often appear as ON6URE-1 officially and ON6URE on Vail."""
+    return re.sub(r"-\d+$", "", (call or "").strip().upper())
 
 
 def band_from_freq(freq_khz: float | None, band_code: int | None = None) -> str:
@@ -305,22 +315,69 @@ def history_days(now: datetime) -> list[datetime]:
     return days
 
 
+def _spot_rank(spot: dict[str, Any]) -> tuple[int, int, int]:
+    """Later epoch wins; official RBN beats Vail; stronger SNR is the last tie-break."""
+    src = spot.get("source") or ""
+    official = 2 if src == "spots.php" or src.startswith("rbn_history") else 1
+    return (int(spot.get("epoch") or 0), official, int(spot.get("snr") or -99))
+
+
+def parse_iso_epoch(value: str) -> int | None:
+    text = (value or "").strip()
+    if not text:
+        return None
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        return int(datetime.fromisoformat(text).timestamp())
+    except ValueError:
+        return None
+
+
+def fetch_vailrerbn(cutoff_epoch: int) -> list[dict[str, Any]]:
+    """24 h spots from Vail ReRBN. Prefix match, so apply is_our_call()."""
+    raw = http_get(VAIL_URL, timeout=20)
+    payload = json.loads(raw.decode("utf-8"))
+    spots: list[dict[str, Any]] = []
+    for row in payload.get("spots") or []:
+        if not isinstance(row, dict):
+            continue
+        dx = str(row.get("callsign") or "")
+        if not is_our_call(dx):
+            continue
+        epoch = parse_iso_epoch(str(row.get("timestamp") or ""))
+        if epoch is None or epoch < cutoff_epoch:
+            continue
+        freq = parse_float(row.get("frequency"))
+        spots.append({
+            "source": "vailrerbn",
+            "spotter": str(row.get("spotter") or "").strip(),
+            "dx": dx.strip(),
+            "freq": freq,
+            "band": band_from_freq(freq),
+            "mode": mode_name(None, row.get("mode")),
+            "snr": parse_int(row.get("snr")),
+            "epoch": epoch,
+            "grid": (row.get("spotter_grid") or "").strip(),
+        })
+    return spots
+
+
 def dedup_spots(spots: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Collapse the same reception reported by both spots.php and a history zip."""
     chosen: dict[tuple[Any, ...], dict[str, Any]] = {}
     for spot in spots:
         freq = spot.get("freq")
-        freq_key = round(freq, 1) if isinstance(freq, (int, float)) else None
+        freq_key = int(round(freq)) if isinstance(freq, (int, float)) else None
         epoch = spot.get("epoch") or 0
         key = (
-            (spot.get("spotter") or "").upper(),
+            norm_spotter(spot.get("spotter")),
             (spot.get("dx") or "").upper(),
             freq_key,
-            int(epoch) // 2,
+            int(epoch) // 120,
         )
         prev = chosen.get(key)
-        # Prefer spots.php (has matching call_info) when both sources agree
-        if prev is None or (prev.get("source") != "spots.php" and spot.get("source") == "spots.php"):
+        if prev is None or _spot_rank(spot) > _spot_rank(prev):
             chosen[key] = spot
     return list(chosen.values())
 
@@ -518,6 +575,18 @@ def build_rbn(
             if far.get("lastEpoch") else None,
         }
 
+    compact = [
+        {
+            "spotter": s.get("spotter") or "",
+            "dx": s.get("dx") or CALL,
+            "band": s.get("band") or "",
+            "mode": s.get("mode") or "",
+            "snr": s.get("snr"),
+            "freq": s.get("freq"),
+            "epoch": s.get("epoch"),
+        }
+        for s in spots
+    ]
     return {
         "ok": True,
         "spotCount": len(spots),
@@ -525,6 +594,7 @@ def build_rbn(
         "lastHeard": last_heard,
         "farthest": farthest,
         "skimmers": skimmer_list,
+        "spots": compact,
         "sources": sources_used,
         "limited": limited,
     }
@@ -551,6 +621,31 @@ def collect() -> dict[str, Any]:
     # spots.php returns at most 100 rows. If we got fewer than that for the
     # 24 h window, the live query is already complete and we can skip the
     # daily zips (they only exist for finished UTC days anyway).
+    try:
+        vail_spots = fetch_vailrerbn(cutoff_epoch)
+        if vail_spots:
+            rbn_spots.extend(vail_spots)
+            sources_used.append("vailrerbn")
+            # Grids from Vail fill in skimmers that spots.php did not geocode.
+            for spot in vail_spots:
+                call = (spot.get("spotter") or "").upper()
+                grid = spot.get("grid") or ""
+                if not call or call in call_info or not grid:
+                    continue
+                coords = locator_to_latlon(grid)
+                if not coords:
+                    continue
+                call_info[call] = {
+                    "call": spot.get("spotter") or "",
+                    "country": "",
+                    "cont": "",
+                    "lat": coords[0],
+                    "lon": coords[1],
+                    "grid": grid,
+                }
+    except Exception as exc:
+        rbn_errors.append(f"vailrerbn: {exc}")
+
     need_history = "spots.php" not in sources_used or php_count >= 100
     if need_history:
         for day in history_days(now):
@@ -636,11 +731,15 @@ def main() -> int:
         f"live-status ok={doc.get('ok')} updated={doc.get('updated')} "
         f"rbn={rbn.get('spotCount') if rbn.get('ok') else 'fail'} "
         f"last={last.get('time', '-')} {last.get('band', '')} "
+        f"{last.get('spotter', '')} {last.get('snr', '')} "
+        f"sources={','.join((rbn.get('sources') or []) if rbn.get('ok') else [])} "
         f"psk={psk.get('reportCount') if psk.get('ok') else 'fail'} "
         f"sfi={solar.get('sfi') if solar.get('ok') else 'fail'} "
         f"k={solar.get('kIndex') if solar.get('ok') else 'fail'} "
         f"qrv={doc.get('qrv')}"
     )
+    if rbn.get("warnings"):
+        print("warnings: " + "; ".join(rbn["warnings"]))
     # Always exit 0 so a failed fetch cannot break the Pages build.
     return 0
 

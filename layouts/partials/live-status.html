@@ -36,13 +36,17 @@
   </header>
 
   {{- if not $hasAnything -}}
-    <p class="live-status-empty">{{ i18n "live_status.no_data" }}</p>
+    <p class="live-status-empty" id="live-status-empty">{{ i18n "live_status.no_data" }}</p>
   {{- else -}}
-    <div class="live-status-body">
+    <div class="live-status-body" id="live-status-body">
       {{- if not $hasRbn -}}
-        <p>{{ i18n "live_status.rbn_unavailable" }}</p>
+        <p id="live-status-last">{{ i18n "live_status.rbn_unavailable" }}</p>
+        <p id="live-status-spots" hidden></p>
+        <p id="live-status-farthest" hidden></p>
       {{- else if not $s.rbn.spotCount -}}
-        <p>{{ i18n "live_status.no_spots" }}</p>
+        <p id="live-status-last">{{ i18n "live_status.no_spots" }}</p>
+        <p id="live-status-spots" hidden></p>
+        <p id="live-status-farthest" hidden></p>
       {{- else -}}
         {{- $last := $s.rbn.lastHeard -}}
         {{- if $last -}}
@@ -50,55 +54,56 @@
           {{- $band := replace $last.band "m" " m" -}}
           {{- $mode := $last.mode -}}
           {{- if isset $last "snr" -}}
-            <p class="live-status-last">{{ printf (i18n "live_status.last_heard") $when $band $mode $last.spotter (printf "%d" (int $last.snr)) }}</p>
+            <p class="live-status-last" id="live-status-last">{{ printf (i18n "live_status.last_heard") $when $band $mode $last.spotter (printf "%d" (int $last.snr)) }}</p>
           {{- else -}}
-            <p class="live-status-last">{{ printf (i18n "live_status.last_heard_no_snr") $when $band $mode $last.spotter }}</p>
+            <p class="live-status-last" id="live-status-last">{{ printf (i18n "live_status.last_heard_no_snr") $when $band $mode $last.spotter }}</p>
           {{- end -}}
         {{- end -}}
         {{- $bandBits := slice -}}
         {{- range $s.rbn.byBand -}}
           {{- $bandBits = $bandBits | append (printf "%s %d" (replace .band "m" " m") (int .count)) -}}
         {{- end -}}
-        <p>{{ printf (i18n "live_status.rbn_spots") (int $s.rbn.spotCount) (delimit $bandBits ", ") }}</p>
+        <p id="live-status-spots">{{ printf (i18n "live_status.rbn_spots") (int $s.rbn.spotCount) (delimit $bandBits ", ") }}</p>
         {{- with $s.rbn.farthest -}}
           {{- $km := lang.FormatNumber 0 (int .km) -}}
-          <p>{{ printf (i18n "live_status.farthest") .spotter $km }}</p>
+          <p id="live-status-farthest">{{ printf (i18n "live_status.farthest") .spotter $km }}</p>
+        {{- else -}}
+          <p id="live-status-farthest" hidden></p>
         {{- end -}}
       {{- end -}}
 
       {{- /* Show PSKReporter only when there is at least one report. */ -}}
       {{- if and $hasPsk (gt (int $s.psk.reportCount) 0) -}}
-        <p>{{ i18n "live_status.psk_reports" (int $s.psk.reportCount) }}</p>
+        <p id="live-status-psk">{{ i18n "live_status.psk_reports" (int $s.psk.reportCount) }}</p>
+      {{- else -}}
+        <p id="live-status-psk" hidden></p>
       {{- end -}}
     </div>
 
-    {{- if gt $mapPoints 0 -}}
-      <div id="live-status-map" class="live-status-map" role="img" aria-label="{{ i18n "live_status.map_label" }}"></div>
-    {{- end -}}
+    <div id="live-status-map" class="live-status-map" role="img" aria-label="{{ i18n "live_status.map_label" }}"{{ if eq $mapPoints 0 }} hidden{{ end }}></div>
 
     {{- if $hasSolar -}}
       {{- $sfi := cond (isset $s.solar "sfi") (printf "%d" (int $s.solar.sfi)) "–" -}}
       {{- $k := cond (isset $s.solar "kIndex") (printf "%d" (int $s.solar.kIndex)) "–" -}}
-      <p class="live-status-solar">{{ printf (i18n "live_status.conditions") $sfi $k }}</p>
+      <p class="live-status-solar" id="live-status-solar">{{ printf (i18n "live_status.conditions") $sfi $k }}</p>
     {{- end -}}
   {{- end -}}
 
   <p class="live-status-meta">
     {{- if and $s (index $s "updated") -}}
-      {{- printf (i18n "live_status.updated") (partial "live-status-time.html" (dict "value" $s.updated "updated" $s.updated)) -}}
+      <span id="live-status-updated">{{- printf (i18n "live_status.updated") (partial "live-status-time.html" (dict "value" $s.updated "updated" $s.updated)) -}}</span>
       <span aria-hidden="true"> · </span>
+    {{- else -}}
+      <span id="live-status-updated"></span>
     {{- end -}}
     {{- i18n "live_status.sources" -}}
   </p>
 </aside>
 
-{{- if and $s (gt $mapPoints 0) -}}
+{{- if $s -}}
+  {{- /* Always load Leaflet so a later in-page refresh can show the map. */ -}}
   <script id="live-status-data" type="application/json">{{ $s | jsonify | safeJS }}</script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="/js/live-status.js"></script>
-{{- else if $s -}}
-  {{- /* Still expose data so the QRV badge can expire without a map. */ -}}
-  <script id="live-status-data" type="application/json">{{ $s | jsonify | safeJS }}</script>
   <script src="/js/live-status.js"></script>
 {{- end -}}
