@@ -14,12 +14,19 @@
       {{- $href = relLangURL . -}}
     {{- end -}}
   {{- end -}}
-  <article class="notis-single notis-{{ $type }} max-w-prose">
+  {{- $weatherIcon := "" -}}
+  {{- if eq $type "weather" -}}
+    {{- $weatherIcon = .Params.weather_icon | default "cloudy" -}}
+    {{- if not (in (slice "clear" "partly" "cloudy" "rain" "snow" "sleet" "thunder" "fog") $weatherIcon) -}}
+      {{- $weatherIcon = "cloudy" -}}
+    {{- end -}}
+  {{- end -}}
+  <article class="notis-single notis-{{ $type }}{{ if $weatherIcon }} notis-weather-{{ $weatherIcon }}{{ end }} max-w-prose">
     <header>
       <p class="notis-meta">
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2 January 2006" }}</time>
         <span class="notis-type" title="{{ $typeLabel }}">
-          <span class="notis-icon" aria-hidden="true"></span>
+          <span class="notis-icon" aria-hidden="true">{{- if $weatherIcon -}}{{ partial "notiser-weather-icon.html" $weatherIcon }}{{- end -}}</span>
           <span class="notis-type-label">{{ $typeLabel }}</span>
         </span>
       </p>
