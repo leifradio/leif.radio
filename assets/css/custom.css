@@ -159,6 +159,8 @@
     width: 16.25rem;
     position: sticky;
     top: 1.25rem;
+    /* Match the intro: header py-1 + headline mt-4 + text-xl half-leading. */
+    margin-top: 1.5rem;
   }
 }
 
