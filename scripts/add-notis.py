@@ -29,49 +29,67 @@ DEFAULT_SLUG = {
     "other": "notis",
 }
 
-# SMHI Wsymb2 / SNOW symbol_code (1–27) → weather_icon
+# SMHI Wsymb2 / SNOW symbol_code (1–27) → emoji for the notis body text.
+# Temperature in the text uses 🌡️ (not a Wsymb2 code).
+WSYMB2_TO_EMOJI = {
+    1: "☀️",   # clear sky
+    2: "🌤️",   # nearly clear sky
+    3: "⛅",   # variable cloudiness
+    4: "⛅",   # half-clear sky
+    5: "🌥️",   # cloudy sky
+    6: "☁️",   # overcast
+    7: "🌫️",   # fog
+    8: "🌦️",   # light rain showers
+    9: "🌦️",   # moderate rain showers
+    10: "🌦️",  # heavy rain showers
+    11: "⛈️",  # thunderstorm
+    12: "🌨️",  # light sleet showers
+    13: "🌨️",  # moderate sleet showers
+    14: "🌨️",  # heavy sleet showers
+    15: "🌨️",  # light snow showers
+    16: "🌨️",  # moderate snow showers
+    17: "🌨️",  # heavy snow showers
+    18: "🌧️",  # light rain
+    19: "🌧️",  # moderate rain
+    20: "🌧️",  # heavy rain
+    21: "⛈️",  # thunder
+    22: "🌨️",  # light sleet
+    23: "🌨️",  # moderate sleet
+    24: "🌨️",  # heavy sleet
+    25: "❄️",  # light snowfall
+    26: "❄️",  # moderate snowfall
+    27: "❄️",  # heavy snowfall
+}
+
+# Optional front-matter name, kept for compatibility; not shown as the header icon.
 WEATHER_ICONS = ("clear", "partly", "cloudy", "rain", "snow", "sleet", "thunder", "fog")
 WSYMB2_TO_ICON = {
-    1: "clear",    # clear sky
-    2: "clear",    # nearly clear sky
-    3: "partly",   # variable cloudiness
-    4: "partly",   # half-clear sky
-    5: "cloudy",   # cloudy sky
-    6: "cloudy",   # overcast
-    7: "fog",      # fog
-    8: "rain",     # light rain showers
-    9: "rain",     # moderate rain showers
-    10: "rain",    # heavy rain showers
-    11: "thunder", # thunderstorm
-    12: "sleet",   # light sleet showers
-    13: "sleet",   # moderate sleet showers
-    14: "sleet",   # heavy sleet showers
-    15: "snow",    # light snow showers
-    16: "snow",    # moderate snow showers
-    17: "snow",    # heavy snow showers
-    18: "rain",    # light rain
-    19: "rain",    # moderate rain
-    20: "rain",    # heavy rain
-    21: "thunder", # thunder
-    22: "sleet",   # light sleet
-    23: "sleet",   # moderate sleet
-    24: "sleet",   # heavy sleet
-    25: "snow",    # light snowfall
-    26: "snow",    # moderate snowfall
-    27: "snow",    # heavy snowfall
+    1: "clear", 2: "clear", 3: "partly", 4: "partly", 5: "cloudy", 6: "cloudy",
+    7: "fog", 8: "rain", 9: "rain", 10: "rain", 11: "thunder", 12: "sleet",
+    13: "sleet", 14: "sleet", 15: "snow", 16: "snow", 17: "snow", 18: "rain",
+    19: "rain", 20: "rain", 21: "thunder", 22: "sleet", 23: "sleet", 24: "sleet",
+    25: "snow", 26: "snow", 27: "snow",
 }
 
 
-def icon_from_wsymb2(code: int) -> str:
-    """Map an SMHI Wsymb2 / symbol_code (1–27) to a weather_icon name."""
+def _wsymb2_code(code: int) -> int:
     try:
         code = int(code)
     except (TypeError, ValueError):
         die(f"invalid Wsymb2 code {code!r}; expected an integer 1–27")
-    icon = WSYMB2_TO_ICON.get(code)
-    if icon is None:
+    if code not in WSYMB2_TO_EMOJI:
         die(f"unknown Wsymb2 code {code}; expected 1–27")
-    return icon
+    return code
+
+
+def emoji_from_wsymb2(code: int) -> str:
+    """Map an SMHI Wsymb2 / symbol_code (1–27) to a weather emoji for the body text."""
+    return WSYMB2_TO_EMOJI[_wsymb2_code(code)]
+
+
+def icon_from_wsymb2(code: int) -> str:
+    """Map an SMHI Wsymb2 / symbol_code (1–27) to a weather_icon name (optional front matter)."""
+    return WSYMB2_TO_ICON[_wsymb2_code(code)]
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -143,7 +161,7 @@ def main() -> None:
     pre.add_argument("--map-wsymb", type=int, metavar="CODE")
     pre_args, _ = pre.parse_known_args()
     if pre_args.map_wsymb is not None:
-        print(icon_from_wsymb2(pre_args.map_wsymb))
+        print(emoji_from_wsymb2(pre_args.map_wsymb))
         return
 
     p = argparse.ArgumentParser(description="Add a bilingual notis under content/notiser/")
@@ -159,14 +177,14 @@ def main() -> None:
         "--icon",
         default="",
         choices=("",) + WEATHER_ICONS,
-        help="Weather symbol: clear, partly, cloudy, rain, snow, sleet, thunder or fog (weather notiser only)",
+        help="Optional weather_icon front matter (not shown in the header). Prefer emoji in the body text",
     )
     p.add_argument(
         "--wsymb",
         type=int,
         default=None,
         metavar="CODE",
-        help="SMHI Wsymb2 / symbol_code 1–27; sets --icon (weather notiser only). --icon wins if both are given",
+        help="SMHI Wsymb2 / symbol_code 1–27; optional weather_icon front matter only. Prefer putting emoji in the text via --map-wsymb",
     )
     p.add_argument("--force", action="store_true", help="Overwrite existing files")
     args = p.parse_args()

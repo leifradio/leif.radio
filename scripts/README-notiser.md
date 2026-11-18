@@ -32,10 +32,9 @@ Recommended slugs for the daily routines:
 title = "Väder i Borlänge 18 nov"
 date = 2026-11-18T06:45:00+01:00
 notis_type = "weather"
-weather_icon = "partly"
 +++
 
-Halvklart i eftermiddag, mulet i kväll. Temperaturen sjunker från cirka −2 °C till omkring −4 °C. Ingen nederbörd enligt SMHI.
+⛅ Halvklart i eftermiddag, ☁️ mulet i kväll. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI.
 ```
 
 Fields:
@@ -43,7 +42,6 @@ Fields:
 - `title` — short heading (translated in each language file)
 - `date` — keep the same in both files; use Europe/Stockholm offset (`+01:00` or `+02:00`). The front page and the list sort by this timestamp, newest first.
 - `notis_type` — `weather` | `propagation` | `youtube` (the three official kinds)
-- `weather_icon` — for `weather` only, optional: `clear` | `partly` | `cloudy` | `rain` | `snow` | `sleet` | `thunder` | `fog`. Picks the symbol on the site. If omitted, a generic cloud is used.
 - `link` — optional. External URLs (`https://…`) open as they are. Site-relative paths such as `/posts/2026-11-18-winlink-wednesday/` are prefixed with `/en` on the English site.
 - Body — one to three short lines, translated. For weather, use a real forecast (SMHI) and do not invent figures.
 
@@ -64,33 +62,27 @@ Today's Morse novel, 4:40 long, 25 WPM.
 
 From the repo root.
 
-Weather, as the 06:45 routine should call it (`--slug vader`). Pass `--icon` (or `--wsymb` with the SMHI symbol code) so the symbol matches the forecast:
+Weather, as the 06:45 routine should call it (`--slug vader`). Put weather emoji in the body text, one per period (and 🌡️ for the temperature). Look up each SMHI `Wsymb2` / `symbol_code` with:
+
+```
+python3 scripts/add-notis.py --map-wsymb 4
+```
+
+That prints `⛅` (half-clear). Then write the text and create the files:
 
 ```
 python3 scripts/add-notis.py \
   --type weather \
   --title-sv "Väder i Borlänge 18 nov" \
   --title-en "Weather in Borlänge 18 Nov" \
-  --text-sv "Kort, faktabaserad prognos från SMHI." \
-  --text-en "A short, factual forecast from SMHI." \
+  --text-sv "⛅ Halvklart i eftermiddag, ☁️ mulet i kväll. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI." \
+  --text-en "⛅ Half-clear this afternoon, ☁️ overcast this evening. 🌡️ −2 °C to −4 °C. No precipitation according to SMHI." \
   --date 2026-11-18T06:45:00 \
-  --slug vader \
-  --icon partly
+  --slug vader
 ```
 
-`--icon` is one of `clear`, `partly`, `cloudy`, `rain`, `snow`, `sleet`, `thunder`, `fog`. If you have the SMHI `Wsymb2` / `symbol_code` (1–27) for the representative daytime weather, you can set the icon from that instead:
+The header always uses the generic Väder/Weather cloud. Do not invent figures; only a real SMHI forecast.
 
-```
-python3 scripts/add-notis.py --type weather ... --slug vader --wsymb 4
-```
-
-`--icon` wins if both are given. To only look up the mapping:
-
-```
-python3 scripts/add-notis.py --map-wsymb 4
-```
-
-That prints `partly` and exits.
 
 Morse novel:
 
@@ -121,27 +113,28 @@ python3 scripts/add-notis.py \
 
 `--date` can be `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS` (Europe/Stockholm if no offset). Omit it to use the current time. `--slug` defaults to `vader` for `weather`, `morsenovell` for `youtube`, and `propagation` for `propagation`. The script refuses to overwrite an existing file unless you pass `--force`.
 
-## SMHI Wsymb2 → weather_icon
+## SMHI Wsymb2 → emoji
 
-`scripts/add-notis.py` maps SMHI’s Wsymb2 (also `symbol_code` in the SNOW1gv1 API) to `weather_icon` via `icon_from_wsymb2()` and `--wsymb` / `--map-wsymb`. Pick the code that best represents the daytime forecast (for 18 Nov that was 4, half-clear).
+`scripts/add-notis.py` maps SMHI’s Wsymb2 (also `symbol_code` in the SNOW1gv1 API) to a body-text emoji via `emoji_from_wsymb2()` and `--map-wsymb`. Use one emoji per period in the text (afternoon, evening, and so on). Temperature uses 🌡️, which is not a Wsymb2 code.
 
-| Wsymb2 | SMHI meaning | weather_icon |
+| Wsymb2 | SMHI meaning | Emoji |
 |------:|---|---|
-| 1 | Clear sky | `clear` |
-| 2 | Nearly clear sky | `clear` |
-| 3 | Variable cloudiness | `partly` |
-| 4 | Half-clear sky | `partly` |
-| 5 | Cloudy sky | `cloudy` |
-| 6 | Overcast | `cloudy` |
-| 7 | Fog | `fog` |
-| 8–10 | Rain showers | `rain` |
-| 11 | Thunderstorm | `thunder` |
-| 12–14 | Sleet showers | `sleet` |
-| 15–17 | Snow showers | `snow` |
-| 18–20 | Rain | `rain` |
-| 21 | Thunder | `thunder` |
-| 22–24 | Sleet | `sleet` |
-| 25–27 | Snowfall | `snow` |
+| 1 | Clear sky | ☀️ |
+| 2 | Nearly clear sky | 🌤️ |
+| 3 | Variable cloudiness | ⛅ |
+| 4 | Half-clear sky | ⛅ |
+| 5 | Cloudy sky | 🌥️ |
+| 6 | Overcast | ☁️ |
+| 7 | Fog | 🌫️ |
+| 8–10 | Rain showers | 🌦️ |
+| 11 | Thunderstorm | ⛈️ |
+| 12–14 | Sleet showers | 🌨️ |
+| 15–17 | Snow showers | 🌨️ |
+| 18–20 | Rain | 🌧️ |
+| 21 | Thunder | ⛈️ |
+| 22–24 | Sleet | 🌨️ |
+| 25–27 | Snowfall | ❄️ |
+
 
 The script only writes the two Markdown files. It does not commit.
 

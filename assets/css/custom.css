@@ -275,104 +275,8 @@
   background: rgba(34, 211, 238, 0.16);
   color: #67e8f9;
 }
-/* Fallback only when no inline SVG is present. */
 .notis-weather .notis-icon::before { content: "☁"; }
-.notis-weather .notis-icon:has(svg)::before { content: none; }
-.notis-weather .notis-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-.notis-weather-svg {
-  width: 0.95rem;
-  height: 0.95rem;
-  display: block;
-}
-.notis-weather-svg .notis-weather-sun { fill: currentColor; }
-.notis-weather-svg .notis-weather-cloud,
-.notis-weather-svg .notis-weather-fog,
-.notis-weather-svg .notis-weather-precip,
-.notis-weather-svg .notis-weather-bolt { fill: currentColor; }
 
-.notis-weather-clear .notis-icon {
-  background: rgba(217, 119, 6, 0.16);
-  color: #d97706;
-}
-.dark .notis-weather-clear .notis-icon {
-  background: rgba(251, 191, 36, 0.18);
-  color: #fcd34d;
-}
-.notis-weather-partly .notis-icon {
-  background: rgba(14, 165, 233, 0.12);
-  color: #64748b;
-}
-.dark .notis-weather-partly .notis-icon {
-  background: rgba(148, 163, 184, 0.16);
-  color: #cbd5e1;
-}
-.notis-weather-partly .notis-weather-sun,
-.notis-weather-partly .notis-weather-sun path {
-  fill: #d97706;
-  stroke: #d97706;
-}
-.dark .notis-weather-partly .notis-weather-sun,
-.dark .notis-weather-partly .notis-weather-sun path {
-  fill: #fcd34d;
-  stroke: #fcd34d;
-}
-.notis-weather-cloudy .notis-icon {
-  background: rgba(8, 145, 178, 0.14);
-  color: #0e7490;
-}
-.dark .notis-weather-cloudy .notis-icon {
-  background: rgba(34, 211, 238, 0.16);
-  color: #67e8f9;
-}
-.notis-weather-rain .notis-icon {
-  background: rgba(37, 99, 235, 0.12);
-  color: #1d4ed8;
-}
-.dark .notis-weather-rain .notis-icon {
-  background: rgba(96, 165, 250, 0.16);
-  color: #93c5fd;
-}
-.notis-weather-snow .notis-icon {
-  background: rgba(14, 165, 233, 0.12);
-  color: #0369a1;
-}
-.dark .notis-weather-snow .notis-icon {
-  background: rgba(125, 211, 252, 0.16);
-  color: #e0f2fe;
-}
-.notis-weather-sleet .notis-icon {
-  background: rgba(56, 189, 248, 0.14);
-  color: #0369a1;
-}
-.dark .notis-weather-sleet .notis-icon {
-  background: rgba(125, 211, 252, 0.16);
-  color: #bae6fd;
-}
-.notis-weather-thunder .notis-icon {
-  background: rgba(124, 58, 237, 0.12);
-  color: #6d28d9;
-}
-.dark .notis-weather-thunder .notis-icon {
-  background: rgba(167, 139, 250, 0.18);
-  color: #ddd6fe;
-}
-.notis-weather-thunder .notis-weather-bolt {
-  fill: #d97706;
-}
-.dark .notis-weather-thunder .notis-weather-bolt {
-  fill: #fcd34d;
-}
-.notis-weather-fog .notis-icon {
-  background: rgba(100, 116, 139, 0.16);
-  color: #475569;
-}
-.dark .notis-weather-fog .notis-icon {
-  background: rgba(148, 163, 184, 0.18);
-  color: #cbd5e1;
-}
 .notis-winlink .notis-icon {
   background: rgba(2, 132, 199, 0.12);
   color: #0369a1;
@@ -417,6 +321,9 @@
 }
 .notis-text p { margin: 0; }
 .notis-text p + p { margin-top: 0.3rem; }
+.notis-text, .notis-single .prose {
+  font-variant-emoji: emoji;
+}
 .dark .notis-text { color: #cbd5e1; }
 .notiser-empty {
   margin: 0;

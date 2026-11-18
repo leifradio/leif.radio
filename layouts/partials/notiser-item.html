@@ -16,18 +16,11 @@
   {{- end -}}
 {{- end -}}
 {{- $dateFmt := "2 Jan" -}}
-{{- $weatherIcon := "" -}}
-{{- if eq $type "weather" -}}
-  {{- $weatherIcon = $p.Params.weather_icon | default "cloudy" -}}
-  {{- if not (in (slice "clear" "partly" "cloudy" "rain" "snow" "sleet" "thunder" "fog") $weatherIcon) -}}
-    {{- $weatherIcon = "cloudy" -}}
-  {{- end -}}
-{{- end -}}
-<article class="notis notis-{{ $type }} notis-{{ $variant }}{{ if $weatherIcon }} notis-weather-{{ $weatherIcon }}{{ end }}">
+<article class="notis notis-{{ $type }} notis-{{ $variant }}">
   <p class="notis-meta">
     <time datetime="{{ $p.Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $p.Date | time.Format $dateFmt }}</time>
     <span class="notis-type" title="{{ $typeLabel }}">
-      <span class="notis-icon" aria-hidden="true">{{- if $weatherIcon -}}{{ partial "notiser-weather-icon.html" $weatherIcon }}{{- end -}}</span>
+      <span class="notis-icon" aria-hidden="true"></span>
       <span class="notis-type-label">{{ $typeLabel }}</span>
     </span>
   </p>
