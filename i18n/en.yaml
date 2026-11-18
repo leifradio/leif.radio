@@ -29,5 +29,6 @@ notiser:
   open_link: "Open link"
   type_youtube: "YouTube"
   type_propagation: "Conditions"
+  type_weather: "Weather"
   type_winlink: "Winlink"
   type_other: "Note"

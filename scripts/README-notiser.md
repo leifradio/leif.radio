@@ -2,6 +2,12 @@
 
 Short news items shown in a right-hand column on the front page (and as a full list at `/notiser/` and `/en/notes/`). They are **not** regular posts: they do not appear in the main post list, the main RSS feed, or Todoist.
 
+The official kinds are three daily notes, shown newest first (by `date`, including the time):
+
+- Weather in Borlänge (`weather`)
+- Propagation (`propagation`)
+- Morse novels (`youtube`)
+
 Swedish is the root language; always add both a `.sv.md` and an `.en.md` file.
 
 ## File path and naming
@@ -13,8 +19,9 @@ content/notiser/YYYY-MM-DD-slug.en.md
 
 Recommended slugs for the daily routines:
 
-- Morse novel: `YYYY-MM-DD-morsenovell`
-- Propagation: `YYYY-MM-DD-propagation`
+- Weather (around 06:45): `YYYY-MM-DD-vader`
+- Morse novel (around 07:00): `YYYY-MM-DD-morsenovell`
+- Propagation (around 08:00): `YYYY-MM-DD-propagation`
 
 ## Front matter
 
@@ -22,24 +29,23 @@ Recommended slugs for the daily routines:
 
 ```
 +++
-title = "Morsenovell: The Robot Who Learned to Knit"
-date = 2026-11-18T07:00:00+01:00
-notis_type = "youtube"
-link = "https://youtu.be/PIIRCrEsGLc"
+title = "Väder i Borlänge 18 nov"
+date = 2026-11-18T06:45:00+01:00
+notis_type = "weather"
 +++
 
-Dagens morsenovell, 4:40 lång, 25 WPM.
+Halvklart i eftermiddag, mulet i kväll. Temperaturen sjunker från cirka −2 °C till omkring −4 °C. Ingen nederbörd enligt SMHI.
 ```
 
 Fields:
 
 - `title` — short heading (translated in each language file)
-- `date` — keep the same in both files; use Europe/Stockholm offset (`+01:00` or `+02:00`)
-- `notis_type` — `youtube` | `propagation` | `winlink` | `other`
+- `date` — keep the same in both files; use Europe/Stockholm offset (`+01:00` or `+02:00`). The front page and the list sort by this timestamp, newest first.
+- `notis_type` — `weather` | `propagation` | `youtube` (the three official kinds)
 - `link` — optional. External URLs (`https://…`) open as they are. Site-relative paths such as `/posts/2026-11-18-winlink-wednesday/` are prefixed with `/en` on the English site.
-- Body — one to three short lines, translated.
+- Body — one to three short lines, translated. For weather, use a real forecast (SMHI) and do not invent figures.
 
-English example of the same notis (`content/notiser/2026-11-18-morsenovell.en.md`):
+English example of a Morse novel (`content/notiser/2026-11-18-morsenovell.en.md`):
 
 ```
 +++
@@ -54,7 +60,22 @@ Today's Morse novel, 4:40 long, 25 WPM.
 
 ## Helper script
 
-From the repo root:
+From the repo root.
+
+Weather, as the 06:45 routine should call it (`--slug vader`):
+
+```
+python3 scripts/add-notis.py \
+  --type weather \
+  --title-sv "Väder i Borlänge 18 nov" \
+  --title-en "Weather in Borlänge 18 Nov" \
+  --text-sv "Kort, faktabaserad prognos från SMHI." \
+  --text-en "A short, factual forecast from SMHI." \
+  --date 2026-11-18T06:45:00 \
+  --slug vader
+```
+
+Morse novel:
 
 ```
 python3 scripts/add-notis.py \
@@ -68,7 +89,7 @@ python3 scripts/add-notis.py \
   --slug morsenovell
 ```
 
-Propagation example:
+Propagation:
 
 ```
 python3 scripts/add-notis.py \
@@ -81,7 +102,7 @@ python3 scripts/add-notis.py \
   --slug propagation
 ```
 
-`--date` can be `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS` (Europe/Stockholm if no offset). Omit it to use the current time. `--slug` defaults to `morsenovell` for `youtube`, `propagation` for `propagation`, `winlink` for `winlink`, and `notis` for `other`. The script refuses to overwrite an existing file unless you pass `--force`.
+`--date` can be `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS` (Europe/Stockholm if no offset). Omit it to use the current time. `--slug` defaults to `vader` for `weather`, `morsenovell` for `youtube`, and `propagation` for `propagation`. The script refuses to overwrite an existing file unless you pass `--force`.
 
 The script only writes the two Markdown files. It does not commit.
 

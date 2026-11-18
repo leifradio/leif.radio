@@ -20,10 +20,11 @@ from zoneinfo import ZoneInfo
 TZ = ZoneInfo("Europe/Stockholm")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 NOTIS_DIR = REPO_ROOT / "content" / "notiser"
-VALID_TYPES = ("youtube", "propagation", "winlink", "other")
+VALID_TYPES = ("youtube", "propagation", "weather", "winlink", "other")
 DEFAULT_SLUG = {
     "youtube": "morsenovell",
     "propagation": "propagation",
+    "weather": "vader",
     "winlink": "winlink",
     "other": "notis",
 }
@@ -86,7 +87,7 @@ def render(title: str, date: datetime, notis_type: str, link: str | None, body: 
 
 def main() -> None:
     p = argparse.ArgumentParser(description="Add a bilingual notis under content/notiser/")
-    p.add_argument("--type", required=True, choices=VALID_TYPES, help="youtube, propagation, winlink or other")
+    p.add_argument("--type", required=True, choices=VALID_TYPES, help="youtube, propagation, weather, winlink or other")
     p.add_argument("--title-sv", required=True)
     p.add_argument("--title-en", required=True)
     p.add_argument("--text-sv", required=True, help="Body in Swedish, 1–3 lines")

@@ -1,7 +1,7 @@
 {{- $p := .page -}}
 {{- $variant := .variant | default "sidebar" -}}
 {{- $type := $p.Params.notis_type | default "other" -}}
-{{- if not (in (slice "youtube" "propagation" "winlink" "other") $type) -}}
+{{- if not (in (slice "youtube" "propagation" "weather" "winlink" "other") $type) -}}
   {{- $type = "other" -}}
 {{- end -}}
 {{- $typeLabel := i18n (printf "notiser.type_%s" $type) -}}

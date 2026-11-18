@@ -73,5 +73,6 @@ notiser:
   open_link: "Öppna länk"
   type_youtube: "YouTube"
   type_propagation: "Konditioner"
+  type_weather: "Väder"
   type_winlink: "Winlink"
   type_other: "Notis"
