@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <header class="notiser-page-header">
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title | emojify }}</h1>
+    {{ with .Description }}
+      <p class="mt-2 text-neutral-500 dark:text-neutral-400">{{ . }}</p>
+    {{ end }}
+  </header>
+  {{ if .RegularPages }}
+    <section class="notiser-page-list" aria-label="{{ .Title }}">
+      {{ range .RegularPages.ByDate.Reverse }}
+        {{ partial "notiser-item.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </section>
+  {{ else }}
+    <p class="notiser-empty mt-8">{{ i18n "notiser.empty" }}</p>
+  {{ end }}
+{{ end }}

@@ -72,6 +72,13 @@ python3 scripts/fetch-qrz-map.py
 
 That writes `static/data/qsos.json` and `static/data/qso-summary.json`. Commit those files (or let the daily routine do it) and push to `main`.
 
+
+## Notiser (short notes)
+
+The front page has a right-hand column of short notes (morse novels, propagation, and similar). Swedish list: [/notiser/](https://leif.radio/notiser/), English: [/en/notes/](https://leif.radio/en/notes/). They are a separate section and do not appear in the main posts list or the main RSS feed.
+
+Add a notis as a pair of files `content/notiser/YYYY-MM-DD-slug.sv.md` and `.en.md`, or run `python3 scripts/add-notis.py` (see [scripts/README-notiser.md](scripts/README-notiser.md) for the exact front matter and the commit/push steps). Do not create a Todoist task for a notis.
+
 ## Building locally (optional)
 
 ```

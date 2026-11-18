@@ -1,0 +1,24 @@
+{{- $section := site.GetPage "notiser" -}}
+{{- $pages := slice -}}
+{{- if $section -}}
+  {{- $pages = first 6 $section.RegularPages.ByDate.Reverse -}}
+{{- end -}}
+<section class="notiser-box">
+  <header class="notiser-box-header">
+    <h2 class="notiser-box-title">{{ i18n "notiser.title" }}</h2>
+  </header>
+  {{- if $pages -}}
+    <ul class="notiser-box-list">
+      {{- range $pages -}}
+        <li>{{ partial "notiser-item.html" (dict "page" . "variant" "sidebar") }}</li>
+      {{- end -}}
+    </ul>
+    {{- if $section -}}
+      <p class="notiser-box-more">
+        <a href="{{ $section.RelPermalink }}">{{ i18n "notiser.all" }}</a>
+      </p>
+    {{- end -}}
+  {{- else -}}
+    <p class="notiser-empty">{{ i18n "notiser.empty" }}</p>
+  {{- end -}}
+</section>

@@ -21,3 +21,13 @@ live_status:
   popup_spots:
     one: "{{ .Count }} spot"
     other: "{{ .Count }} spots"
+
+notiser:
+  title: "Notes"
+  all: "All notes"
+  empty: "No notes yet."
+  open_link: "Open link"
+  type_youtube: "YouTube"
+  type_propagation: "Conditions"
+  type_winlink: "Winlink"
+  type_other: "Note"

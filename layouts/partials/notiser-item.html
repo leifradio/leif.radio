@@ -1,0 +1,33 @@
+{{- $p := .page -}}
+{{- $variant := .variant | default "sidebar" -}}
+{{- $type := $p.Params.notis_type | default "other" -}}
+{{- if not (in (slice "youtube" "propagation" "winlink" "other") $type) -}}
+  {{- $type = "other" -}}
+{{- end -}}
+{{- $typeLabel := i18n (printf "notiser.type_%s" $type) -}}
+{{- $href := $p.RelPermalink -}}
+{{- $external := false -}}
+{{- with $p.Params.link -}}
+  {{- if or (strings.HasPrefix . "http://") (strings.HasPrefix . "https://") -}}
+    {{- $href = . -}}
+    {{- $external = true -}}
+  {{- else -}}
+    {{- $href = relLangURL . -}}
+  {{- end -}}
+{{- end -}}
+{{- $dateFmt := "2 Jan" -}}
+<article class="notis notis-{{ $type }} notis-{{ $variant }}">
+  <p class="notis-meta">
+    <time datetime="{{ $p.Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $p.Date | time.Format $dateFmt }}</time>
+    <span class="notis-type" title="{{ $typeLabel }}">
+      <span class="notis-icon" aria-hidden="true"></span>
+      <span class="notis-type-label">{{ $typeLabel }}</span>
+    </span>
+  </p>
+  <h3 class="notis-title">
+    <a href="{{ $href }}"{{ if $external }} target="_blank" rel="external noopener"{{ end }}>{{ $p.Title }}</a>
+  </h3>
+  {{- with $p.Content -}}
+    <div class="notis-text">{{ . }}</div>
+  {{- end -}}
+</article>

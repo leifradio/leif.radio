@@ -65,3 +65,13 @@ live_status:
   popup_spots:
     one: "{{ .Count }} spot"
     other: "{{ .Count }} spots"
+
+notiser:
+  title: "Notiser"
+  all: "Alla notiser"
+  empty: "Inga notiser ännu."
+  open_link: "Öppna länk"
+  type_youtube: "YouTube"
+  type_propagation: "Konditioner"
+  type_winlink: "Winlink"
+  type_other: "Notis"
