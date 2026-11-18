@@ -49,7 +49,7 @@ English example of a Morse novel (`content/notiser/2026-11-18-morsenovell.en.md`
 
 ```
 +++
-title = "Morse novel: The Robot Who Learned to Knit"
+title = "The Robot Who Learned to Knit"
 date = 2026-11-18T07:00:00+01:00
 notis_type = "youtube"
 link = "https://youtu.be/PIIRCrEsGLc"
@@ -89,8 +89,8 @@ Morse novel:
 ```
 python3 scripts/add-notis.py \
   --type youtube \
-  --title-sv "Morsenovell: The Robot Who Learned to Knit" \
-  --title-en "Morse novel: The Robot Who Learned to Knit" \
+  --title-sv "The Robot Who Learned to Knit" \
+  --title-en "The Robot Who Learned to Knit" \
   --text-sv "Dagens morsenovell, 4:40 lång, 25 WPM." \
   --text-en "Today's Morse novel, 4:40 long, 25 WPM." \
   --url "https://youtu.be/PIIRCrEsGLc" \
