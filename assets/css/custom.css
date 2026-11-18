@@ -321,9 +321,6 @@
 }
 .notis-text p { margin: 0; }
 .notis-text p + p { margin-top: 0.3rem; }
-.notis-text, .notis-single .prose {
-  font-variant-emoji: emoji;
-}
 .dark .notis-text { color: #cbd5e1; }
 .notiser-empty {
   margin: 0;
