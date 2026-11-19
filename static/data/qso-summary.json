@@ -1,12 +1,12 @@
 {
-  "generated": "2026-11-18T08:00:56Z",
+  "generated": "2026-11-19T07:53:42Z",
   "callsign": "SM4T",
   "bookName": "SM4T Logbook",
-  "totalInLog": 243,
-  "plotted": 243,
+  "totalInLog": 250,
+  "plotted": 250,
   "skippedNoLocation": 0,
-  "withGrid": 221,
-  "confirmed": 90,
+  "withGrid": 228,
+  "confirmed": 93,
   "dxcc": 54,
   "home": {
     "grid": "JP70RM",
@@ -15,13 +15,13 @@
     "label": "SM4T"
   },
   "bands": {
-    "40m": 128,
-    "20m": 64,
+    "40m": 134,
+    "20m": 65,
     "30m": 39,
     "17m": 6,
     "15m": 6
   },
   "modes": {
-    "CW": 243
+    "CW": 250
   }
 }
