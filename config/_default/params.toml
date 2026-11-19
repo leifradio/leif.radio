@@ -8,6 +8,12 @@ enableCodeCopy = true
 showAppearanceSwitcher = true
 mainSections = ["posts", "contests"]
 
+# Default Open Graph / Twitter image (1200x630). Posts with a feature image keep their own.
+images = ["img/og-default.jpg"]
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
+
 [header]
   layout = "basic"
 

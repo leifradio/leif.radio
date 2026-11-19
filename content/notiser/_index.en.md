@@ -4,7 +4,9 @@ slug = "notes"
 description = "Short notes from leif.radio: Morse novels, conditions and other brief updates."
 outputs = ["HTML", "RSS"]
 
-[cascade]
+# Apply to item pages only so the section listing stays in the sitemap,
+# while daily notiser stay out of the main RSS and home page lists.
+[[cascade]]
   showHero = false
   showAuthor = false
   showReadingTime = false
@@ -15,4 +17,6 @@ outputs = ["HTML", "RSS"]
   [cascade.build]
     list = "local"
     render = "always"
+  [cascade.target]
+    kind = "page"
 +++

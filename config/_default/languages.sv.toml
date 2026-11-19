@@ -8,7 +8,7 @@ title = "Leif.radio"
   isoCode = "sv"
   rtl = false
   copyright = "© { year } Leif.radio"
-  description = "Amatörradio av Leif – mest CW på 20 och 40 m."
+  description = "Amatörradio av Leif, SM4T/SA4ZAB – telegrafi (CW), portabla aktiveringar och krissamband från Borlänge."
   dateFormat = "2 January 2006"
 
 [params.author]
