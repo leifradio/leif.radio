@@ -98,6 +98,18 @@ python3 scripts/add-notis.py \
   --slug morsenovell
 ```
 
+Also add the video to the YouTube list (see [YouTube-filmer](#youtube-filmer) below):
+
+```
+python3 scripts/add-youtube.py \
+  --id PIIRCrEsGLc \
+  --date 2026-11-18 \
+  --title "The Robot Who Learned to Knit" \
+  --category morsenovell \
+  --wpm 25 \
+  --length 4:40
+```
+
 Propagation:
 
 ```
@@ -154,3 +166,34 @@ GitHub Pages builds automatically from `main`. No Todoist task is created for a 
 - English list: https://leif.radio/en/notes/
 - Swedish RSS: https://leif.radio/notiser/index.xml
 - English RSS: https://leif.radio/en/notes/index.xml
+
+## YouTube-filmer
+
+The Telegrafi / CW section has a child page that lists videos from the [@Leifradio](https://www.youtube.com/@Leifradio) channel:
+
+- Swedish: `/telegrafi/youtube/`
+- English: `/en/cw/youtube/`
+
+The list is built from `data/youtube.yaml`. After a new Morse novel (or a training video) has been uploaded and the notis has been written, add the video so it appears on the page:
+
+```
+python3 scripts/add-youtube.py \
+  --id DdQ6KymlNU0 \
+  --date 2026-11-19 \
+  --title "The Postman of the Last Island" \
+  --category morsenovell \
+  --wpm 25 \
+  --length 4:51
+```
+
+`--id` can also be a full `https://youtu.be/…` URL. `--category` is `morsenovell`, `traning` or `ovrigt`. `--wpm` and `--length` are optional (`length` is `M:SS`). If `--title` is omitted, the script fetches it from YouTube oembed (and refuses to add the entry if oembed returns 401/404).
+
+An existing entry with the same id is updated in place. The script only writes `data/youtube.yaml`. It does not commit.
+
+Then commit the data file together with the notis files, for example:
+
+```
+git add data/youtube.yaml content/notiser/YYYY-MM-DD-morsenovell.sv.md content/notiser/YYYY-MM-DD-morsenovell.en.md
+git commit -m "Notis: Morsenovell YYYY-MM-DD"
+git push origin main
+```

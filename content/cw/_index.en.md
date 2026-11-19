@@ -1,10 +1,12 @@
 +++
 title = "CW"
-slug = "cw"
+url = "/en/cw/"
+description = "Morse code (CW): how I learned, links to get started, and my YouTube videos."
 showDate = false
 showAuthor = false
 showReadingTime = false
 showPagination = false
+showDateUpdated = false
 +++
 
 CW is the mode I like by far the most. I started learning CW shortly after getting my amateur radio licence in 2020 and have kept working at it ever since to become good at it. It is not easy for an old man like me, but I am making progress :)
@@ -20,6 +22,10 @@ YouTube has plenty about CW, and a great first stop is Kurt Zoglmann, Morse code
 Finally, a website I have spent a lot of time on: [LCWO](https://lcwo.net/). It makes it easy to learn characters and words and to practise in several different ways.
 
 Good luck!
+
+## My videos
+
+My own YouTube videos, including the daily Morse novels, are on the [YouTube videos](/en/cw/youtube/) page.
 
 ## SKED
 

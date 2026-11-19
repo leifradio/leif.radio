@@ -29,7 +29,18 @@
 [[main]]
   name = "Telegrafi"
   pageRef = "cw"
+  identifier = "cw"
   weight = 15
+[[main]]
+  name = "Översikt"
+  pageRef = "cw"
+  parent = "cw"
+  weight = 1
+[[main]]
+  name = "YouTube-filmer"
+  pageRef = "cw/youtube"
+  parent = "cw"
+  weight = 10
 
 [[main]]
   name = "Krissamband"

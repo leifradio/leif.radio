@@ -1,0 +1,48 @@
+{{- $sv := eq .Page.Language.Lang "sv" -}}
+{{- $videos := default slice site.Data.youtube.videos -}}
+{{- $videos := sort $videos "date" "desc" -}}
+{{- $groups := slice
+      (dict "key" "traning" "sv" "Träning" "en" "Training")
+      (dict "key" "morsenovell" "sv" "Morsenoveller" "en" "Morse novels")
+      (dict "key" "ovrigt" "sv" "Övrigt" "en" "Other")
+-}}
+{{- $months := cond $sv
+      (slice "jan" "feb" "mars" "apr" "maj" "juni" "juli" "aug" "sep" "okt" "nov" "dec")
+      (slice "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec")
+-}}
+{{- $any := false -}}
+{{- range $groups -}}
+  {{- $key := .key -}}
+  {{- $items := slice -}}
+  {{- range $videos -}}
+    {{- if eq .category $key -}}{{- $items = $items | append . -}}{{- end -}}
+  {{- end -}}
+  {{- if $items -}}
+    {{- $any = true -}}
+    <h2 class="yt-group-title">{{ cond $sv .sv .en }}</h2>
+    <ul class="yt-list">
+    {{- range $items -}}
+      {{- $d := time.AsTime .date -}}
+      {{- $href := printf "https://youtu.be/%s" .id -}}
+      {{- $thumb := printf "https://i.ytimg.com/vi/%s/mqdefault.jpg" .id -}}
+      {{- $dateLabel := printf "%d %s %d" $d.Day (index $months (sub (int $d.Month) 1)) $d.Year -}}
+      {{- $meta := slice -}}
+      {{- with .wpm -}}{{- $meta = $meta | append (printf "%s WPM" (printf "%v" .)) -}}{{- end -}}
+      {{- with .length -}}{{- $meta = $meta | append . -}}{{- end -}}
+      <li class="yt-item">
+        <a class="yt-card" href="{{ $href }}" target="_blank" rel="noopener noreferrer">
+          <img class="yt-thumb" src="{{ $thumb }}" alt="" width="320" height="180" loading="lazy">
+          <span class="yt-body">
+            <span class="yt-date">{{ $dateLabel }}</span>
+            <span class="yt-title">{{ .title }}</span>
+            {{- with $meta -}}<span class="yt-meta">{{ delimit . " · " }}</span>{{- end -}}
+          </span>
+        </a>
+      </li>
+    {{- end -}}
+    </ul>
+  {{- end -}}
+{{- end -}}
+{{- if not $any -}}
+<p class="yt-empty">{{ cond $sv "Inga filmer ännu." "No videos yet." }}</p>
+{{- end -}}

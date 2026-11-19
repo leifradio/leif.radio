@@ -1,0 +1,56 @@
+# Videos on the @Leifradio YouTube channel (https://www.youtube.com/@Leifradio).
+# Only include IDs that have been verified (oembed 200). The shortcode sorts
+# newest first and groups by category: traning, morsenovell, ovrigt.
+#
+# Add or update an entry with:
+#   python3 scripts/add-youtube.py --id ID --date YYYY-MM-DD --title "..." --category morsenovell [--wpm 25 --length 4:51]
+
+videos:
+  - id: NjiB7iCWVHo
+    date: 2026-11-19
+    title: "Sifferträning 1–9 i CW – 30/35/40/50 WPM"
+    category: traning
+    wpm: "30/35/40/50"
+    length: "5:00"
+  - id: DdQ6KymlNU0
+    date: 2026-11-19
+    title: "The Postman of the Last Island"
+    category: morsenovell
+    wpm: 25
+    length: "5:54"
+  - id: PIIRCrEsGLc
+    date: 2026-11-18
+    title: "The Robot Who Learned to Knit"
+    category: morsenovell
+    wpm: 25
+    length: "4:40"
+  - id: roL_ZOXpm7A
+    date: 2026-11-16
+    title: "The Ferryman and the Fog"
+    category: morsenovell
+    wpm: 25
+    length: "5:08"
+  - id: U_ziDpYXvQQ
+    date: 2026-11-15
+    title: "The Glassblower and the Broken Bowl"
+    category: morsenovell
+    wpm: 25
+    length: "5:19"
+  - id: DCuVfDQe08U
+    date: 2026-11-12
+    title: "The Pearl Diver and the Old Turtle"
+    category: morsenovell
+    wpm: 25
+    length: "5:15"
+  - id: oPnOPahBoP4
+    date: 2026-11-11
+    title: "The Snowplow on the Mountain Road"
+    category: morsenovell
+    wpm: 25
+    length: "5:13"
+  - id: gpQcEABQwAU
+    date: 2026-11-09
+    title: "The Kite on the Winter Beach"
+    category: morsenovell
+    wpm: 25
+    length: "5:22"

@@ -29,7 +29,18 @@
 [[main]]
   name = "CW"
   pageRef = "cw"
+  identifier = "cw"
   weight = 15
+[[main]]
+  name = "Overview"
+  pageRef = "cw"
+  parent = "cw"
+  weight = 1
+[[main]]
+  name = "YouTube videos"
+  pageRef = "cw/youtube"
+  parent = "cw"
+  weight = 10
 
 [[main]]
   name = "EmComm"

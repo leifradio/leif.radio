@@ -1,10 +1,12 @@
 +++
 title = "Telegrafi"
-slug = "telegrafi"
+url = "/telegrafi/"
+description = "Telegrafi (CW): så lärde jag mig, länkar för att komma igång, och mina YouTube-filmer."
 showDate = false
 showAuthor = false
 showReadingTime = false
 showPagination = false
+showDateUpdated = false
 +++
 
 Telegrafi är det mode jag tycker absolut bäst om. Jag började lära mig telegrafi strax efter att jag fick mitt amatörradiocertifikat 2020 och har kämpat på sedan dess för att bli bra på det. Det är inte lätt för en gammal man som jag, men det går framåt :)
@@ -20,6 +22,10 @@ På YouTube hittar man mycket om telegrafi och ett bra första stopp är Kurt Zo
 Till sist en webbsida jag har lagt mycket tid på: [LCWO](https://lcwo.net/). Där är det smidigt att lära sig tecken och ord och att träna på flera olika sätt.
 
 Lycka till!
+
+## Mina filmer
+
+Mina egna YouTube-filmer, bland annat de dagliga morsenovellerna, finns på sidan [YouTube-filmer](/telegrafi/youtube/).
 
 ## SKED
 
