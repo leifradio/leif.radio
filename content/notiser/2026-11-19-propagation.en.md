@@ -1,5 +1,5 @@
 +++
-title = "HF conditions Thu"
+title = "HF conditions 19 Nov"
 date = 2026-11-19T08:00:00+01:00
 notis_type = "propagation"
 +++
