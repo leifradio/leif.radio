@@ -1,7 +1,7 @@
 +++
 title = "YouTube-filmer"
 url = "/telegrafi/youtube/"
-description = "Mina YouTube-filmer: morsenoveller, CW-träning och annat från kanalen Leif."
+description = "Mina YouTube-filmer: morsenoveller, CW-träning och annat från kanalen Leif.radio."
 weight = 10
 showDate = false
 showAuthor = false
@@ -14,6 +14,6 @@ showHero = false
   render = "always"
 +++
 
-Här finns mina filmer från kanalen [Leif](https://www.youtube.com/@Leifradio) på YouTube. De flesta är olistade morsenoveller i 25 WPM, och ibland lägger jag upp träningsfilmer. Nya noveller kommer varje morgon.
+Här finns mina filmer från kanalen [Leif.radio](https://www.youtube.com/@Leifradio) på YouTube. De flesta är olistade morsenoveller i 25 WPM, och ibland lägger jag upp träningsfilmer. Nya noveller kommer varje morgon.
 
 {{< youtube-list >}}
