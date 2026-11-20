@@ -35,6 +35,7 @@
   name = "Overview"
   pageRef = "cw"
   parent = "cw"
+  identifier = "cw-overview"
   weight = 1
 [[main]]
   name = "YouTube videos"
@@ -45,7 +46,19 @@
 [[main]]
   name = "EmComm"
   pageRef = "emcomm"
+  identifier = "emcomm"
   weight = 20
+[[main]]
+  name = "Overview"
+  pageRef = "emcomm"
+  parent = "emcomm"
+  identifier = "emcomm-overview"
+  weight = 1
+[[main]]
+  name = "Quick guides"
+  pageRef = "emcomm/lathundar"
+  parent = "emcomm"
+  weight = 10
 
 [[main]]
   name = "Calendar"
@@ -61,6 +74,7 @@
   name = "Overview"
   pageRef = "activities"
   parent = "activities"
+  identifier = "activities-overview"
   weight = 1
 [[main]]
   name = "SOTA"

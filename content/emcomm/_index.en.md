@@ -1,6 +1,8 @@
 +++
 title = "EmComm"
-slug = "emcomm"
+url = "/en/emcomm/"
+description = "Emergency communications with amateur radio: Winlink, VarAC and quick guides from the home station in Borlänge."
+orderByWeight = true
 showDate = false
 showAuthor = false
 showReadingTime = false
@@ -20,6 +22,8 @@ There is a natural connection here to my interest in portable amateur radio. Whe
 ## Winlink and VarAC
 
 My interest in emergency communications mainly involves Winlink and VarAC, which I use with the callsign SM4T.
+
+I have written up how I connect Winlink Express and VARA HF to the home station (FLEX-8400) as a quick guide: [Winlink on FlexRadio](/en/emcomm/quick-guides/winlink-flexradio/). Further guides are collected under [Quick guides](/en/emcomm/quick-guides/).
 
 Winlink makes it possible to send and receive email-like messages over radio. My own station does not need an internet connection, but reaching ordinary email normally involves a radio gateway that is itself connected to the internet. Direct transfers between radio stations that support this are also possible.
 

@@ -1,6 +1,8 @@
 +++
 title = "Krissamband"
-slug = "krissamband"
+url = "/krissamband/"
+description = "Krissamband med amatörradio: Winlink, VarAC och lathundar från hemmastationen i Borlänge."
+orderByWeight = true
 showDate = false
 showAuthor = false
 showReadingTime = false
@@ -20,6 +22,8 @@ Här finns en naturlig koppling till mitt intresse för portabel amatörradio. N
 ## Winlink och VarAC
 
 Mitt intresse för krissamband omfattar framför allt Winlink och VarAC, som jag använder med anropssignalen SM4T.
+
+Hur jag kopplar Winlink Express och VARA HF till hemmastationen (FLEX-8400) har jag skrivit ihop som en lathund: [Winlink på Flexradio](/krissamband/lathundar/winlink-flexradio/). Fler guider samlar jag under [Lathundar](/krissamband/lathundar/).
 
 Winlink gör det möjligt att skicka och ta emot e-postliknande meddelanden över radio. Min egen station behöver då inte ha internetanslutning, men för att nå vanlig e-post används normalt en radiogateway som i sin tur har kontakt med internet. Det finns också möjlighet till direktöverföring mellan radiostationer som har stöd för det.
 
