@@ -34,7 +34,7 @@ date = 2026-11-18T06:45:00+01:00
 notis_type = "weather"
 +++
 
-⛅ Halvklart i eftermiddag, ☁️ mulet i kväll. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI.
+⛅ Halvklart på eftermiddagen, ☁️ mulet på kvällen. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI.
 ```
 
 Fields:
@@ -75,7 +75,7 @@ python3 scripts/add-notis.py \
   --type weather \
   --title-sv "Väder i Borlänge 18 nov" \
   --title-en "Weather in Borlänge 18 Nov" \
-  --text-sv "⛅ Halvklart i eftermiddag, ☁️ mulet i kväll. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI." \
+  --text-sv "⛅ Halvklart på eftermiddagen, ☁️ mulet på kvällen. 🌡️ −2 °C till −4 °C. Ingen nederbörd enligt SMHI." \
   --text-en "⛅ Half-clear this afternoon, ☁️ overcast this evening. 🌡️ −2 °C to −4 °C. No precipitation according to SMHI." \
   --date 2026-11-18T06:45:00 \
   --slug vader
