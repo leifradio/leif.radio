@@ -7,7 +7,7 @@
   pageRef = "map"
   weight = 35
 [[main]]
-  name = "About / Station"
+  name = "About"
   pageRef = "about"
   identifier = "about"
   weight = 40
@@ -15,12 +15,18 @@
   name = "About me"
   pageRef = "about"
   parent = "about"
+  identifier = "about-me"
   weight = 1
+[[main]]
+  name = "About ham radio"
+  pageRef = "amatorradio"
+  parent = "about"
+  weight = 2
 [[main]]
   name = "Gear"
   pageRef = "gear"
   parent = "about"
-  weight = 2
+  weight = 3
 [[main]]
   name = "Tags"
   pageRef = "tags"
