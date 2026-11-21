@@ -23,7 +23,7 @@ Här finns en naturlig koppling till mitt intresse för portabel amatörradio. N
 
 Mitt intresse för krissamband omfattar framför allt vanlig HF, Winlink och VarAC samt förstås lokal kommunikation med komradio (walkietalkie/HT) och Meshcoreliknande system.
 
-Hur jag kopplar Winlink Express och VARA HF till hemmastationen (FLEX-8400) har jag skrivit ihop som en lathund: [Winlink på Flexradio](/krissamband/lathundar/winlink-flexradio/). Portabelt gör jag samma sak med TX-500MP och LiNK500MP: [Winlink med TX-500MP och LiNK500MP](/krissamband/lathundar/winlink-tx500mp/). Fler guider samlar jag under [Lathundar](/krissamband/lathundar/).
+Hur jag kopplar Winlink Express och VARA HF till hemmastationen (FLEX-8400) har jag skrivit ihop som en lathund: [Winlink på Flexradio](/krissamband/lathundar/winlink-flexradio/). Portabelt gör jag samma sak med TX-500MP och LiNK500MP: [Winlink med TX-500MP och LiNK500MP](/krissamband/lathundar/winlink-tx500mp/). För lokal komradio finns [Komradio för närkommunikation](/krissamband/lathundar/komradio/). Fler guider samlar jag under [Lathundar](/krissamband/lathundar/).
 
 Winlink gör det möjligt att skicka och ta emot e-postliknande meddelanden över radio. Min egen station behöver då inte ha internetanslutning, men för att nå vanlig e-post används normalt en radiogateway som i sin tur har kontakt med internet. Det finns också möjlighet till direktöverföring mellan radiostationer som har stöd för det.
 
