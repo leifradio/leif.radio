@@ -25,6 +25,8 @@ This is how I run Winlink portable, with a Lab599 TX-500MP and a DIY599 LiNK500M
 
 ## 1. Connecting the LiNK500MP to the TX-500MP
 
+Mount the LiNK500MP on the TX-500MP according to the manual (this is only done the first time, so I'm not covering it here).
+
 Set the LiNK to **mode 3: BT ⇒ Radio CAT Interface (non iOS devices)**. That is the mode for CAT over Bluetooth to a Windows computer. Wireless audio is available in all modes.
 
 To change mode:
