@@ -286,6 +286,15 @@
   color: #7dd3fc;
 }
 .notis-winlink .notis-icon::before { content: "✉"; }
+.notis-atno .notis-icon {
+  background: rgba(5, 150, 105, 0.14);
+  color: #047857;
+}
+.dark .notis-atno .notis-icon {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6ee7b7;
+}
+.notis-atno .notis-icon::before { content: "★"; }
 .notis-other .notis-icon {
   background: rgba(100, 116, 139, 0.14);
   color: #475569;

@@ -70,7 +70,7 @@ export QRZ_LOGBOOK_API_KEY='…'   # from QRZ → Logbook → Settings → API
 python3 scripts/fetch-qrz-map.py
 ```
 
-That writes `static/data/qsos.json` and `static/data/qso-summary.json`. Commit those files (or let the daily routine do it) and push to `main`.
+That writes `static/data/qsos.json`, `static/data/qso-summary.json` and `data/qso-log.json`. Then run `python3 scripts/check-atno.py` to create a “Ny ATNO” notis if the log has a new DXCC entity (the first run only writes `data/atno-baseline.json`). Commit those files together with any new `content/notiser/*-atno-*.md` files (or let the daily routine do it) and push to `main`.
 
 
 ## Notiser (short notes)

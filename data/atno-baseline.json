@@ -1,0 +1,721 @@
+{
+  "updated": "2026-11-21T06:51:32Z",
+  "count": 55,
+  "entities": {
+    "15": {
+      "name": "Asiatic Russia",
+      "first": {
+        "date": "20260420",
+        "band": "20m",
+        "mode": "CW",
+        "call": "R065N",
+        "time": "1830"
+      },
+      "dxcc": 15,
+      "cont": "AS",
+      "cqz": 16
+    },
+    "21": {
+      "name": "Balearic Islands",
+      "first": {
+        "date": "20260425",
+        "band": "20m",
+        "mode": "CW",
+        "call": "EA6ACA",
+        "time": "0525"
+      },
+      "dxcc": 21,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "27": {
+      "name": "Belarus",
+      "first": {
+        "date": "20260508",
+        "band": "40m",
+        "mode": "CW",
+        "call": "EV81OB",
+        "time": "0423"
+      },
+      "dxcc": 27,
+      "cont": "EU",
+      "cqz": 16
+    },
+    "29": {
+      "name": "Canary Islands",
+      "first": {
+        "date": "20261005",
+        "band": "20m",
+        "mode": "CW",
+        "call": "EA8TL",
+        "time": "1702"
+      },
+      "dxcc": 29,
+      "cont": "AF",
+      "cqz": 33
+    },
+    "52": {
+      "name": "Estonia",
+      "first": {
+        "date": "20260822",
+        "band": "40m",
+        "mode": "CW",
+        "call": "ES3YJ",
+        "time": "0943"
+      },
+      "dxcc": 52,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "54": {
+      "name": "Russia",
+      "first": {
+        "date": "20260503",
+        "band": "17m",
+        "mode": "CW",
+        "call": "RP81PW",
+        "time": "1256"
+      },
+      "dxcc": 54,
+      "cont": "EU",
+      "cqz": 16
+    },
+    "71": {
+      "name": "Galapagos Islands",
+      "first": {
+        "date": "20260522",
+        "band": "20m",
+        "mode": "CW",
+        "call": "HC8M",
+        "time": "0318"
+      },
+      "dxcc": 71,
+      "cont": "SA",
+      "cqz": 10
+    },
+    "75": {
+      "name": "Georgia",
+      "first": {
+        "date": "20261002",
+        "band": "40m",
+        "mode": "CW",
+        "call": "4L/US8ICM",
+        "time": "1833"
+      },
+      "dxcc": 75,
+      "cont": "AS",
+      "cqz": 21
+    },
+    "145": {
+      "name": "Latvia",
+      "first": {
+        "date": "20260818",
+        "band": "20m",
+        "mode": "CW",
+        "call": "YL35ZS",
+        "time": "1744"
+      },
+      "dxcc": 145,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "146": {
+      "name": "Lithuania",
+      "first": {
+        "date": "20260512",
+        "band": "30m",
+        "mode": "CW",
+        "call": "LY100RADIO",
+        "time": "1517"
+      },
+      "dxcc": 146,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "150": {
+      "name": "Australia",
+      "first": {
+        "date": "20260521",
+        "band": "40m",
+        "mode": "CW",
+        "call": "VK3CWB",
+        "time": "1927"
+      },
+      "dxcc": 150,
+      "cont": "OC",
+      "cqz": 30
+    },
+    "179": {
+      "name": "Moldova",
+      "first": {
+        "date": "20260507",
+        "band": "20m",
+        "mode": "CW",
+        "call": "ER9V",
+        "time": "1609"
+      },
+      "dxcc": 179,
+      "cont": "EU",
+      "cqz": 16
+    },
+    "206": {
+      "name": "Austria",
+      "first": {
+        "date": "20261007",
+        "band": "40m",
+        "mode": "CW",
+        "call": "OE8DDX",
+        "time": "0628"
+      },
+      "dxcc": 206,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "207": {
+      "name": "Rodriguez Island",
+      "first": {
+        "date": "20260504",
+        "band": "17m",
+        "mode": "CW",
+        "call": "3B9G",
+        "time": "1537"
+      },
+      "dxcc": 207,
+      "cont": "AF",
+      "cqz": 39
+    },
+    "209": {
+      "name": "Belgium",
+      "first": {
+        "date": "20260426",
+        "band": "30m",
+        "mode": "CW",
+        "call": "OO26WARD",
+        "time": "1903"
+      },
+      "dxcc": 209,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "212": {
+      "name": "Bulgaria",
+      "first": {
+        "date": "20260507",
+        "band": "40m",
+        "mode": "CW",
+        "call": "LZ81ZZ",
+        "time": "1853"
+      },
+      "dxcc": 212,
+      "cont": "EU",
+      "cqz": 20
+    },
+    "221": {
+      "name": "Denmark",
+      "first": {
+        "date": "20260514",
+        "band": "40m",
+        "mode": "CW",
+        "call": "OZ8IE/P",
+        "time": "1910"
+      },
+      "dxcc": 221,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "223": {
+      "name": "England",
+      "first": {
+        "date": "20260430",
+        "band": "20m",
+        "mode": "CW",
+        "call": "M5LGM",
+        "time": "1357"
+      },
+      "dxcc": 223,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "224": {
+      "name": "Finland",
+      "first": {
+        "date": "20260412",
+        "band": "40m",
+        "mode": "CW",
+        "call": "OH1HAQ",
+        "time": "0930"
+      },
+      "dxcc": 224,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "227": {
+      "name": "France",
+      "first": {
+        "date": "20261003",
+        "band": "30m",
+        "mode": "CW",
+        "call": "TM47CDXC",
+        "time": "0733"
+      },
+      "dxcc": 227,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "230": {
+      "name": "Germany",
+      "first": {
+        "date": "20260424",
+        "band": "40m",
+        "mode": "CW",
+        "call": "DP50ANT",
+        "time": "1850"
+      },
+      "dxcc": 230,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "236": {
+      "name": "Greece",
+      "first": {
+        "date": "20260422",
+        "band": "40m",
+        "mode": "CW",
+        "call": "SX8LGT",
+        "time": "1913"
+      },
+      "dxcc": 236,
+      "cont": "EU",
+      "cqz": 20
+    },
+    "239": {
+      "name": "Hungary",
+      "first": {
+        "date": "20260418",
+        "band": "30m",
+        "mode": "CW",
+        "call": "HA235S",
+        "time": "1543"
+      },
+      "dxcc": 239,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "245": {
+      "name": "Ireland",
+      "first": {
+        "date": "20260430",
+        "band": "40m",
+        "mode": "CW",
+        "call": "EI9FP",
+        "time": "2013"
+      },
+      "dxcc": 245,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "248": {
+      "name": "Italy",
+      "first": {
+        "date": "20260510",
+        "band": "40m",
+        "mode": "CW",
+        "call": "IQ8GT",
+        "time": "1918"
+      },
+      "dxcc": 248,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "256": {
+      "name": "Madeira Island",
+      "first": {
+        "date": "20261121",
+        "band": "40m",
+        "mode": "CW",
+        "call": "CT9ACP",
+        "time": "0553"
+      },
+      "dxcc": 256,
+      "cont": "AF",
+      "cqz": 33
+    },
+    "259": {
+      "name": "Svalbard",
+      "first": {
+        "date": "20260422",
+        "band": "40m",
+        "mode": "CW",
+        "call": "JW5E",
+        "time": "1512"
+      },
+      "dxcc": 259,
+      "cont": "EU",
+      "cqz": 40
+    },
+    "260": {
+      "name": "Monaco",
+      "first": {
+        "date": "20260604",
+        "band": "40m",
+        "mode": "CW",
+        "call": "TM06RMC",
+        "time": "1915"
+      },
+      "dxcc": 260,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "263": {
+      "name": "Netherlands",
+      "first": {
+        "date": "20260926",
+        "band": "40m",
+        "mode": "CW",
+        "call": "PA7RA",
+        "time": "0620"
+      },
+      "dxcc": 263,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "269": {
+      "name": "Poland",
+      "first": {
+        "date": "20260424",
+        "band": "40m",
+        "mode": "CW",
+        "call": "3Z75HSC",
+        "time": "0436"
+      },
+      "dxcc": 269,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "272": {
+      "name": "Portugal",
+      "first": {
+        "date": "20260522",
+        "band": "40m",
+        "mode": "CW",
+        "call": "CQ70P",
+        "time": "1920"
+      },
+      "dxcc": 272,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "275": {
+      "name": "Romania",
+      "first": {
+        "date": "20260517",
+        "band": "40m",
+        "mode": "CW",
+        "call": "YQ33SGDAY",
+        "time": "1717"
+      },
+      "dxcc": 275,
+      "cont": "EU",
+      "cqz": 20
+    },
+    "279": {
+      "name": "Scotland",
+      "first": {
+        "date": "20261003",
+        "band": "30m",
+        "mode": "CW",
+        "call": "GM0GMN",
+        "time": "0626"
+      },
+      "dxcc": 279,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "281": {
+      "name": "Spain",
+      "first": {
+        "date": "20260424",
+        "band": "40m",
+        "mode": "CW",
+        "call": "AO750SJ",
+        "time": "1844"
+      },
+      "dxcc": 281,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "284": {
+      "name": "Sweden",
+      "first": {
+        "date": "20260926",
+        "band": "40m",
+        "mode": "CW",
+        "call": "SM5COP",
+        "time": "1002"
+      },
+      "dxcc": 284,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "287": {
+      "name": "Switzerland",
+      "first": {
+        "date": "20260604",
+        "band": "20m",
+        "mode": "CW",
+        "call": "HB200LF",
+        "time": "1505"
+      },
+      "dxcc": 287,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "288": {
+      "name": "Ukraine",
+      "first": {
+        "date": "20260421",
+        "band": "40m",
+        "mode": "CW",
+        "call": "UT8ER",
+        "time": "0348"
+      },
+      "dxcc": 288,
+      "cont": "EU",
+      "cqz": 16
+    },
+    "291": {
+      "name": "United States",
+      "first": {
+        "date": "20260424",
+        "band": "20m",
+        "mode": "CW",
+        "call": "KE4EB",
+        "time": "2004"
+      },
+      "dxcc": 291,
+      "cont": "NA",
+      "cqz": 5
+    },
+    "294": {
+      "name": "Wales",
+      "first": {
+        "date": "20261006",
+        "band": "40m",
+        "mode": "CW",
+        "call": "GW4WDC",
+        "time": "1530"
+      },
+      "dxcc": 294,
+      "cont": "EU",
+      "cqz": 14
+    },
+    "296": {
+      "name": "Serbia",
+      "first": {
+        "date": "20260508",
+        "band": "40m",
+        "mode": "CW",
+        "call": "YU65AEC",
+        "time": "0422"
+      },
+      "dxcc": 296,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "318": {
+      "name": "China",
+      "first": {
+        "date": "20260503",
+        "band": "15m",
+        "mode": "CW",
+        "call": "B4CRA",
+        "time": "1301"
+      },
+      "dxcc": 318,
+      "cont": "AS",
+      "cqz": 24
+    },
+    "327": {
+      "name": "Indonesia",
+      "first": {
+        "date": "20260820",
+        "band": "20m",
+        "mode": "CW",
+        "call": "8B81JB",
+        "time": "1815"
+      },
+      "dxcc": 327,
+      "cont": "OC",
+      "cqz": 28
+    },
+    "336": {
+      "name": "Israel",
+      "first": {
+        "date": "20260605",
+        "band": "20m",
+        "mode": "CW",
+        "call": "4Z01A",
+        "time": "1936"
+      },
+      "dxcc": 336,
+      "cont": "AS",
+      "cqz": 20
+    },
+    "339": {
+      "name": "Japan",
+      "first": {
+        "date": "20260523",
+        "band": "20m",
+        "mode": "CW",
+        "call": "JJ0PKS",
+        "time": "1936"
+      },
+      "dxcc": 339,
+      "cont": "AS",
+      "cqz": 25
+    },
+    "390": {
+      "name": "Turkey",
+      "first": {
+        "date": "20260424",
+        "band": "15m",
+        "mode": "CW",
+        "call": "TA6B",
+        "time": "1350"
+      },
+      "dxcc": 390,
+      "cont": "AS",
+      "cqz": 20
+    },
+    "442": {
+      "name": "Mali",
+      "first": {
+        "date": "20260505",
+        "band": "30m",
+        "mode": "CW",
+        "call": "TZ4AM",
+        "time": "1905"
+      },
+      "dxcc": 442,
+      "cont": "AF",
+      "cqz": 35
+    },
+    "446": {
+      "name": "Morocco",
+      "first": {
+        "date": "20260623",
+        "band": "20m",
+        "mode": "CW",
+        "call": "CN2DX",
+        "time": "0419"
+      },
+      "dxcc": 446,
+      "cont": "AF",
+      "cqz": 33
+    },
+    "497": {
+      "name": "Croatia",
+      "first": {
+        "date": "20260424",
+        "band": "30m",
+        "mode": "CW",
+        "call": "9A170TESLA",
+        "time": "1858"
+      },
+      "dxcc": 497,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "499": {
+      "name": "Slovenia",
+      "first": {
+        "date": "20260608",
+        "band": "20m",
+        "mode": "CW",
+        "call": "S580ZRS",
+        "time": "1940"
+      },
+      "dxcc": 499,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "501": {
+      "name": "Bosnia and Herzegovina",
+      "first": {
+        "date": "20260522",
+        "band": "20m",
+        "mode": "CW",
+        "call": "E77DX",
+        "time": "1930"
+      },
+      "dxcc": 501,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "502": {
+      "name": "North Macedonia (Republic of)",
+      "first": {
+        "date": "20260515",
+        "band": "40m",
+        "mode": "CW",
+        "call": "Z35M",
+        "time": "1946"
+      },
+      "dxcc": 502,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "503": {
+      "name": "Czech Republic",
+      "first": {
+        "date": "20260430",
+        "band": "40m",
+        "mode": "CW",
+        "call": "OL900CO",
+        "time": "1950"
+      },
+      "dxcc": 503,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "504": {
+      "name": "Slovak Republic",
+      "first": {
+        "date": "20260529",
+        "band": "40m",
+        "mode": "CW",
+        "call": "OM0E",
+        "time": "1855"
+      },
+      "dxcc": 504,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "514": {
+      "name": "Montenegro",
+      "first": {
+        "date": "20261004",
+        "band": "30m",
+        "mode": "CW",
+        "call": "4O/R2AB",
+        "time": "1834"
+      },
+      "dxcc": 514,
+      "cont": "EU",
+      "cqz": 15
+    },
+    "522": {
+      "name": "Republic of Kosovo",
+      "first": {
+        "date": "20261106",
+        "band": "40m",
+        "mode": "CW",
+        "call": "Z68MU",
+        "time": "0510"
+      },
+      "dxcc": 522,
+      "cont": "EU",
+      "cqz": 15
+    }
+  }
+}

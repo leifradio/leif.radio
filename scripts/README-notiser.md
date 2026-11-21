@@ -2,11 +2,12 @@
 
 Short news items shown in a right-hand column on the front page (and as a full list at `/notiser/` and `/en/notes/`). They are **not** regular posts: they do not appear in the main post list, the main RSS feed, or Todoist.
 
-The official kinds are three daily notes, shown newest first (by `date`, including the time):
+The official kinds, shown newest first (by `date`, including the time), are:
 
 - Weather in Borlänge (`weather`)
 - Propagation (`propagation`)
 - Morse novels (`youtube`)
+- New DXCC entity / All Time New One (`atno`), created when the QRZ log gains a new entity
 
 Swedish is the root language; always add both a `.sv.md` and an `.en.md` file.
 
@@ -22,6 +23,7 @@ Recommended slugs for the daily routines:
 - Weather (around 06:45): `YYYY-MM-DD-vader`
 - Morse novel (around 07:00): `YYYY-MM-DD-morsenovell`
 - Propagation (around 08:00): `YYYY-MM-DD-propagation`
+- ATNO (when the QRZ routine finds a new DXCC entity): `YYYY-MM-DD-atno-<prefix>`
 
 ## Front matter
 
@@ -41,7 +43,7 @@ Fields:
 
 - `title` — short heading (translated in each language file)
 - `date` — keep the same in both files; use Europe/Stockholm offset (`+01:00` or `+02:00`). The front page and the list sort by this timestamp, newest first.
-- `notis_type` — `weather` | `propagation` | `youtube` (the three official kinds)
+- `notis_type` — `weather` | `propagation` | `youtube` | `atno` (and also `winlink` or `other`)
 - `link` — optional. External URLs (`https://…`) open as they are. Site-relative paths such as `/posts/2026-11-18-winlink-wednesday/` are prefixed with `/en` on the English site.
 - Body — one to three short lines, translated. For weather, use a real forecast (SMHI) and do not invent figures.
 
@@ -123,7 +125,42 @@ python3 scripts/add-notis.py \
   --slug propagation
 ```
 
-`--date` can be `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS` (Europe/Stockholm if no offset). Omit it to use the current time. `--slug` defaults to `vader` for `weather`, `morsenovell` for `youtube`, and `propagation` for `propagation`. The script refuses to overwrite an existing file unless you pass `--force`.
+
+ATNO (All Time New One):
+
+```
+python3 scripts/add-notis.py \
+  --type atno \
+  --title-sv "Ny ATNO: Rodriguez Island" \
+  --title-en "New ATNO: Rodriguez Island" \
+  --text-sv "QSO med 3B9FR på 20 m CW den 21 november 2026 kl. 16:12. Rodriguez Island ligger i Afrika, CQ-zon 39." \
+  --text-en "A QSO with 3B9FR on 20 m CW on 21 November 2026 at 16:12. Rodriguez Island is in Africa, CQ zone 39." \
+  --date 2026-11-21T09:05:00 \
+  --slug atno-3b9
+```
+
+The type label is **ATNO** in both languages. The hover text is **All Time New One** in both languages; do not add a Swedish translation. Entity names stay in English in both the Swedish and English notis. Do not create a Todoist task for an ATNO notis.
+
+The daily QRZ routine should run this after `scripts/fetch-qrz-map.py`:
+
+```
+python3 scripts/check-atno.py
+```
+
+`--dry-run` prints what would be created and writes nothing. The first run (when `data/atno-baseline.json` is missing) writes the baseline from the current log and creates no notiser. Later runs create a bilingual notis for each new DXCC entity and update the baseline. Entities are never removed from the baseline, so a partial fetch cannot reappear as a new ATNO.
+
+`check-atno.py` reads `data/qso-log.json` (written by `fetch-qrz-map.py`, and includes QSOs that have no map location), falling back to `static/data/qsos.json`. Entity facts (continent, CQ zone) come from the QRZ ADIF fields when present, otherwise from `scripts/data/cty.dat`. Times in the notis are converted from UTC to Europe/Stockholm.
+
+After the QRZ fetch and the ATNO check, commit:
+
+```
+git add static/data/qsos.json static/data/qso-summary.json data/qso-log.json data/atno-baseline.json
+git add content/notiser/*-atno-*.sv.md content/notiser/*-atno-*.en.md   # if any were created
+git commit -m "QRZ-logg och ATNO-notiser"
+git push origin main
+```
+
+`--date` can be `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS` (Europe/Stockholm if no offset). Omit it to use the current time. `--slug` defaults to `vader` for `weather`, `morsenovell` for `youtube`, `propagation` for `propagation`, and `atno` for `atno`. The script refuses to overwrite an existing file unless you pass `--force`.
 
 ## SMHI Wsymb2 → emoji
 

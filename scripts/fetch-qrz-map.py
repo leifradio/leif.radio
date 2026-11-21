@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Fetch SM4T QRZ Logbook QSOs and write static/data/qsos.json for the site map.
+"""Fetch SM4T QRZ Logbook QSOs and write static/data/qsos.json for the site map
+and data/qso-log.json (all QSOs, including those without a map location) for ATNO checks.
 
 Requires env QRZ_LOGBOOK_API_KEY. Never prints or writes the key.
 Usage: QRZ_LOGBOOK_API_KEY=… python3 scripts/fetch-qrz-map.py
@@ -139,7 +140,7 @@ def record_to_point(rec: dict[str, str]) -> dict | None:
         return None
     status = (rec.get("app_qrzlog_status") or "").strip().upper()
     confirmed = status == "C" or (rec.get("lotw_qsl_rcvd") or "").upper() in ("Y", "V")
-    return {
+    point = {
         "call": rec["call"].strip().upper(),
         "band": (rec.get("band") or "").strip().lower() or None,
         "mode": (rec.get("mode") or "").strip().upper() or None,
@@ -151,6 +152,40 @@ def record_to_point(rec: dict[str, str]) -> dict | None:
         "lon": round(lon, 5),
         "confirmed": confirmed,
     }
+    point.update(dxcc_fields(rec))
+    return point
+
+
+def dxcc_fields(rec: dict[str, str]) -> dict:
+    """DXCC entity number, continent and CQ zone from a QRZ ADIF record."""
+    fields: dict = {}
+    dxcc = (rec.get("dxcc") or "").strip()
+    if dxcc.isdigit():
+        fields["dxcc"] = int(dxcc)
+    cont = (rec.get("cont") or "").strip().upper() or None
+    if cont:
+        fields["cont"] = cont
+    cqz = (rec.get("cqz") or "").strip()
+    if cqz.isdigit():
+        fields["cqz"] = int(cqz)
+    return fields
+
+
+def record_to_log_entry(rec: dict[str, str]) -> dict | None:
+    """Compact QSO row for ATNO detection, including QSOs without a map location."""
+    call = (rec.get("call") or "").strip().upper()
+    if not call:
+        return None
+    entry = {
+        "call": call,
+        "band": (rec.get("band") or "").strip().lower() or None,
+        "mode": (rec.get("mode") or "").strip().upper() or None,
+        "date": (rec.get("qso_date") or "").strip() or None,
+        "time": (rec.get("time_on") or "").strip() or None,
+        "country": (rec.get("country") or "").strip() or None,
+    }
+    entry.update(dxcc_fields(rec))
+    return entry
 
 
 def fetch_all() -> tuple[list[dict[str, str]], dict[str, str]]:
@@ -243,14 +278,35 @@ def main() -> None:
         "modes": dict(Counter(p["mode"] for p in points if p.get("mode")).most_common()),
     }
 
+    log_entries: list[dict] = []
+    for rec in recs:
+        entry = record_to_log_entry(rec)
+        if entry:
+            log_entries.append(entry)
+    log_entries.sort(key=lambda p: (p.get("date") or "", p.get("time") or ""))
+    with_dxcc = sum(1 for e in log_entries if e.get("dxcc"))
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     qsos_path = OUT_DIR / "qsos.json"
     summary_path = OUT_DIR / "qso-summary.json"
+    log_dir = REPO_ROOT / "data"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / "qso-log.json"
     qsos_path.write_text(json.dumps(points, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    log_path.write_text(
+        json.dumps(
+            {"generated": generated, "count": len(log_entries), "qsos": log_entries},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
     print(f"wrote {qsos_path.relative_to(REPO_ROOT)} ({len(points)} QSOs)")
     print(f"wrote {summary_path.relative_to(REPO_ROOT)}")
+    print(f"wrote {log_path.relative_to(REPO_ROOT)} ({len(log_entries)} QSOs, {with_dxcc} with dxcc)")
     print(
         f"summary: plotted={len(points)} skipped={skipped} withGrid={with_grid} "
         f"confirmed={confirmed} home={home['grid'] if home else None}"

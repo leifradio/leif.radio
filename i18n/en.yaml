@@ -30,6 +30,8 @@ notiser:
   type_youtube: "YouTube"
   type_propagation: "Conditions"
   type_weather: "Weather"
+  type_atno: "ATNO"
+  type_atno_title: "All Time New One"
   type_winlink: "Winlink"
   type_other: "Note"
 

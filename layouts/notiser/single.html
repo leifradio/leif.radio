@@ -1,9 +1,13 @@
 {{ define "main" }}
   {{- $type := .Params.notis_type | default "other" -}}
-  {{- if not (in (slice "youtube" "propagation" "weather" "winlink" "other") $type) -}}
+  {{- if not (in (slice "youtube" "propagation" "weather" "atno" "winlink" "other") $type) -}}
     {{- $type = "other" -}}
   {{- end -}}
   {{- $typeLabel := i18n (printf "notiser.type_%s" $type) -}}
+  {{- $typeTitle := $typeLabel -}}
+  {{- if eq $type "atno" -}}
+    {{- $typeTitle = i18n "notiser.type_atno_title" -}}
+  {{- end -}}
   {{- $href := "" -}}
   {{- $external := false -}}
   {{- with .Params.link -}}
@@ -18,7 +22,7 @@
     <header>
       <p class="notis-meta">
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "2 January 2006" }}</time>
-        <span class="notis-type" title="{{ $typeLabel }}">
+        <span class="notis-type" title="{{ $typeTitle }}">
           <span class="notis-icon" aria-hidden="true"></span>
           <span class="notis-type-label">{{ $typeLabel }}</span>
         </span>
