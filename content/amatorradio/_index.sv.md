@@ -7,6 +7,7 @@ showDate = false
 showAuthor = false
 showReadingTime = false
 orderByWeight = true
+cardView = true
 +++
 
 Här förklarar jag hur amatörradio fungerar – till exempel vågutbredning, jonosfären och de begrepp som ofta dyker upp när man tittar på HF-läget. Fler artiklar tillkommer efterhand.
