@@ -19,7 +19,7 @@ En radio i en låda är ingen färdig beredskap. Jag tycker att det viktiga är 
 
 Här finns en naturlig koppling till mitt intresse för portabel amatörradio. När jag tar med mig radion ut i naturen får jag öva på att ordna en fungerande station med den utrustning och energi jag har med mig. Det är roligt i sig, men ger också erfarenheter som kan vara värdefulla när förutsättningarna inte är lika bekväma som hemma.
 
-## Winlink och VarAC
+## Vad jag kör
 
 Mitt intresse för krissamband omfattar framför allt vanlig HF, Winlink och VarAC samt förstås lokal kommunikation med komradio (walkietalkie/HT) och Meshcoreliknande system.
 

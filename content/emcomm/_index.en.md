@@ -19,7 +19,7 @@ A radio in a box does not make you prepared. I think the important thing is to u
 
 There is a natural connection here to my interest in portable amateur radio. When I take my radio out into nature, I get to practise setting up a working station with the equipment and power I have with me. That is enjoyable in itself, but it also provides experience that can be valuable when conditions are not as comfortable as at home.
 
-## Winlink and VarAC
+## What I run
 
 My interest in emergency communications mainly covers regular HF, Winlink and VarAC, and of course local communication with handheld radios (walkie-talkies/HTs) and MeshCore-like systems.
 
