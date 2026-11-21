@@ -21,7 +21,7 @@ There is a natural connection here to my interest in portable amateur radio. Whe
 
 ## Winlink and VarAC
 
-My interest in emergency communications mainly involves Winlink and VarAC, which I use with the callsign SM4T.
+My interest in emergency communications mainly covers regular HF, Winlink and VarAC, and of course local communication with handheld radios (walkie-talkies/HTs) and MeshCore-like systems.
 
 I have written up how I connect Winlink Express and VARA HF to the home station (FLEX-8400) as a quick guide: [Winlink on FlexRadio](/en/emcomm/quick-guides/winlink-flexradio/). Portable, I do the same with the TX-500MP and LiNK500MP: [Winlink with TX-500MP and LiNK500MP](/en/emcomm/quick-guides/winlink-tx500mp/). Further guides are collected under [Quick guides](/en/emcomm/quick-guides/).
 

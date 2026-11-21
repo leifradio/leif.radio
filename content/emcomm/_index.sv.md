@@ -21,7 +21,7 @@ Här finns en naturlig koppling till mitt intresse för portabel amatörradio. N
 
 ## Winlink och VarAC
 
-Mitt intresse för krissamband omfattar framför allt Winlink och VarAC, som jag använder med anropssignalen SM4T.
+Mitt intresse för krissamband omfattar framför allt vanlig HF, Winlink och VarAC samt förstås lokal kommunikation med komradio (walkietalkie/HT) och Meshcoreliknande system.
 
 Hur jag kopplar Winlink Express och VARA HF till hemmastationen (FLEX-8400) har jag skrivit ihop som en lathund: [Winlink på Flexradio](/krissamband/lathundar/winlink-flexradio/). Portabelt gör jag samma sak med TX-500MP och LiNK500MP: [Winlink med TX-500MP och LiNK500MP](/krissamband/lathundar/winlink-tx500mp/). Fler guider samlar jag under [Lathundar](/krissamband/lathundar/).
 
