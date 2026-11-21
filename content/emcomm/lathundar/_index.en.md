@@ -9,4 +9,4 @@ orderByWeight = true
 cardView = true
 +++
 
-This is where I collect quick guides for emergency communications, mainly how I run Winlink and VarAC from home with the FlexRadio FLEX-8400.
+This is where I collect quick guides for emergency communications, mainly how I run Winlink and VarAC from home with the FlexRadio FLEX-8400. Click a guide to read it.

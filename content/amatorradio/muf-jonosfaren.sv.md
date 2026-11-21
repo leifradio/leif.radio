@@ -1,4 +1,5 @@
 +++
+summary = "En genomgång av jonosfärens skikt, MUF, LUF och FOT, och vad det betyder för 20, 40 och 80 meter från Sverige. **Läs mer →**"
 title = "MUF och hur jonosfären fungerar"
 url = "/om/amatorradio/muf-och-jonosfaren/"
 aliases = ["/about/amatorradio/muf-och-jonosfaren/", "/om/amatorradio/muf/"]

@@ -10,4 +10,4 @@ orderByWeight = true
 cardView = true
 +++
 
-This is where I explain how amateur radio works – propagation, the ionosphere and the terms that often come up when you look at HF conditions. More articles will be added over time.
+This is where I explain how amateur radio works – propagation, the ionosphere and the terms that often come up when you look at HF conditions. Click an article to read it. More articles will be added over time.

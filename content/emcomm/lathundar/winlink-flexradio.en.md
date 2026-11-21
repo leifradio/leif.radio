@@ -1,4 +1,5 @@
 +++
+summary = "A quick guide to connecting Winlink Express and VARA HF to a FlexRadio FLEX-8400 with SmartSDR, DAX and CAT. **Read more →**"
 title = "Winlink on FlexRadio"
 url = "/en/emcomm/quick-guides/winlink-flexradio/"
 description = "A quick guide to connecting Winlink Express and VARA HF to a FlexRadio FLEX-8400 with SmartSDR, DAX and CAT."

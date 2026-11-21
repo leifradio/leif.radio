@@ -1,4 +1,5 @@
 +++
+summary = "Lathund: så kopplar jag Winlink Express och VARA HF till FlexRadio FLEX-8400 med SmartSDR, DAX och CAT. **Läs mer →**"
 title = "Winlink på Flexradio"
 url = "/krissamband/lathundar/winlink-flexradio/"
 description = "Lathund: så kopplar jag Winlink Express och VARA HF till FlexRadio FLEX-8400 med SmartSDR, DAX och CAT."

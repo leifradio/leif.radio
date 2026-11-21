@@ -9,4 +9,4 @@ orderByWeight = true
 cardView = true
 +++
 
-Här samlar jag lathundar för krissamband, främst hur jag kör Winlink och VarAC hemifrån med FlexRadio FLEX-8400.
+Här samlar jag lathundar för krissamband, främst hur jag kör Winlink och VarAC hemifrån med FlexRadio FLEX-8400. Klicka på en lathund för att läsa den.
