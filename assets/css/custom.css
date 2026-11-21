@@ -479,3 +479,5 @@
   .bands-now-grid thead th:first-child, .bands-now-grid tbody th { width: 2.9rem; }
   .bands-now-grid td { height: 1.7rem; }
 }
+
+.notis-title abbr, h1 abbr[title="All Time New One"] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }

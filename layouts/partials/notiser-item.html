@@ -29,7 +29,7 @@
     </span>
   </p>
   <h3 class="notis-title">
-    <a href="{{ $href }}"{{ if $external }} target="_blank" rel="external noopener"{{ end }}>{{ $p.Title }}</a>
+    <a href="{{ $href }}"{{ if $external }} target="_blank" rel="external noopener"{{ end }}>{{ replace (htmlEscape $p.Title) "ATNO" `<abbr title="All Time New One">ATNO</abbr>` | safeHTML }}</a>
   </h3>
   {{- with $p.Content -}}
     <div class="notis-text">{{ . }}</div>

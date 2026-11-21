@@ -27,7 +27,7 @@
           <span class="notis-type-label">{{ $typeLabel }}</span>
         </span>
       </p>
-      <h1 class="mt-2 text-3xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+      <h1 class="mt-2 text-3xl font-extrabold text-neutral-900 dark:text-neutral">{{ replace (htmlEscape .Title) "ATNO" `<abbr title="All Time New One">ATNO</abbr>` | safeHTML }}</h1>
     </header>
     <section class="prose dark:prose-invert mt-4">{{ .Content }}</section>
     {{- if $href -}}
