@@ -1,0 +1,13 @@
+{{- $me := .Get "me" | default "SM4T" -}}
+{{- $other := .Get "other" -}}
+{{- $sv := eq .Page.Language.Lang "sv" -}}
+{{- $label := cond $sv (printf "CW-QSO mellan %s och %s" $me (default "motstationen" $other)) (printf "CW QSO between %s and %s" $me (default "the other station" $other)) -}}
+<section class="qso-log not-prose" aria-label="{{ $label }}">
+  <div class="qso-legend">
+    <span class="qso-legend__item qso-legend__item--me"><span class="qso-legend__swatch" aria-hidden="true"></span>{{ $me }}</span>
+    {{- with $other -}}
+    <span class="qso-legend__item qso-legend__item--other"><span class="qso-legend__swatch" aria-hidden="true"></span>{{ . }}</span>
+    {{- end -}}
+  </div>
+  {{ .Inner }}
+</section>

@@ -1,4 +1,5 @@
 +++
+summary = "Ett vanligt rubber stamp-QSO på CW, med exempel och vanliga förkortningar. **Läs mer →**"
 title = "CW QSO"
 url = "/telegrafi/cw-qso/"
 description = "Ett vanligt rubber stamp-QSO på CW, med exempel och vanliga förkortningar."
@@ -15,37 +16,45 @@ Ett vanligt CW-QSO följer ofta samma mall, ett så kallat *rubber stamp*-QSO. M
 
 Så här kan ett QSO mellan mig och en tysk station se ut:
 
-```
+{{< qso me="SM4T" other="DL1ABC" >}}
+{{< qso-tx call="SM4T" >}}
 CQ CQ CQ DE SM4T SM4T K
-
+{{< /qso-tx >}}
+{{< qso-tx call="DL1ABC" >}}
 SM4T DE DL1ABC DL1ABC K
-
+{{< /qso-tx >}}
+{{< qso-tx call="SM4T" >}}
 DL1ABC DE SM4T GM DR OM TNX FER CALL
 UR RST 579 579
 NAME LEIF LEIF
 QTH BORLANGE BORLANGE
 HW? AR DL1ABC DE SM4T K
-
+{{< /qso-tx >}}
+{{< qso-tx call="DL1ABC" >}}
 SM4T DE DL1ABC R GM LEIF TNX FB RPT
 UR RST 559 559
 NAME HANS HANS
 QTH MUNICH MUNICH
 HW? AR SM4T DE DL1ABC K
-
+{{< /qso-tx >}}
+{{< qso-tx call="SM4T" >}}
 DL1ABC DE SM4T R TNX HANS
 RIG FLEX 8400 ES ANT VERTICAL
 WX CLOUDY TEMP -3C AR
 DL1ABC DE SM4T K
-
+{{< /qso-tx >}}
+{{< qso-tx call="DL1ABC" >}}
 SM4T DE DL1ABC R TNX INFO LEIF
 RIG IC7300 100W ES ANT DIPOLE
 WX SUNNY 8C
 TNX FER QSO ES 73 AR SM4T DE DL1ABC SK
-
+{{< /qso-tx >}}
+{{< qso-tx call="SM4T" >}}
 DL1ABC DE SM4T TNX FER FB QSO HANS
 QSL VIA LOTW
 73 ES GL AR DL1ABC DE SM4T SK TU EE
-```
+{{< /qso-tx >}}
+{{< /qso >}}
 
 **Vanliga förkortningar**
 

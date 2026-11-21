@@ -7,6 +7,8 @@ showAuthor = false
 showReadingTime = false
 showPagination = false
 showDateUpdated = false
+orderByWeight = true
+cardView = true
 +++
 
 Telegrafi är det mode jag tycker absolut bäst om. Jag började lära mig telegrafi strax efter att jag fick mitt amatörradiocertifikat 2020 och har kämpat på sedan dess för att bli bra på det. Det är inte lätt för en gammal man som jag, men det går framåt :)
@@ -22,6 +24,8 @@ På YouTube hittar man mycket om telegrafi och ett bra första stopp är Kurt Zo
 Till sist en webbsida jag har lagt mycket tid på: [LCWO](https://lcwo.net/). Där är det smidigt att lära sig tecken och ord och att träna på flera olika sätt.
 
 Lycka till!
+
+När du kommit igång är ett typiskt *rubber stamp*-QSO ett bra nästa steg. [Se ett exempel på ett typiskt CW-QSO →](/telegrafi/cw-qso/)
 
 ## Mina filmer
 

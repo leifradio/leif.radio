@@ -1,0 +1,12 @@
+{{- $call := .Get "call" -}}
+{{- if not $call -}}{{ errorf "qso-tx shortcode requires a call parameter" }}{{- end -}}
+{{- $me := "SM4T" -}}
+{{- if .Parent -}}{{- with .Parent.Get "me" -}}{{- $me = . -}}{{- end -}}{{- end -}}
+{{- with .Get "me" -}}{{- $me = . -}}{{- end -}}
+{{- $side := .Get "side" -}}
+{{- if not $side -}}{{- if eq $call $me -}}{{- $side = "me" -}}{{- else -}}{{- $side = "other" -}}{{- end -}}{{- end -}}
+{{- $text := strings.TrimSpace (replace .Inner "\r" "") -}}
+<div class="qso-tx qso-tx--{{ $side }}">
+  <div class="qso-tx__call">{{ htmlEscape $call }}</div>
+  <pre class="qso-tx__text">{{ htmlEscape $text }}</pre>
+</div>

@@ -7,6 +7,8 @@ showAuthor = false
 showReadingTime = false
 showPagination = false
 showDateUpdated = false
+orderByWeight = true
+cardView = true
 +++
 
 CW is the mode I like by far the most. I started learning CW shortly after getting my amateur radio licence in 2020 and have kept working at it ever since to become good at it. It is not easy for an old man like me, but I am making progress :)
@@ -22,6 +24,8 @@ YouTube has plenty about CW, and a great first stop is Kurt Zoglmann, Morse code
 Finally, a website I have spent a lot of time on: [LCWO](https://lcwo.net/). It makes it easy to learn characters and words and to practise in several different ways.
 
 Good luck!
+
+Once you have got started, a typical *rubber stamp* QSO is a good next step. [See an example of a typical CW QSO →](/en/cw/cw-qso/)
 
 ## My videos
 

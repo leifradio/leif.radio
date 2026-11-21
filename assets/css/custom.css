@@ -481,3 +481,106 @@
 }
 
 .notis-title abbr, h1 abbr[title="All Time New One"] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+
+
+/* CW QSO example: coloured transmissions */
+.qso-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 1.15rem 0 1.5rem;
+  max-width: 42rem;
+}
+.qso-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #475569;
+}
+.dark .qso-legend { color: #cbd5e1; }
+.qso-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.qso-legend__swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.15rem;
+  border: 1px solid transparent;
+  border-left-width: 3px;
+}
+.qso-legend__item--me .qso-legend__swatch {
+  background: #dbeafe;
+  border-color: #93c5fd;
+  border-left-color: #2563eb;
+}
+.dark .qso-legend__item--me .qso-legend__swatch {
+  background: rgba(37, 99, 235, 0.35);
+  border-color: rgba(96, 165, 250, 0.45);
+  border-left-color: #60a5fa;
+}
+.qso-legend__item--other .qso-legend__swatch {
+  background: #ffedd5;
+  border-color: #fdba74;
+  border-left-color: #c2410c;
+}
+.dark .qso-legend__item--other .qso-legend__swatch {
+  background: rgba(194, 65, 12, 0.35);
+  border-color: rgba(251, 146, 60, 0.45);
+  border-left-color: #fb923c;
+}
+.qso-tx {
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  padding: 0.5rem 0.8rem 0.6rem;
+}
+.qso-tx__call {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.2rem;
+  line-height: 1.2;
+}
+.qso-tx__text {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  color: inherit;
+}
+.qso-tx--me {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  border-left-color: #2563eb;
+  color: #1e40af;
+}
+.dark .qso-tx--me {
+  background: rgba(37, 99, 235, 0.16);
+  border-color: rgba(96, 165, 250, 0.32);
+  border-left-color: #60a5fa;
+  color: #93c5fd;
+}
+.qso-tx--other {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  border-left-color: #c2410c;
+  color: #9a3412;
+}
+.dark .qso-tx--other {
+  background: rgba(194, 65, 12, 0.16);
+  border-color: rgba(251, 146, 60, 0.3);
+  border-left-color: #fb923c;
+  color: #fdba74;
+}
