@@ -420,3 +420,53 @@
   .yt-thumb { width: 6.25rem; }
 }
 
+
+/* Front-page "band openings right now" grid (layouts/partials/bands-now.html) */
+.bands-now {
+  width: 100%;
+  max-width: 40rem;
+  margin: 1rem auto 0;
+  text-align: left;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.05rem 0.8rem;
+}
+.dark .bands-now { border-color: rgba(148, 163, 184, 0.25); }
+.bands-now-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.2rem 0.75rem; margin-bottom: 0.5rem; }
+.bands-now-title { font-size: 1.05rem; font-weight: 700; margin: 0; color: #0f172a; line-height: 1.3; }
+.dark .bands-now-title { color: #e2e8f0; }
+.bands-now-sub { font-size: 0.78rem; color: #64748b; }
+.dark .bands-now-sub { color: #94a3b8; }
+.bands-now-status { margin: 0.2rem 0 0.4rem; font-size: 0.85rem; color: #b45309; }
+.dark .bands-now-status { color: #fcd34d; }
+.bands-now-grid-wrap { overflow-x: auto; width: 100%; }
+.bands-now-grid { display: table !important; width: 100% !important; max-width: none; border-collapse: separate; border-spacing: 3px; table-layout: fixed; font-size: 0.85rem; margin: 0; }
+.bands-now-grid th { font-weight: 600; color: #334155; text-align: center; padding: 0.15rem 0; white-space: nowrap; }
+.bands-now-grid thead th:first-child, .bands-now-grid tbody th { text-align: left; width: 3.6rem; }
+.dark .bands-now-grid th { color: #cbd5e1; }
+.bands-now-grid abbr { text-decoration: none; cursor: help; }
+.bands-now-grid td { height: 1.9rem; text-align: center; border-radius: 0.35rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+.bn-l0 { background: #e2e8f0; color: #64748b; }
+.bn-l1 { background: #fde68a; color: #713f12; }
+.bn-l2 { background: #a3e635; color: #1a2e05; }
+.bn-l3 { background: #16a34a; color: #ffffff; }
+.dark .bn-l0 { background: rgba(148, 163, 184, 0.16); color: #94a3b8; }
+.dark .bn-l1 { background: #eab308; color: #422006; }
+.dark .bn-l2 { background: #84cc16; color: #1a2e05; }
+.dark .bn-l3 { background: #16a34a; color: #f0fdf4; }
+.bands-now-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; list-style: none; padding: 0; margin: 0.55rem 0 0; font-size: 0.75rem; color: #475569; }
+.dark .bands-now-legend { color: #cbd5e1; }
+.bands-now-legend li { display: inline-flex; align-items: center; gap: 0.35rem; margin: 0; padding: 0; }
+.bn-swatch { display: inline-block; width: 0.85rem; height: 0.85rem; border-radius: 0.2rem; }
+.bands-now-solar { margin: 0.45rem 0 0; font-size: 0.85rem; color: #334155; }
+.dark .bands-now-solar { color: #cbd5e1; }
+.bands-now-meta { margin: 0.45rem 0 0; font-size: 0.75rem; line-height: 1.4; color: #64748b; }
+.dark .bands-now-meta { color: #94a3b8; }
+.bands-now-meta a { color: inherit; text-decoration: underline; }
+.bands-now [hidden] { display: none !important; }
+@media (max-width: 480px) {
+  .bands-now { padding: 0.75rem 0.6rem 0.7rem; }
+  .bands-now-grid { font-size: 0.78rem; border-spacing: 2px; }
+  .bands-now-grid thead th:first-child, .bands-now-grid tbody th { width: 2.9rem; }
+  .bands-now-grid td { height: 1.7rem; }
+}

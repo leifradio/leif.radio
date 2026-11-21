@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 data/live-status.json
 static/data/live-status.json
+static/data/bands-now.json

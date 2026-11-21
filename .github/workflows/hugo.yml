@@ -10,6 +10,7 @@ on:
   # GitHub often delays these crons to 60–90 minutes, so the page also refreshes
   # spots in the browser about every 15 minutes from a CORS-enabled public API.
   # The fetch writes a JSON file during the build and does not commit it to git.
+  # The same run also refreshes static/data/bands-now.json (band openings grid).
   schedule:
     - cron: "*/15 * * * *"
 
@@ -61,6 +62,13 @@ jobs:
             mkdir -p data static/data
             python3 -c 'import json,pathlib; p=pathlib.Path("data/live-status.json"); p.write_text(json.dumps({"ok":False,"updated":"","qrv":False,"rbn":{"ok":False},"psk":{"ok":False},"solar":{"ok":False}})+"\n"); pathlib.Path("static/data/live-status.json").write_text(p.read_text())'
           fi
+      - name: Fetch band openings (RBN, last 60 min)
+        # Writes static/data/bands-now.json for the front-page band grid.
+        # Never fails the build; on error the json has ok=false and the page
+        # shows "data saknas". See scripts/README-bands-now.md.
+        timeout-minutes: 4
+        continue-on-error: true
+        run: python3 scripts/fetch-bands-now.py
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache

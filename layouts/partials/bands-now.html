@@ -1,0 +1,50 @@
+{{- /* "Band openings right now" grid for the front page. Rendered client-side by
+       /js/bands-now.js from /data/bands-now.json, which the Pages workflow
+       generates on every build (scripts/fetch-bands-now.py, not committed). */ -}}
+{{- $t := dict
+  "noData" (i18n "bands_now.no_data")
+  "stale" (i18n "bands_now.stale")
+  "updated" (i18n "bands_now.updated")
+  "tz" (i18n "bands_now.tz")
+  "skimmers" (i18n "bands_now.skimmers")
+  "solar" (i18n "bands_now.solar")
+  "cellTitle" (i18n "bands_now.cell_title")
+  "capped" (i18n "bands_now.capped")
+  "band" (i18n "bands_now.band")
+  "contEU" (i18n "bands_now.cont_EU")
+  "contNA" (i18n "bands_now.cont_NA")
+  "contSA" (i18n "bands_now.cont_SA")
+  "contAF" (i18n "bands_now.cont_AF")
+  "contAS" (i18n "bands_now.cont_AS")
+  "contOC" (i18n "bands_now.cont_OC")
+  "locale" (cond (eq site.Language.Lang "sv") "sv-SE" "en-GB")
+-}}
+<section class="bands-now not-prose" id="bands-now" aria-labelledby="bands-now-title">
+  <header class="bands-now-header">
+    <h2 class="bands-now-title" id="bands-now-title">{{ i18n "bands_now.title" }}</h2>
+    <span class="bands-now-sub">{{ i18n "bands_now.subtitle" }}</span>
+  </header>
+  <p class="bands-now-status" id="bands-now-status">{{ i18n "bands_now.loading" }}</p>
+  <div class="bands-now-grid-wrap">
+    <table class="bands-now-grid" id="bands-now-grid" hidden>
+      <caption class="sr-only">{{ i18n "bands_now.caption" }}</caption>
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <ul class="bands-now-legend" aria-label="{{ i18n "bands_now.legend" }}">
+    <li><span class="bn-swatch bn-l0"></span>{{ i18n "bands_now.level0" }}</li>
+    <li><span class="bn-swatch bn-l1"></span>{{ i18n "bands_now.level1" }}</li>
+    <li><span class="bn-swatch bn-l2"></span>{{ i18n "bands_now.level2" }}</li>
+    <li><span class="bn-swatch bn-l3"></span>{{ i18n "bands_now.level3" }}</li>
+  </ul>
+  <p class="bands-now-solar" id="bands-now-solar" hidden></p>
+  <p class="bands-now-meta">
+    <span id="bands-now-updated"></span>
+    <span id="bands-now-skimmers"></span>
+    {{ i18n "bands_now.links" | safeHTML }}
+  </p>
+  <noscript><p class="bands-now-status">{{ i18n "bands_now.noscript" }}</p></noscript>
+  <script id="bands-now-i18n" type="application/json">{{ $t | jsonify | safeJS }}</script>
+  <script src="/js/bands-now.js" defer></script>
+</section>
