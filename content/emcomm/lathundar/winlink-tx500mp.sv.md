@@ -12,7 +12,7 @@ showDateUpdated = false
 showHero = false
 +++
 
-Det här är så jag kör Winlink portabelt, med Lab599 TX-500MP, DIY599 LiNK500MP MK3 och anropssignalen SM4T. CAT och ljud går trådlöst över Bluetooth mellan laptopen och radion, utan kabel däremellan. Hemifrån med FLEX-8400 gör jag samma sak enligt lathunden [Winlink på Flexradio](/krissamband/lathundar/winlink-flexradio/).
+Så här kör jag Winlink portabelt, med Lab599 TX-500MP och DIY599 LiNK500MP MK3. CAT och ljud går trådlöst över Bluetooth mellan laptopen och radion.
 
 ## Vad som behövs
 
@@ -24,12 +24,6 @@ Det här är så jag kör Winlink portabelt, med Lab599 TX-500MP, DIY599 LiNK500
 - En antenn som fungerar på bandet, till exempel [Chameleon CHA LEFS4010 eller CHA Feather](/about/utrustning/#portabelt)
 
 ## 1. Koppla ihop LiNK500MP och TX-500MP
-
-Skruva fast LiNK500MP ovanpå TX-500MP. På vissa TX-500MP sitter jordskruven lite annorlunda, så att LiNK:en inte går att skruva fast. Enligt DIY599 byter man då plats på sexkantsskruven och radions skruv bredvid jordskruven.
-
-Jorda radion om det går. LiNK500MP-manualen varnar för att det annars kan ligga hög spänning på chassit när du sänder.
-
-TX-500MP matas med 9–15 V, till exempel med batteripaketet BP-550 eller en extern källa. LiNK500MP är specificerad för 7–15 V och drar ungefär 100 mA vid 13 V.
 
 Sätt LiNK:en i **läge 3: BT ⇒ Radio CAT Interface (non iOS devices)**. Det är läget för CAT över Bluetooth till en Windows-dator. Trådlöst ljud finns i alla lägen.
 
@@ -54,7 +48,7 @@ Välj enheten **LiNK500MP** (den med rätt symbol i listan). I listan kan även 
 - Under **Anslutningar (COM & LPT)** finns två portar av typen *Standardmässig seriell över Bluetooth-anslutning*. En av dem är CAT-porten. Skriv upp båda numren; om frekvensstyrningen inte fungerar provar du den andra.
 - Under **Ljudingångar och -utgångar** ska LiNK500MP finnas, ofta som *Hörlurar (LiNK500MP Hands-Free)*.
 
-Stäng av **AGC** för LiNK500MP-ljudenheten i Windows, både för in- och utgång. Det står i LiNK-manualen och gör stor skillnad för den digitala signalen.
+Stäng av **AGC** för LiNK500MP-ljudenheten i Windows, både för in- och utgång. Det gör stor skillnad för den digitala signalen.
 
 ## 3. Inställningar i TX-500MP
 
@@ -74,7 +68,7 @@ Välj ett tillräckligt brett mottagarfilter med **FLT** (fyra fasta filter). VA
 
 RF-förstärkningen (meny 02 RF) kan ställas separat för DIG. Standard är 0; sänk vid behov om starka signaler slår i taket.
 
-Använd den inbyggda avstämningen vid behov: tryck **TUNE** för att slå på ATU, och håll inne TUNE för att stämma av. Vid SWR 3 eller högre sänker radion själv effekten.
+Använd den inbyggda tunern vid behov: tryck **TUNE** för att slå på ATU, och håll inne TUNE för att stämma av. Vid SWR 3 eller högre sänker radion själv effekten.
 
 ## 4. VARA HF
 
@@ -124,16 +118,16 @@ Det finns också sessioner för direkttrafik mellan stationer (P2P), om båda pa
 - **Inget ljud in i VARA:** fel ljudenhet vald, eller AGC fortfarande påslaget för LiNK500MP i Windows.
 - **Bred eller distorterad signal:** sänk GAIN → DIG eller Windows-volymen. Stäng av CMR, NB, NR och NF.
 - **Låg effekt:** SWR 3 eller högre får radion att sänka effekten själv. Stäm av med TUNE.
-- **Radion vägrar sända efter en stund:** överhettningsskyddet slår till vid ungefär 60 °C. Blockera inte luftflödet bak på radion, fäll ut bakre fötterna och sänk effekten vid långa digitala sändningar.
+- **Radion vägrar sända efter en stund:** överhettningsskyddet slår till vid ungefär 60 °C.
 
 ## Tips portabelt och för krissamband
 
-VARA sänder länge och tätt. TX-500MP ger högst 10 W på HF, och vid digital trafik är det klokt att inte ligga på max i onödan. Fäll ut bakre fötterna så att luften kommer åt baksidan.
+VARA sänder länge och tätt. TX-500MP ger högst 10 W på HF, och vid digital trafik är det klokt att inte ligga på max i onödan.
 
 Inom Sverige, mot gateways eller andra stationer på kortare avstånd, är **40 och 80 meter** ofta de mest användbara banden, särskilt när antennen strålar brant uppåt (NVIS). Mer om det finns i [MUF och hur jonosfären fungerar](/om/amatorradio/muf-och-jonosfaren/).
 
 Portabelt använder jag typiskt en enkel trådantenn, till exempel CHA LEFS4010 eller CHA Feather, och den inbyggda ATU:n.
 
-Hämta en färsk kanallista och testa gärna mot en närliggande gateway medan du fortfarande har internet. Då vet du att upplägget sitter när det väl behövs.
+Hämta en färsk kanallista och testa gärna mot en närliggande gateway medan du fortfarande har internet. Då vet du att upplägget fungerar när det väl behövs.
 
 Källor till inställningarna: [Lab599 TX-500MP User manual (FW v1.24)](https://drive.google.com/file/d/1Zuf2KPHnu-Qy6mI1gvAWnFZqALG40wj9/view), [Lab599 TX-500 Digital modes setup guide](https://drive.google.com/file/d/1c3iPxMbwqddngruzKvdYcnaOakmHTs_a/view), [DIY599 LiNK500MP MK2/MK3 Instruction manual (V3.2-1031 rev 3)](https://drive.google.com/file/d/16H6q8aBq-ur9vsQhtR4nIEotIcYdOLjF/view), samt [Winlink Express](https://winlink.org/WinlinkExpress) och [VARA HF](https://rosmodem.wordpress.com/).

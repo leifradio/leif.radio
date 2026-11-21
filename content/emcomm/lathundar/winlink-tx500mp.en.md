@@ -12,7 +12,7 @@ showDateUpdated = false
 showHero = false
 +++
 
-This is how I run Winlink portable, with a Lab599 TX-500MP, a DIY599 LiNK500MP MK3 and the callsign SM4T. CAT and audio go wirelessly over Bluetooth between the laptop and the radio, with no cable in between. From home with the FLEX-8400 I do the same thing as described in [Winlink on FlexRadio](/en/emcomm/quick-guides/winlink-flexradio/).
+This is how I run Winlink portable, with a Lab599 TX-500MP and a DIY599 LiNK500MP MK3. CAT and audio go wirelessly over Bluetooth between the laptop and the radio.
 
 ## What you need
 
@@ -24,12 +24,6 @@ This is how I run Winlink portable, with a Lab599 TX-500MP, a DIY599 LiNK500MP M
 - An antenna that works on the band, for example a [Chameleon CHA LEFS4010 or CHA Feather](/en/about/gear/#portable)
 
 ## 1. Connecting the LiNK500MP to the TX-500MP
-
-Screw the LiNK500MP onto the top of the TX-500MP. On some TX-500MP units the ground lug sits slightly differently, so the LiNK cannot be screwed on. According to DIY599 you then swap the hexagonal screw with the radio screw next to the ground lug.
-
-Ground the radio if you can. The LiNK500MP manual warns that otherwise high voltage can be present on the chassis when you transmit.
-
-The TX-500MP is powered from 9–15 V, for example with the BP-550 battery pack or an external supply. The LiNK500MP is specified for 7–15 V and draws about 100 mA at 13 V.
 
 Set the LiNK to **mode 3: BT ⇒ Radio CAT Interface (non iOS devices)**. That is the mode for CAT over Bluetooth to a Windows computer. Wireless audio is available in all modes.
 
@@ -54,7 +48,7 @@ Open Device Manager:
 - Under **Ports (COM & LPT)** there are two ports of the type *Standard Serial over Bluetooth link*. One of them is the CAT port. Note both numbers; if frequency control does not work, try the other one.
 - Under **Audio inputs and outputs**, LiNK500MP should appear, often as *Headphones (LiNK500MP Hands-Free)*.
 
-Turn off **AGC** for the LiNK500MP audio device in Windows, on both the input and the output. The LiNK manual is explicit about this, and it makes a large difference to the digital signal.
+Turn off **AGC** for the LiNK500MP audio device in Windows, on both the input and the output. It makes a large difference to the digital signal.
 
 ## 3. Settings on the TX-500MP
 
@@ -124,11 +118,11 @@ There are also sessions for direct station-to-station traffic (P2P), if both end
 - **No audio into VARA:** the wrong sound device is selected, or AGC is still on for LiNK500MP in Windows.
 - **A wide or distorted signal:** lower GAIN → DIG or the Windows volume. Turn off CMR, NB, NR and NF.
 - **Low power:** SWR of 3 or higher makes the radio reduce power on its own. Tune with TUNE.
-- **The radio refuses to transmit after a while:** the overheating protection trips at about 60 °C. Do not obstruct airflow at the rear of the radio, extend the rear legs and reduce power for long digital transmissions.
+- **The radio refuses to transmit after a while:** the overheating protection trips at about 60 °C.
 
 ## Tips for portable use and emergency communications
 
-VARA transmits for long stretches at a time. The TX-500MP gives at most 10 W on HF, and for digital work it is wise not to stay on maximum unnecessarily. Extend the rear legs so that air can reach the back of the radio.
+VARA transmits for long stretches at a time. The TX-500MP gives at most 10 W on HF, and for digital work it is wise not to stay on maximum unnecessarily.
 
 Within Sweden, towards gateways or other stations at shorter distances, **40 and 80 metres** are often the most useful bands, especially when the antenna radiates steeply upwards (NVIS). There is more on this in [MUF and how the ionosphere works](/en/about/ham-radio/muf-and-the-ionosphere/).
 
