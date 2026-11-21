@@ -44,6 +44,12 @@
   identifier = "cw-overview"
   weight = 1
 [[main]]
+  name = "CW QSO"
+  pageRef = "cw/cw-qso"
+  parent = "cw"
+  weight = 5
+
+[[main]]
   name = "YouTube videos"
   pageRef = "cw/youtube"
   parent = "cw"
