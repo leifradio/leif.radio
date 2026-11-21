@@ -14,7 +14,7 @@ Min hemmastation finns i Borlänge i Dalarna, Sverige. Där använder jag en Fle
 
 När jag kör portabelt växlar jag mellan olika radioapparater och antenner. Favoriterna just nu är Lab599 TX500MP och en enkel trådantenn, till exempel Chameleon CHA LEFS4010 eller CHA Feather.
 
-Jag är också intresserad av krissamband – kommunikation när de vanliga kommunikationsvägarna inte är tillgängliga. Radio kan fungera även när mobilnät och internet ligger nere. Att hålla kunskaperna vid liv är både roligt och värdefullt inför den dag de behövs. För detta använder jag framför allt Winlink och VarAC, med anropssignalen SM4T.
+Jag är också intresserad av krissamband – kommunikation när de vanliga kommunikationsvägarna inte är tillgängliga. Radio kan fungera även när mobilnät och internet ligger nere. Att hålla kunskaperna vid liv är både roligt och värdefullt inför den dag de behövs. Det omfattar framför allt vanlig HF, Winlink och VarAC samt förstås lokal kommunikation med komradio (walkietalkie/HT) och Meshcoreliknande system.
 
 ## Kontakt
 
