@@ -1,7 +1,7 @@
 +++
 title = "Lathundar"
 url = "/krissamband/lathundar/"
-description = "Korta guider för krissamband: Winlink, VarAC och mer, främst med FlexRadio hemifrån."
+description = "Korta guider för krissamband: Winlink och VarAC, hemifrån med FlexRadio och portabelt med TX-500MP."
 showDate = false
 showAuthor = false
 showReadingTime = false
@@ -9,4 +9,4 @@ orderByWeight = true
 cardView = true
 +++
 
-Här samlar jag lathundar för krissamband, främst hur jag kör Winlink och VarAC hemifrån med FlexRadio FLEX-8400. Klicka på en lathund för att läsa den.
+Här samlar jag lathundar för krissamband: Winlink och VarAC hemifrån med FlexRadio FLEX-8400, och portabelt med TX-500MP och LiNK500MP. Klicka på en lathund för att läsa den.
