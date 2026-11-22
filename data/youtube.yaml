@@ -6,6 +6,12 @@
 #   python3 scripts/add-youtube.py --id ID --date YYYY-MM-DD --title "..." --category morsenovell [--wpm 25 --length 4:51]
 
 videos:
+  - id: N5UN9y5TnyE
+    date: 2026-11-22
+    title: "THE BLIND SLED DOG"
+    category: morsenovell
+    wpm: 25
+    length: 5:08
   - id: ewAUGsq1osI
     date: 2026-11-21
     title: "THE LIGHTHOUSE CAT"
