@@ -43,12 +43,10 @@ Här är de Q-koder man möter oftast i vanliga amatörradio-QSO:n på CW.
 | QSK | Kan du höra mig mellan dina tecken? Kör du break-in? | Jag kan höra dig mellan mina tecken. Jag kör break-in (QSK). |
 | QSL | Kan du kvittera? Bekräftar du? | Jag kvitterar. Jag bekräftar. Används också om QSL-kort eller annan bekräftelse på QSO:t. |
 | QSO | Kan du ha förbindelse med …? | Jag kan ha förbindelse med … Ett QSO är en radiokontakt. |
-| QSP | Kan du vidarebefordra till …? | Jag vidarebefordrar till … |
 | QST | (används sällan som fråga) | Allmänt anrop till alla stationer. Meddelande till alla radioamatörer. |
 | QSX | Kan du lyssna efter … på … kHz? | Jag lyssnar efter … på … kHz. |
 | QSY | Ska jag gå över till en annan frekvens? | Gå över till en annan frekvens (eller till … kHz). Jag byter frekvens. |
 | QTH | Var befinner du dig? | Jag befinner mig i … Min QTH är … |
-| QTR | Vad är rätt tid? | Rätt tid är … |
 | QTC | Hur många meddelanden har du? | Jag har … meddelanden till dig. |
 
 Ett par koder är särskilt bra att ha koll på. `QRL?` sänder man på en frekvens innan man ropar CQ, så att man inte går in i ett pågående QSO. `QRS` är helt okej att be om – det är bättre att sänka tempot än att missa vad motstationen säger. `QSL` och `QSO` har dessutom blivit vanliga ord bland radioamatörer: ett QSO är en kontakt, och ett QSL är en bekräftelse, till exempel ett kort eller en registrering i LoTW.

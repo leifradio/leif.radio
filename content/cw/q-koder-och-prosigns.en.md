@@ -43,12 +43,10 @@ Here are the Q-codes you will meet most often in ordinary amateur radio CW QSOs.
 | QSK | Can you hear me between your signals? Can you use break-in? | I can hear you between my signals. I am using break-in (QSK). |
 | QSL | Can you acknowledge receipt? Do you confirm? | I acknowledge receipt. I confirm. Also used for a QSL card or other confirmation of the QSO. |
 | QSO | Can you communicate with …? | I can communicate with … A QSO is a radio contact. |
-| QSP | Will you relay to …? | I will relay to … |
 | QST | (rarely used as a question) | General call to all stations. A message to all radio amateurs. |
 | QSX | Will you listen for … on … kHz? | I am listening for … on … kHz. |
 | QSY | Shall I change to another frequency? | Change to another frequency (or to … kHz). I am changing frequency. |
 | QTH | What is your location? | My location is … |
-| QTR | What is the correct time? | The correct time is … |
 | QTC | How many messages do you have? | I have … messages for you. |
 
 A few codes are especially useful to know well. Send `QRL?` on a frequency before calling CQ, so that you do not walk into an ongoing QSO. It is perfectly all right to ask for `QRS` – it is better to slow down than to miss what the other station is saying. `QSL` and `QSO` have also become ordinary words among radio amateurs: a QSO is a contact, and a QSL is a confirmation, for example a card or a LoTW log entry.
