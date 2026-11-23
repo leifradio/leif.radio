@@ -39,7 +39,6 @@ Here are the Q-codes you will meet most often in ordinary amateur radio CW QSOs.
 | QRX | Shall I stand by? When will you call me again? | Stand by. I will call you again at … (`QRX 5` = wait five minutes). |
 | QRZ | Who is calling me? | You are being called by … |
 | QSB | Are my signals fading? | Your signals are fading (going up and down in strength). |
-| QSD | Is my keying defective? | Your keying is defective or uneven. |
 | QSK | Can you hear me between your signals? Can you use break-in? | I can hear you between my signals. I am using break-in (QSK). |
 | QSL | Can you acknowledge receipt? Do you confirm? | I acknowledge receipt. I confirm. Also used for a QSL card or other confirmation of the QSO. |
 | QSO | Can you communicate with …? | I can communicate with … A QSO is a radio contact. |

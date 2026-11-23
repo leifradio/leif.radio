@@ -39,7 +39,6 @@ Här är de Q-koder man möter oftast i vanliga amatörradio-QSO:n på CW.
 | QRX | Ska jag vänta? När ropar du upp mig igen? | Vänta. Jag ropar upp dig igen klockan … (`QRX 5` = vänta fem minuter). |
 | QRZ | Vem ropar upp mig? | Du blir uppropad av … |
 | QSB | Har jag fading? | Din signal fadingar (går upp och ner i styrka). |
-| QSD | Är min givning otydlig? | Din givning är otydlig eller ojämn. |
 | QSK | Kan du höra mig mellan dina tecken? Kör du break-in? | Jag kan höra dig mellan mina tecken. Jag kör break-in (QSK). |
 | QSL | Kan du kvittera? Bekräftar du? | Jag kvitterar. Jag bekräftar. Används också om QSL-kort eller annan bekräftelse på QSO:t. |
 | QSO | Kan du ha förbindelse med …? | Jag kan ha förbindelse med … Ett QSO är en radiokontakt. |
