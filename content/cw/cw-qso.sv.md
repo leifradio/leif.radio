@@ -78,3 +78,5 @@ QSL VIA LOTW
 - `TU EE` – "tack" och ett dubbelklick som avslut
 
 **Tips:** Upprepa namn och QTH två gånger så slipper motstationen fråga. Ha mallen framför dig de första gångerna. Snart sitter den i ryggmärgen och du kan lägga mer energi på att lyssna.
+
+En mer komplett lista över [Q-koder och prosigns](/telegrafi/q-koder-och-prosigns/) finns under Telegrafi.

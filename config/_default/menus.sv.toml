@@ -48,6 +48,12 @@
   pageRef = "cw/cw-qso"
   parent = "cw"
   weight = 5
+[[main]]
+  name = "Q-koder och prosigns"
+  pageRef = "cw/q-koder-och-prosigns"
+  parent = "cw"
+  identifier = "cw-qkoder"
+  weight = 7
 
 [[main]]
   name = "YouTube-filmer"

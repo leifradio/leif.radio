@@ -27,6 +27,8 @@ Good luck!
 
 Once you have got started, a typical *rubber stamp* QSO is a good next step. [See an example of a typical CW QSO →](/en/cw/cw-qso/)
 
+A list of the most common [Q-codes and prosigns](/en/cw/q-codes-and-prosigns/) is also useful to have at hand.
+
 ## My videos
 
 My own YouTube videos, including the daily Morse novels, are on the [YouTube videos](/en/cw/youtube/) page.

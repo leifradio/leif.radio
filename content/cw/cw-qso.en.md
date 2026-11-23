@@ -78,3 +78,5 @@ QSL VIA LOTW
 - `TU EE` – "thank you" and a double-click as a sign-off
 
 **Tip:** Repeat name and QTH twice so the other station does not have to ask again. Keep the pattern in front of you the first few times. Soon it will be second nature, and you can put more energy into listening.
+
+A more complete list of [Q-codes and prosigns](/en/cw/q-codes-and-prosigns/) is under CW.

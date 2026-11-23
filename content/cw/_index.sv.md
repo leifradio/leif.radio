@@ -27,6 +27,8 @@ Lycka till!
 
 När du kommit igång är ett typiskt *rubber stamp*-QSO ett bra nästa steg. [Se ett exempel på ett typiskt CW-QSO →](/telegrafi/cw-qso/)
 
+En lista över de vanligaste [Q-koderna och prosigns](/telegrafi/q-koder-och-prosigns/) kan också vara bra att ha till hands.
+
 ## Mina filmer
 
 Mina egna YouTube-filmer, bland annat de dagliga morsenovellerna, finns på sidan [YouTube-filmer](/telegrafi/youtube/).
