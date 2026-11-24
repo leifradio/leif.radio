@@ -6,6 +6,12 @@
 #   python3 scripts/add-youtube.py --id ID --date YYYY-MM-DD --title "..." --category morsenovell [--wpm 25 --length 4:51]
 
 videos:
+  - id: GHOG8HzHjTA
+    date: 2026-11-24
+    title: "THE ICE FISHERMAN"
+    category: morsenovell
+    wpm: 25
+    length: 4:49
   - id: wPHIq01wUqM
     date: 2026-11-23
     title: "The Trumpet in the Attic"
