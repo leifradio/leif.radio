@@ -6,6 +6,12 @@
 #   python3 scripts/add-youtube.py --id ID --date YYYY-MM-DD --title "..." --category morsenovell [--wpm 25 --length 4:51]
 
 videos:
+  - id: Le7Ot48jmeI
+    date: 2026-11-26
+    title: "The Last Tram of the Night"
+    category: morsenovell
+    wpm: 25
+    length: 4:48
   - id: 4D8qHuynQBU
     date: 2026-11-25
     title: "The Watchman of the Salt Mine"
