@@ -62,3 +62,7 @@ bands_now:
   cont_OC: "Oceania"
   links: 'Source: <a href="https://www.reversebeacon.net/" rel="noopener">Reverse Beacon Network</a> · <a href="https://prop.kc2g.com/" rel="noopener">MUF map (KC2G)</a>'
   noscript: "The band overview needs JavaScript."
+
+site:
+  404_page_title: "Page not found"
+  404_page_description: "The page you were looking for does not exist on Leif.radio. Head to the home page for CW, portable radio and emergency communications from SM4T."

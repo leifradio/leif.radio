@@ -106,3 +106,7 @@ bands_now:
   cont_OC: "Oceanien"
   links: 'Källa: <a href="https://www.reversebeacon.net/" rel="noopener">Reverse Beacon Network</a> · <a href="https://prop.kc2g.com/" rel="noopener">MUF-karta (KC2G)</a>'
   noscript: "Bandöversikten kräver JavaScript."
+
+site:
+  404_page_title: "Sidan hittades inte"
+  404_page_description: "Sidan du letade efter finns inte på Leif.radio. Gå till startsidan för telegrafi, portabel radio och krissamband från SM4T."

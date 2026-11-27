@@ -1,5 +1,6 @@
 ---
-title: "Leif.radio"
+title: "Leif.radio – SM4T, telegrafi och portabel radio"
+aliases: ["/tavlingar/", "/contests/"]
 description: "Amatörradio av Leif, SM4T/SA4ZAB – telegrafi (CW), portabla aktiveringar och krissamband från Borlänge."
 ---
 

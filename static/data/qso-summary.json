@@ -1,10 +1,10 @@
 {
-  "generated": "2026-11-21T06:50:52Z",
+  "generated": "2026-11-27T20:33:18Z",
   "callsign": "SM4T",
   "bookName": "SM4T Logbook",
   "totalInLog": 253,
-  "plotted": 253,
-  "skippedNoLocation": 0,
+  "plotted": 230,
+  "skippedNoLocation": 23,
   "withGrid": 230,
   "confirmed": 93,
   "dxcc": 55,

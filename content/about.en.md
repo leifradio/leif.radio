@@ -1,5 +1,6 @@
 +++
-title = "About / Station"
+title = "About me"
+description = "About Leif, SM4T/SA4ZAB in Borlänge: Morse code (CW), portable radio, emergency communications and the station at home and in the field."
 showDate = false
 showAuthor = false
 showReadingTime = false
@@ -17,4 +18,4 @@ I am also interested in emergency communications – communication when the usua
 
 ## Contact
 
-You can reach me by email at [contact@leif.radio](mailto:contact@leif.radio).
+You can reach me by email at [kontakt@leif.radio](mailto:kontakt@leif.radio).

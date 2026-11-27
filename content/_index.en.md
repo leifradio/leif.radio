@@ -1,5 +1,6 @@
 ---
-title: "Leif.radio"
+title: "Leif.radio – SM4T, CW and portable radio"
+aliases: ["/contests/"]
 description: "Amateur radio by Leif, SM4T/SA4ZAB – Morse code (CW), portable activations and emergency communications from Borlänge."
 ---
 

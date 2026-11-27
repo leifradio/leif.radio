@@ -129,15 +129,21 @@ def record_to_point(rec: dict[str, str]) -> dict | None:
     lat = parse_qrz_coord(rec.get("lat", ""))
     lon = parse_qrz_coord(rec.get("lon", ""))
     grid = (rec.get("gridsquare") or "").strip().upper() or None
+    # QRZ sends "N000 00.000"/"E000 00.000" when the position is unknown.
+    # Treat 0,0 as missing so those QSOs don't land in the Gulf of Guinea.
+    if lat is not None and lon is not None and abs(lat) < 1e-6 and abs(lon) < 1e-6:
+        lat = lon = None
     if lat is None or lon is None:
         if grid:
             mh = maidenhead_to_latlon(grid)
             if mh:
                 lat, lon = mh
-    if lat is None or lon is None:
-        return None
-    if not (-90 <= lat <= 90 and -180 <= lon <= 180):
-        return None
+    # No usable position: keep the QSO (for stats and the latest list) but
+    # with lat/lon null so the map skips the marker.
+    if lat is None or lon is None or not (-90 <= lat <= 90 and -180 <= lon <= 180):
+        lat = lon = None
+    elif abs(lat) < 1e-6 and abs(lon) < 1e-6:
+        lat = lon = None
     status = (rec.get("app_qrzlog_status") or "").strip().upper()
     confirmed = status == "C" or (rec.get("lotw_qsl_rcvd") or "").upper() in ("Y", "V")
     point = {
@@ -148,8 +154,8 @@ def record_to_point(rec: dict[str, str]) -> dict | None:
         "time": (rec.get("time_on") or "").strip() or None,
         "grid": grid,
         "country": (rec.get("country") or "").strip() or None,
-        "lat": round(lat, 5),
-        "lon": round(lon, 5),
+        "lat": round(lat, 5) if lat is not None else None,
+        "lon": round(lon, 5) if lon is not None else None,
         "confirmed": confirmed,
     }
     point.update(dxcc_fields(rec))
@@ -250,9 +256,10 @@ def main() -> None:
     skipped = 0
     for rec in recs:
         pt = record_to_point(rec)
-        if pt:
-            points.append(pt)
-        else:
+        if not pt:
+            continue
+        points.append(pt)
+        if pt["lat"] is None:
             skipped += 1
 
     # Newest first
@@ -268,7 +275,7 @@ def main() -> None:
         "callsign": status.get("CALLSIGN", "SM4T"),
         "bookName": status.get("BOOK_NAME"),
         "totalInLog": int(status.get("COUNT") or len(recs)),
-        "plotted": len(points),
+        "plotted": len(points) - skipped,
         "skippedNoLocation": skipped,
         "withGrid": with_grid,
         "confirmed": confirmed,
@@ -308,7 +315,7 @@ def main() -> None:
     print(f"wrote {summary_path.relative_to(REPO_ROOT)}")
     print(f"wrote {log_path.relative_to(REPO_ROOT)} ({len(log_entries)} QSOs, {with_dxcc} with dxcc)")
     print(
-        f"summary: plotted={len(points)} skipped={skipped} withGrid={with_grid} "
+        f"summary: plotted={len(points) - skipped} skipped={skipped} withGrid={with_grid} "
         f"confirmed={confirmed} home={home['grid'] if home else None}"
     )
 

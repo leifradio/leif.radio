@@ -144,6 +144,8 @@
     var bounds = [];
     qsos.forEach(function (q) {
       if (typeof q.lat !== "number" || typeof q.lon !== "number") return;
+      // 0,0 means "position unknown" in QRZ data; never plot it.
+      if (Math.abs(q.lat) < 1e-6 && Math.abs(q.lon) < 1e-6) return;
       var marker = Leaflet.circleMarker([q.lat, q.lon], {
         radius: 5,
         color: q.confirmed ? "#fbbf24" : "#ffffff",

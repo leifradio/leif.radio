@@ -103,7 +103,7 @@
 {{- if $s -}}
   {{- /* Always load Leaflet so a later in-page refresh can show the map. */ -}}
   <script id="live-status-data" type="application/json">{{ $s | jsonify | safeJS }}</script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <link rel="stylesheet" href="/vendor/leaflet-1.9.4/leaflet.css">
+  <script src="/vendor/leaflet-1.9.4/leaflet.js"></script>
   <script src="/js/live-status.js"></script>
 {{- end -}}

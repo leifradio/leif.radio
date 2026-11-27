@@ -2,7 +2,7 @@
 summary = "A walkthrough of the ionospheric layers, MUF, LUF and FOT, and what they mean for 20, 40 and 80 metres from Sweden. **Read more →**"
 title = "MUF and how the ionosphere works"
 url = "/en/about/ham-radio/muf-and-the-ionosphere/"
-aliases = ["/en/about/amateur-radio/muf-and-the-ionosphere/", "/en/about/ham-radio/muf/"]
+aliases = ["/about/amateur-radio/muf-and-the-ionosphere/", "/about/ham-radio/muf/"]
 description = "A walkthrough of the ionospheric layers, MUF, LUF and FOT, and what they mean for 20, 40 and 80 metres from Sweden."
 weight = 10
 showDate = false

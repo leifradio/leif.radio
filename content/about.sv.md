@@ -1,5 +1,6 @@
 +++
-title = "Om / Stationen"
+title = "Om mig"
+description = "Om Leif, SM4T/SA4ZAB i Borlänge: telegrafi (CW), portabel radio, krissamband och stationen hemma och ute."
 aliases = ["/om/", "/callsign/", "/callsigns/", "/callsign/sa4zab/", "/callsign/sm4t/", "/callsigns/sa4zab/", "/callsigns/sm4t/"]
 showDate = false
 showAuthor = false

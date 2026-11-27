@@ -3,14 +3,14 @@ title = "Antenna fixes and Winlink Wednesday"
 date = 2026-11-04T14:00:00+01:00
 draft = false
 tags = ["winlink", "40m", "DX Commander", "TX500MP", "LiNK500MP", "antennas"]
-description = "The DX Commander 9 is working again after some care for the radials, and Winlink Wednesday from home with the TX500MP and LiNK500MP mk3."
-featureimagecaption = "The DX Commander 9"
-alt = "The DX Commander 9 against a blue sky"
+description = "The DX Commander Signature 9 is working again after some care for the radials, and Winlink Wednesday from home with the TX500MP and LiNK500MP mk3."
+featureimagecaption = "The DX Commander Signature 9"
+alt = "The DX Commander Signature 9 against a blue sky"
 +++
 
-I've had problems with my DX Commander 9 after mowing the lawn and tidying up the radials, but after a bit of care today it's working well again. Sloppiness in step one meant extra work in step two, as usual.
+I've had problems with my DX Commander Signature 9 after mowing the lawn and tidying up the radials, but after a bit of care today it's working well again. Sloppiness in step one meant extra work in step two, as usual.
 
-{{< figure src="radials.jpg" alt="The radials at the base of the DX Commander 9" caption="The radials at the base of the DX Commander 9" >}}
+{{< figure src="radials.jpg" alt="The radials at the base of the DX Commander Signature 9" caption="The radials at the base of the DX Commander Signature 9" >}}
 
 ## Winlink Wednesday
 
