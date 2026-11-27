@@ -37,4 +37,4 @@ My own YouTube videos, including the daily Morse novels, are on the [YouTube vid
 
 Please get in touch if you would like to have a QSO. The bands that work best for me are 40 metres and higher in frequency, but I can also arrange to operate on 80 metres with a temporary antenna.
 
-You can reach me at [kontakt@leif.radio](mailto:kontakt@leif.radio) or my SM4T Winlink address.
+You can reach me at [contact@leif.radio](mailto:contact@leif.radio) or my SM4T Winlink address.

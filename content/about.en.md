@@ -18,4 +18,4 @@ I am also interested in emergency communications – communication when the usua
 
 ## Contact
 
-You can reach me by email at [kontakt@leif.radio](mailto:kontakt@leif.radio).
+You can reach me by email at [contact@leif.radio](mailto:contact@leif.radio).

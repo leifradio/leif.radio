@@ -37,4 +37,4 @@ Mina egna YouTube-filmer, bland annat de dagliga morsenovellerna, finns på sida
 
 Hör gärna av dig om du vill göra ett QSO. De band som fungerar bäst för mig är 40 meter och uppåt, men jag kan även ordna 80 meter med en temporär antenn.
 
-Du når mig på [kontakt@leif.radio](mailto:kontakt@leif.radio) eller Winlink SM4T-adressen.
+Du når mig på [contact@leif.radio](mailto:contact@leif.radio) eller Winlink SM4T-adressen.

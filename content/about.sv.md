@@ -19,4 +19,4 @@ Jag är också intresserad av krissamband – kommunikation när de vanliga komm
 
 ## Kontakt
 
-Du når mig via e-post på [kontakt@leif.radio](mailto:kontakt@leif.radio).
+Du når mig via e-post på [contact@leif.radio](mailto:contact@leif.radio).
