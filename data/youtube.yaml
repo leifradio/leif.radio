@@ -6,6 +6,12 @@
 #   python3 scripts/add-youtube.py --id ID --date YYYY-MM-DD --title "..." --category morsenovell [--wpm 25 --length 4:51]
 
 videos:
+  - id: 4SPtM8D5WRQ
+    date: 2026-11-28
+    title: "The Night Guard at the Museum"
+    category: morsenovell
+    wpm: 25
+    length: 4:44
   - id: FzQrFmVPl0k
     date: 2026-11-27
     title: "The Piano Tuner of the Mountain Village"
